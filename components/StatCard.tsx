@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 
 export default function StatCard({
   title,
@@ -18,7 +19,7 @@ export default function StatCard({
   link: string;
 }) {
   const [displayedNumber, setDisplayedNumber] = useState(0);
-  const duration = 1500; // total duration of animation in ms
+  const duration = 2000; // total duration of animation in ms
   const frame = useRef<number>(0);
 
   useEffect(() => {
@@ -46,7 +47,29 @@ export default function StatCard({
   }, [number]);
 
   return (
-    <div className="flex flex-col gap-1  w-[350px] h-[250px] ">
+    <motion.div
+     
+      onViewportLeave={() => {
+        setDisplayedNumber(0);
+        frame.current = requestAnimationFrame((timestamp: number) => {
+          let start: number | null = null;
+          function animateCountUp(ts: number) {
+            if (!start) start = ts;
+            const progress = ts - start;
+            const easedProgress = Math.min(progress / duration, 1);
+            const currentValue = Math.floor(easedProgress * number);
+            setDisplayedNumber(currentValue);
+            if (easedProgress < 1) {
+              frame.current = requestAnimationFrame(animateCountUp);
+            } else {
+              setDisplayedNumber(number);
+            }
+          }
+          animateCountUp(timestamp);
+        });
+      }}
+      className="flex flex-col gap-1  w-[350px] h-[250px] "
+    >
       <p className="text-xl font-bold ">{title}</p>
       <span className="text-ukindia text-5xl font-bold">
         {valueBefore}
@@ -60,6 +83,6 @@ export default function StatCard({
       <a href={link} className="underline text-medium text-gray-600">
         Read More..
       </a>
-    </div>
+    </motion.div>
   );
 }

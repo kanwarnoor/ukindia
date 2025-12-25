@@ -3,8 +3,10 @@
 import Card from "@/components/Card";
 import Lander from "@/components/Lander";
 import StatCard from "@/components/StatCard";
+import Carousel from "@/components/Carousel";
 import Image from "next/image";
 import { useState } from "react";
+import { WistiaPlayer } from "@wistia/wistia-player-react";
 
 export default function Home() {
   const [video, setVideo] = useState(false);
@@ -185,6 +187,7 @@ export default function Home() {
         </section>
       </div>
 
+      {/* membership */}
       <div className="w-full h-fit flex justify-center items-center bg-ukindia ">
         <div className="w-[80%] py-20 bg-ukindia flex flex-col md:flex-row items-center gap-10 md:gap-0">
           <div className="w-full md:w-1/2 flex flex-col gap-4 justify-center px-4 md:px-12">
@@ -218,6 +221,65 @@ export default function Home() {
               sizes="(max-width: 768px) 90vw, 600px"
               className="rounded-xl object-cover max-w-full h-auto shadow-lg"
               priority
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* testimonials */}
+      <div className="w-full h-fit flex justify-center items-center py-20">
+        <Carousel
+          data={[
+            {
+              quote:
+                "We’ve done similar research in other markets. The key is to find a partner who can understand us as a business. We got the sense very early on that UKIBC had that ability. We’re discovering valuable insights into the market.",
+              name: "Caroline Newbury",
+              role: "Head of International Communications and Business Development, Penguin Random House",
+              image: "/home-person1.jpg",
+            },
+            {
+              quote:
+                "UKIBC is a fantastic partner. I would like to focus on the convening power of the UKIBC; you can have real conversation with people and members. UKIBC has been a platform for many businesses like Arup to come and talk to each other and to form long term relationships which are the foundations of business collaboration is invaluable. It has been incredibly valuable for me and my firm, in many different ways.",
+              name: "Sowmya Parthasarathy",
+              role: "Arup",
+              image: "/home-person2.jpg",
+            },
+            {
+              quote:
+                "UKIBC and their expert staff have been instrumental in ensuring that our expansion in India has had minimal risk, stability and the ingredients for long-term success.",
+              name: "Sian Impey",
+              role: "Head International Development Office, Swansea University",
+              image: "/home-person3.jpg",
+            },
+          ]}
+        />
+      </div>
+
+      <div className="w-full h-fit flex justify-center items-center bg-ukindia ">
+        <div className="w-[80%] py-20 bg-ukindia flex flex-col md:flex-row items-center gap-10 md:gap-0">
+          <div className="w-full md:w-1/2 flex flex-col gap-4 justify-center px-4 md:px-12">
+            <p className="text-4xl md:text-5xl font-bold text-white mb-2">
+              UK India Business Council
+            </p>
+            <p className="text-white text-lg font-bold italic mb-2">
+              Boosting trade and investment collaboration.
+            </p>
+            <p className="text-white text-base md:text-lg leading-5 font-medium mb-6">
+              An equal UK–India economic partnership built to create jobs and
+              fuel shared prosperity—a force for global good.
+            </p>
+            <a
+              href="/membership"
+              className="rounded-full bg-white px-8 py-3 text-sm font-semibold tracking-wide text-ukindia transition hover:bg-gray-200 hover:underline w-max"
+            >
+              About UKIBC
+            </a>
+          </div>
+
+          <div className="w-full md:w-1/2">
+            <WistiaPlayer
+              mediaId="ouhxny6plv"
+              className="w-full h-full rounded-xl"
             />
           </div>
         </div>
