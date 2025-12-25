@@ -94,13 +94,14 @@ export default function Navbar() {
   };
 
   return (
-    <nav className=" flex w-full h-25 bg-white text-black items-center justify-between px-6 md:px-10 shadow-sm sticky top-0 z-50">
-      <Link href="/" className="w-[120px] md:w-[150px] h-16 relative">
+    <nav className=" flex w-full h-25 bg-white text-gray-600 items-center justify-between px-6 md:px-10 shadow-sm fixed top-0 z-50">
+      <Link href="/" className="w-[120px] md:w-[190px] h-auto relative ">
         <Image
-          src="/logo.jpg"
+          src="/logo.png"
           alt="logo"
-          width={150}
-          height={64}
+          width={0}
+          sizes="100vw"
+          height={0}
           className="w-full h-full object-contain cursor-pointer"
           priority
         />
@@ -116,7 +117,7 @@ export default function Navbar() {
           >
             <Link
               href={link.href || "#"}
-              className="hover:text-gray-600 transition-colors duration-200 flex flex-row justify-center items-center gap-2"
+              className="text-gray-600 transition-colors duration-200 flex flex-row justify-center items-center gap-2"
             >
               {link.label}
               {link.sublinks && (
@@ -226,7 +227,9 @@ export default function Navbar() {
                         viewBox="0 0 24 24"
                         strokeWidth={1.5}
                         stroke="currentColor"
-                        className={`size-3 font-bold stroke-4 transition-transform ${expanded ? "rotate-180" : ""}`}
+                        className={`size-3 font-bold stroke-4 transition-transform ${
+                          expanded ? "rotate-180" : ""
+                        }`}
                       >
                         <path
                           strokeLinecap="round"
