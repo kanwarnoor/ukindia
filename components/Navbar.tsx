@@ -203,34 +203,57 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.2 }}
             exit={{ opacity: 0, y: -10 }}
-            className="absolute top-25 left-0 w-full bg-white shadow-lg  py-2 border border-gray-100 z-10"
+            className="absolute top-25 left-0 w-full  bg-white shadow-lg  py-2 border border-gray-100 z-10"
           >
-            {links.map((link) => (
-              <li key={link.label}>
-                <Link
-                  className="w-full text-left px-4 py-2 hover:bg-gray-50 transition-colors duration-200 text-md flex flex-row justify-between items-center gap-2 font-medium"
-                  href={link.href || "#"}
-                >
-                  {link.label}
-                  {link.sublinks && (
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                      className="size-3 font-bold stroke-4"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="m19.5 8.25-7.5 7.5-7.5-7.5"
-                      />
-                    </svg>
+            {links.map((link, idx) => {
+              const expanded = openDropdown === link.label;
+              return (
+                <li key={link.label} className="w-full cursor-pointer">
+                  <button
+                    className="w-full text-left px-4 py-2 hover:bg-gray-50 transition-colors duration-200 text-md flex flex-row justify-between items-center gap-2 font-medium cursor-pointer"
+                    onClick={() =>
+                      link.sublinks
+                        ? setOpenDropdown(expanded ? null : link.label)
+                        : setMobileMenu(false)
+                    }
+                    aria-expanded={!!link.sublinks && expanded}
+                  >
+                    <span>{link.label}</span>
+                    {link.sublinks && (
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className={`size-3 font-bold stroke-4 transition-transform ${expanded ? "rotate-180" : ""}`}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                        />
+                      </svg>
+                    )}
+                  </button>
+                  {link.sublinks && expanded && (
+                    <ul className="w-full bg-gray-50 border-t border-gray-100">
+                      {link.sublinks.map((sublink) => (
+                        <li key={sublink.label}>
+                          <Link
+                            className="block px-8 py-2 hover:bg-gray-100 transition-colors duration-200 text-sm"
+                            href={sublink.href || "#"}
+                            onClick={() => setMobileMenu(false)}
+                          >
+                            {sublink.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
                   )}
-                </Link>
-              </li>
-            ))}
+                </li>
+              );
+            })}
           </motion.ul>
         )}
       </AnimatePresence>
