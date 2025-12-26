@@ -7,6 +7,7 @@ import Carousel from "@/components/Carousel";
 import Image from "next/image";
 import { useState } from "react";
 import { WistiaPlayer } from "@wistia/wistia-player-react";
+import Companies from "@/components/Companies";
 
 export default function Home() {
   const [video, setVideo] = useState(false);
@@ -283,6 +284,21 @@ export default function Home() {
             />
           </div>
         </div>
+      </div>
+
+      <div className="w-full h-fit flex flex-col justify-center items-center py-10 bg-gray-50">
+        <Companies
+          images={[
+            "/home-company1.png",
+            "/home-company2.jpg",
+            "/home-company3.png",
+            "/home-company4.png",
+            "/home-company5.png",
+            "/home-company6.png",
+          ]}
+        />
+
+        <div className="w-1/2 h-5 my-10 border-b-2 border-black" />
       </div>
     </>
   );
