@@ -94,7 +94,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className=" flex w-full h-25 bg-white text-gray-600 items-center justify-between px-6 md:px-10 shadow-sm fixed top-0 z-50">
+    <nav className=" flex w-full h-fit  text-black items-center justify-between px-6 md:px-10 fixed top-0 z-50">
       <Link href="/" className="w-[120px] md:w-[190px] h-auto relative ">
         <Image
           src="/logo.png"
@@ -107,17 +107,17 @@ export default function Navbar() {
         />
       </Link>
 
-      <ul className=" hidden lg:flex items-center justify-center gap-6 md:gap-8 text-base md:text-lg font-semibold h-full pl-10">
+      <ul className=" hidden lg:flex items-center justify-center gap-6 md:gap-8 text-base md:text-lg font-medium h-12 px-10 bg-black/50 backdrop-blur-xl rounded-full border-1 border-mix">
         {links.map((link) => (
           <li
             key={link.label}
-            className="relative group flex flex-row  h-full"
+            className="relative group flex flex-row  h-full "
             onMouseEnter={() => link.sublinks && handleMouseEnter(link.label)}
             onMouseLeave={handleMouseLeave}
           >
             <Link
               href={link.href || "#"}
-              className="text-gray-600 transition-colors duration-200 flex flex-row justify-center items-center gap-2"
+              className="text-white transition-colors  duration-200 flex flex-row justify-center items-center gap-2"
             >
               {link.label}
               {link.sublinks && (
@@ -142,13 +142,13 @@ export default function Navbar() {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.2 }}
-                className="absolute left-1/2 transform -translate-x-1/2 top-16 mt-0 bg-white shadow-lg rounded-md  min-w-[180px] py-2 border border-gray-100 z-10 "
+                className="absolute left-1/2 text-white transform -translate-x-1/2 top-12 mt-0 bg-black/50 backdrop-blur-xl shadow-lg rounded-md  min-w-[180px] py-2 border border-mix z-10 "
               >
                 {link.sublinks.map((sublink) => (
                   <li key={sublink.label}>
                     <Link
                       href={sublink.href || "#"}
-                      className="block px-4 py-2 first:border-none border-t-2 border-gray-100 hover:bg-gray-50 transition-colors duration-200 text-sm"
+                      className="block px-4 py-2 first:border-none border-t-2 transition-colors duration-200 text-sm"
                     >
                       {sublink.label}
                     </Link>

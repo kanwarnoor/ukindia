@@ -46,7 +46,7 @@ export default function Home() {
         ]}
       />
 
-      <div className="w-full h-fit flex flex-col gap-2 justify-center items-center bg-gray-100 py-20">
+      <div className="w-full h-fit flex flex-col gap-2 justify-center items-center bg-gray-100  py-20">
         <h1 className="text-ukindia md:text-5xl text-3xl font-bold text-center flex">
           What we do
         </h1>

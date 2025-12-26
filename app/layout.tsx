@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DM_Sans } from "next/font/google";
+import { DM_Sans, Montserrat } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 
@@ -7,6 +7,12 @@ const dmsans = DM_Sans({
   variable: "--font-dmsans",
   subsets: ["latin"],
   weight: ["400", "500", "700"],
+});
+
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -22,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${dmsans.variable} antialiased`}>
+      <body className={`${montserrat.variable} ${dmsans.variable} antialiased`}>
         <Navbar />
         {children}
       </body>

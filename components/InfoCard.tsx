@@ -100,7 +100,7 @@ export default function InfoCard({
             }}
             className={` w-full h-1/3 transition px-5 absolute flex flex-col m-auto justify-center items-center  left-0 right-0 bottom-0 rounded-b-2xl `}
           >
-            <p className="text-white font-bold md:text-md leading-tight text-lg text-center">
+            <p className="text-white font-semibold md:text-md leading-tight text-lg text-center line-clamp-3 overflow-hidden">
               {title1}
             </p>
             {date && (
