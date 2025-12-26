@@ -9,8 +9,10 @@ interface InfoCardProps {
   des?: string;
   description?: string;
   image: string;
-  date: string;
+  date?: string;
   link?: string;
+  large?: boolean | false;
+  idiot?: boolean | false;
   animation: "left" | "center" | "right";
 }
 
@@ -21,15 +23,21 @@ export default function InfoCard({
   des,
   description,
   animation,
+  large,
+  idiot,
   link,
 }: InfoCardProps) {
   const [clicked, setClicked] = useState(false);
 
-  const betterDate = new Date(date).toLocaleDateString("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  }).replace(/ /g, " ");
+  const betterDate = date
+    ? new Date(date)
+        .toLocaleDateString("en-US", {
+          month: "short",
+          day: "numeric",
+          year: "numeric",
+        })
+        .replace(/ /g, " ")
+    : "";
   return (
     <motion.div
       initial={{
@@ -60,7 +68,7 @@ export default function InfoCard({
       //   amount: 0.3,
       // }}
       // onClick={() => setClicked1((clicked1) => !clicked1)}
-      className="flex flex-col cursor-pointer md:w-[350px] md:h-[400px] w-[300px] h-[300px] bg-black/50 backdrop-blur-xl rounded-2xl"
+      className="flex flex-col cursor-pointer md:w-[350px] md:h-[400px] w-[300px] h-[340px] bg-black/50 backdrop-blur-xl rounded-2xl"
     >
       {!clicked && (
         <div
@@ -82,10 +90,16 @@ export default function InfoCard({
             ></Image>
 
             <div
-              className="absolute bottom-0 left-0 w-full h-1/2 pointer-events-none 
+              className={`absolute bottom-0 left-0 w-full ${
+                large ? "h-1/2" : "h-1/2"
+              } pointer-events-none 
                backdrop-blur-xl
-               [mask-image:linear-gradient(to_top,black_50%,transparent)]
-               [Webkit-mask-image:linear-gradient(to_top,black_50%,transparent)] rounded-b-2xl"
+               ${
+                 large
+                   ? "[mask-image:linear-gradient(to_top,black_70%,transparent)]"
+                   : "[mask-image:linear-gradient(to_top,black_50%,transparent)]"
+               }
+               [Webkit-mask-image:linear-gradient(to_top,black_50%,transparent)] rounded-b-2xl`}
             />
           </div>
           <motion.div
@@ -98,17 +112,34 @@ export default function InfoCard({
             transition={{
               duration: 0.5,
             }}
-            className={` w-full h-1/3 transition px-5 absolute flex flex-col m-auto justify-center items-center  left-0 right-0 bottom-0 rounded-b-2xl `}
+            className={` w-full ${
+              large ? "h-1/2" : "h-1/3"
+            } transition px-5 absolute flex flex-col m-auto justify-center items-center  left-0 right-0 bottom-0 rounded-b-2xl `}
           >
-            <p className="text-white font-semibold md:text-md leading-tight text-lg text-center line-clamp-3 overflow-hidden">
-              {title1}
-            </p>
-            {date && (
-              <p
-                className={`text-center text-white text-xs opacity-80 font-bold mt-1`}
-              >
-                {betterDate}
+            {large ? (
+              <p className="text-white font-bold md:text-3xl leading-tight text-xl text-center line-clamp-3 overflow-hidden">
+                {title1}
               </p>
+            ) : (
+              <p className="text-white font-semibold md:text-md leading-tight text-lg text-center line-clamp-3 overflow-hidden">
+                {title1}
+              </p>
+            )}
+
+            <p
+              className={`text-center text-white text-xs opacity-80 font-semibold mt-1`}
+            >
+              {date ? betterDate : des}
+            </p>
+
+            {idiot && (
+              <a
+                href={link}
+                target="_blank"
+                className="px-5 m-3 py-1 border-2  bg-white text-black border-white font-bold rounded-full hover:scale-105 duration-200"
+              >
+                Read more
+              </a>
             )}
           </motion.div>
         </div>

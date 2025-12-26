@@ -10,12 +10,12 @@ interface cardProps {
 
 export default function Card({ image, title, description, link }: cardProps) {
   return (
-    <div className="relative lg:w-[350px] lg:h-[350px] max-w-sm overflow-hidden rounded-2xl shadow-lg flex flex-col justify-between items-center ">
+    <div className="relative lg:w-[350px] lg:h-[350px] max-w-sm overflow-hidden rounded-xl shadow-xl flex flex-col justify-between items-center ">
       {/* Background Image */}
       <Image src={image} alt={title} fill className="object-cover" priority />
 
       {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/50" />
+      <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px]" />
 
       {/* Content */}
       <div className="relative z-10 flex h-full flex-col justify-between p-6 text-white ">

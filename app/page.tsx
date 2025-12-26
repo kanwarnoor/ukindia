@@ -11,6 +11,7 @@ import Companies from "@/components/Companies";
 import PostsCarousel from "@/components/PostsCarousel";
 import Footer from "@/components/Footer";
 import axios from "axios";
+import InfoCard from "@/components/InfoCard";
 
 export default function Home() {
   const [video, setVideo] = useState(false);
@@ -46,7 +47,7 @@ export default function Home() {
         ]}
       />
 
-      <div className="w-full h-fit flex flex-col gap-2 justify-center items-center bg-gray-100  py-20">
+      <div className="w-full min-h-screen flex flex-col gap-2 justify-center items-center py-20">
         <h1 className="text-ukindia md:text-5xl text-3xl font-bold text-center flex">
           What we do
         </h1>
@@ -57,22 +58,31 @@ export default function Home() {
 
         <div className="flex lg:flex-row flex-col gap-5 mt-10 ">
           {" "}
-          <Card
+          <InfoCard
+            title1="Influence"
             image="/home-card1.png"
-            title="Influence"
-            description="We help you influence your audience through our strategic insights and expert advice."
+            des="We help you influence your audience through our strategic insights and expert advice."
+            animation="left"
+            large={true}
+            idiot={true}
             link="/influence"
           />
-          <Card
+          <InfoCard
+            title1="Interaction"
             image="/home-card2.jpeg"
-            title="Interaction"
-            description="We put you in the room with decision-makers through high-level convening across the UK-India corridor."
+            des="We put you in the room with decision-makers through high-level convening across the UK-India corridor."
+            animation="center"
+            large={true}
+            idiot={true}
             link="/interact"
           />
-          <Card
+          <InfoCard
+            title1="Intelligence"
             image="/home-card3.jpg"
-            title="Intelligence"
-            description="We offer a range of solutions helping you enter, expand and grow in the Indian market"
+            des="We offer a range of solutions helping you enter, expand and grow in the Indian market"
+            animation="right"
+            large={true}
+            idiot={true}
             link="/intelligence"
           />
         </div>

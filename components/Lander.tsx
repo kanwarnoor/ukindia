@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { AuroraBackground } from "@/components/ui/aurora-background";
+import { WavyBackground } from "@/components/ui/wavy-background";
 
 interface LanderProps {
   title: string[];
@@ -31,19 +31,25 @@ export default function Lander({ title, images }: LanderProps) {
 
   const hasMultipleImages = images && images.length > 1;
 
-  const [hover, setHover] = useState(false);
-
   return (
-    <AuroraBackground showRadialGradient={true}>
-      <div className="w-full h-screen flex flex-row justify-center bg-white ">
-        <div className="w-1/2 h-full flex flex-col  justify-center z-10">
-          <div className="w-[80%] h-full flex flex-col justify-center ml-15 gap-5">
+    <div className="max-w-screen overflow-hidden h-screen flex flex-col lg:flex-row justify-center bg-white">
+      {/* Text and Wavy Background Section */}
+      <div className="w-full lg:w-1/2 relative h-full lg:min-h-screen ">
+        <WavyBackground
+          backgroundFill="white"
+          colors={["#f15c23", "#012d6b", "#d8c4b5"]}
+          className="absolute h-full w-full flex flex-col justify-center z-10 "
+        >
+          <div className="w-full mt-10 md:mt-20 xl:mt-0 lg:w-[80%] h-1/2 xl:h-fit flex flex-col justify-center px-6 md:px-10 lg:ml-15 gap-4 md:gap-5  lg:py-0  ">
             <AnimatePresence mode="wait">
-              <motion.div key={currentTitle} className="flex flex-row gap-2">
-                <h1 className=" text-navy md:text-4xl xl:text-6xl lg:text-4xl font-black leading-17 heading tracking-tight h-50 justify-center items-center flex">
+              <motion.div
+                key={currentTitle}
+                className="flex flex-row gap-2 lg:w-full w-[70%] h-[100px] lg:h-[120px] xl:h-[150px] 2xl:h-[200px]"
+              >
+                <h1 className="text-navy text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-black leading-tight md:leading-10 xl:leading-12 2xl:leading-17 tracking-tight justify-center items-center flex  ">
                   <motion.p
                     key={currentTitle}
-                    className="flex flex-wrap gap-x-3 "
+                    className="flex flex-wrap gap-x-2 md:gap-x-3 "
                   >
                     {title[currentTitle].split(" ").map((word, index) => (
                       <motion.span
@@ -54,16 +60,16 @@ export default function Lander({ title, images }: LanderProps) {
                         className="flex flex-wrap"
                       >
                         {word}
-                        <br />
+                        <br className="hidden sm:block" />
                       </motion.span>
                     ))}
                   </motion.p>
                 </h1>
               </motion.div>
             </AnimatePresence>
-            <p className="text-black/90 text-base font-medium w-[60%]">
-              We are a team of experts who are passionate about helping you
-              achieve your goals.
+            <p className="text-black/90 text-[12px] sm:text-sm font-medium w-[90%] lg:w-[80%] ">
+              We boost UK-India trade, investment and collaboration. Connecting
+              businesses to thrive through ideas, networks and impact.
             </p>
 
             <motion.a
@@ -71,9 +77,7 @@ export default function Lander({ title, images }: LanderProps) {
               animate={{ width: "fit-content" }}
               transition={{ duration: 0.7 }}
               href="/#"
-              className=" group h-fit bg-tiger font-family-dmsans font-semibold text-white px-5 py-2 rounded-full text-xl hover:bg-navy transition-colors duration-300 tracking-tighter flex flex-row items-center gap-2"
-              onMouseEnter={() => setHover(true)}
-              onMouseLeave={() => setHover(false)}
+              className="group h-fit bg-tiger font-dmsans font-semibold text-white px-4 py-2 sm:px-5 sm:py-2 rounded-full text-base sm:text-lg md:text-xl hover:bg-navy transition-colors duration-300 tracking-tighter flex flex-row items-center gap-2 w-fit"
             >
               Become a member
               <svg
@@ -82,7 +86,7 @@ export default function Lander({ title, images }: LanderProps) {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="size-5 font-bold stroke-3 hidden group-hover:flex transition-transform duration-200"
+                className="size-4 sm:size-5 font-bold stroke-3 hidden group-hover:flex transition-transform duration-200"
               >
                 <path
                   strokeLinecap="round"
@@ -92,18 +96,26 @@ export default function Lander({ title, images }: LanderProps) {
               </svg>
             </motion.a>
           </div>
-        </div>
 
-        {/* image div */}
-        <div className="w-1/2 h-full flex flex-col items-center justify-center ">
-          <ImageSlider
-            hasMultipleImages={hasMultipleImages}
-            currentImage={currentImage}
-            images={images}
-          />
-        </div>
+          <div className="w-full md:w-[70%] h-1/2 mt-auto p-10 rounded-xl lg:hidden flex">
+            <ImageSlider
+              hasMultipleImages={hasMultipleImages}
+              currentImage={currentImage}
+              images={images}
+            />
+          </div>
+        </WavyBackground>
       </div>
-    </AuroraBackground>
+
+      {/* Image Section */}
+      <div className="w-full hidden lg:flex lg:w-1/2 h-1/2  sm:h-[60vh] lg:h-screen flex flex-col items-center justify-center relative">
+        <ImageSlider
+          hasMultipleImages={hasMultipleImages}
+          currentImage={currentImage}
+          images={images}
+        />
+      </div>
+    </div>
   );
 }
 
@@ -117,7 +129,7 @@ function ImageSlider({
   images: { image: string; position: string }[];
 }) {
   return (
-    <div className="w-full h-full  flex items-center justify-center overflow-hidden ">
+    <div className="w-full h-full  flex items-center justify-center overflow-hidden xl:rounded-none rounded-xl">
       {/* slideshow images */}
       {hasMultipleImages ? (
         <AnimatePresence mode="sync" initial={false}>
@@ -135,7 +147,7 @@ function ImageSlider({
                 width={0}
                 height={0}
                 sizes="100vw"
-                className={`w-full h-full object-cover scale-110 object-[${
+                className={`w-full h-full rounded-xl object-cover scale-110 object-[${
                   images![currentImage].position
                 }]`}
                 priority
