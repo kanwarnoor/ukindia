@@ -5,12 +5,30 @@ import Lander from "@/components/Lander";
 import StatCard from "@/components/StatCard";
 import Carousel from "@/components/Carousel";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { WistiaPlayer } from "@wistia/wistia-player-react";
 import Companies from "@/components/Companies";
+import PostsCarousel from "@/components/PostsCarousel";
+import Footer from "@/components/Footer";
+import axios from "axios";
 
 export default function Home() {
   const [video, setVideo] = useState(false);
+
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("https://bryanp25.sg-host.com/wp-json/wp/v2/posts?_embed")
+      .then((res) => {
+        setPosts(res.data);
+        console.log(res.data[0].yoast_head_json.og_image[0].url);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <>
       <Lander
@@ -299,7 +317,20 @@ export default function Home() {
         />
 
         <div className="w-1/2 h-5 my-10 border-b-2 border-black" />
+
+        <div className=" h-fit flex justify-between items-center w-full max-w-7xl mx-auto pt-10">
+          <p className="text-5xl font-bold text-ukindia">UKIBC news</p>
+          <a
+            href="/news"
+            className="text-ukindia text-xl font-medium hover:underline hover:text-ukindia/80 transition-colors inline-block"
+          >
+            {"View all >"}
+          </a>
+        </div>
+        <PostsCarousel posts={posts} />
       </div>
+
+      <Footer />
     </>
   );
 }

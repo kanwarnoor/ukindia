@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@wistia/wistia-player-react": "^0.3.19",
+    "axios": "^1.13.2",
     "embla-carousel-react": "^8.6.0",
     "framer-motion": "^12.23.26",
     "next": "16.1.1",
