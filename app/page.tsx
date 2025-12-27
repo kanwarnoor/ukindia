@@ -1,6 +1,5 @@
 "use client";
 
-import Card from "@/components/Card";
 import Lander from "@/components/Lander";
 import StatCard from "@/components/StatCard";
 import Carousel from "@/components/Carousel";
@@ -12,6 +11,7 @@ import PostsCarousel from "@/components/PostsCarousel";
 import Footer from "@/components/Footer";
 import axios from "axios";
 import InfoCard from "@/components/InfoCard";
+import { motion } from "framer-motion";
 
 export default function Home() {
   const [video, setVideo] = useState(false);
@@ -48,13 +48,25 @@ export default function Home() {
       />
 
       <div className="w-full min-h-screen flex flex-col gap-2 justify-center items-center py-20">
-        <h1 className="text-ukindia md:text-5xl text-3xl font-bold text-center flex">
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="text-navy md:text-5xl text-3xl font-bold text-center flex"
+        >
           What we do
-        </h1>
-        <p className="text-gray-900 text-center md:text-xl text-md font-medium lg:w-full w-[80%]">
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          viewport={{ once: false }}
+          className="text-gray-900 text-center md:text-xl text-md font-medium lg:w-full w-[80%]"
+        >
           For those seeking practical advice, our team offers the following
           services.
-        </p>
+        </motion.p>
 
         <div className="flex lg:flex-row flex-col gap-5 mt-10 ">
           {" "}
@@ -88,7 +100,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="w-full h-fit py-20 bg-ukindia/15 flex flex-col justify-center items-center pb-30">
+      <div className="w-full h-fit py-20 bg-mix/10 flex flex-col justify-center items-center pb-30">
         <div className=" w-full h-fit flex gap-15 justify-center items-center text-center">
           <StatCard
             title="Over"
@@ -116,14 +128,12 @@ export default function Home() {
           />
         </div>
 
-        <div className="w-1/2 h-5 my-20 border-b-2 border-ukindia" />
+        <div className="w-1/2 h-5 mt-10 my-20 border-b-2 border-black" />
         {/* who we are */}
         <section className=" flex flex-row w-[70%] justify-center items-center">
           <div className="mx-auto max-w-4xl w-1/2 mr-10">
             {/* Heading */}
-            <h2 className="mb-10 text-5xl font-bold text-teal-700">
-              Who we are
-            </h2>
+            <h2 className="mb-10 text-5xl font-bold text-navy">Who we are</h2>
 
             {/* List */}
             <ul className="gap-5 flex flex-col text-lg text-gray-900 font-medium">
@@ -138,7 +148,7 @@ export default function Home() {
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
                       fill="currentColor"
-                      className="size-7  text-teal-700 h-fit "
+                      className="size-7  text-navy h-fit "
                     >
                       <path
                         fillRule="evenodd"
@@ -156,9 +166,9 @@ export default function Home() {
             {/* Button */}
             <a
               href="/meet-the-team"
-              className="mt-12 rounded-full hover:underline bg-teal-700 px-8 py-3 text-sm font-semibold tracking-wide cursor-pointer text-white transition hover:bg-teal-800 inline-block"
+              className="mt-12 rounded-full  bg-tiger px-5 py-3 text-md font-bold tracking-wide cursor-pointer text-white transition hover:bg-navy inline-block duration-200"
             >
-              MEET THE TEAM
+              Meet the team
             </a>
           </div>
           <div className="w-1/2 flex flex-col justify-center items-center gap-5 ml-10">
@@ -211,7 +221,7 @@ export default function Home() {
                 </div>
               )}
             </div>
-            <div className="w-[600px] h-[337.5px] bg-ukindia rounded-xl absolute translate-x-5 translate-y-13 -z-10" />
+            <div className="w-[600px] h-[337.5px] bg-tiger rounded-xl absolute translate-x-5 translate-y-13 -z-10" />
           </div>
         </section>
       </div>

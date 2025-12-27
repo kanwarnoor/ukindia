@@ -70,18 +70,18 @@ export default function StatCard({
       }}
       className="flex flex-col gap-1  w-[350px] h-[250px] "
     >
-      <p className="text-xl font-bold ">{title}</p>
-      <span className="text-ukindia text-5xl font-bold">
+      <p className="text-xl font-bold text-navy">{title}</p>
+      <span className="text-tiger text-5xl font-bold">
         {valueBefore}
         {displayedNumber}
         {valueAfter}
       </span>
-      <p className="text-xl font-medium text-ukindia font-bold">
+      <p className="text-xl font-bold text-black font-bold">
         {description}
       </p>
-      <hr className="w-1/2 mx-auto h-2 my-3" />
-      <a href={link} className="underline text-medium text-gray-600">
-        Read More..
+      <hr className="w-1/2 mx-auto h-2 my-3 border-black" />
+      <a href={link} className="w-fit mx-auto font-bold text-navy border-2 border-navy rounded-full px-4 py-2 hover:bg-navy hover:text-white transition-all duration-200">
+        Read More
       </a>
     </motion.div>
   );

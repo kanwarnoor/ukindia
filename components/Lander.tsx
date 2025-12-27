@@ -67,15 +67,20 @@ export default function Lander({ title, images }: LanderProps) {
                 </h1>
               </motion.div>
             </AnimatePresence>
-            <p className="text-black/90 text-[12px] sm:text-sm font-medium w-[90%] lg:w-[80%] ">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-black/90 text-[12px] sm:text-sm font-medium w-[90%] lg:w-[80%] "
+            >
               We boost UK-India trade, investment and collaboration. Connecting
               businesses to thrive through ideas, networks and impact.
-            </p>
+            </motion.p>
 
             <motion.a
-              initial={{ width: "fit-content" }}
-              animate={{ width: "fit-content" }}
-              transition={{ duration: 0.7 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
               href="/#"
               className="group h-fit bg-tiger font-dmsans font-semibold text-white px-4 py-2 sm:px-5 sm:py-2 rounded-full text-base sm:text-lg md:text-xl hover:bg-navy transition-colors duration-300 tracking-tighter flex flex-row items-center gap-2 w-fit"
             >
@@ -108,13 +113,19 @@ export default function Lander({ title, images }: LanderProps) {
       </div>
 
       {/* Image Section */}
-      <div className="w-full hidden lg:flex lg:w-1/2 h-1/2  sm:h-[60vh] lg:h-screen flex flex-col items-center justify-center relative">
+      <motion.div
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5 , delay: 0.2 }}
+       
+        className="w-full hidden lg:flex lg:w-1/2 h-1/2  sm:h-[60vh] lg:h-screen flex flex-col items-center justify-center relative"
+      >
         <ImageSlider
           hasMultipleImages={hasMultipleImages}
           currentImage={currentImage}
           images={images}
         />
-      </div>
+      </motion.div>
     </div>
   );
 }

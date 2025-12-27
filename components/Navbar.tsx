@@ -94,7 +94,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className=" flex w-full h-fit  text-black items-center justify-between px-6 md:px-10 fixed top-0 z-50">
+    <nav className=" flex w-full h-fit md:bg-transparent  bg-white text-black items-center justify-between px-6 md:px-10 fixed top-0 z-50">
       <Link href="/" className="w-[120px] md:w-[190px] h-auto relative ">
         <Image
           src="/logo.png"
@@ -107,7 +107,12 @@ export default function Navbar() {
         />
       </Link>
 
-      <ul className=" hidden lg:flex items-center justify-center gap-6 md:gap-8 text-base md:text-lg font-medium h-12 px-10 bg-black/50 backdrop-blur-xl rounded-full border-1 border-mix">
+      <motion.ul
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5 }}
+        className=" hidden lg:flex items-center justify-center gap-6 md:gap-8 text-base md:text-sm xl:text-lg font-medium h-12 px-10 bg-black/50 backdrop-blur-xl rounded-full border border-mix"
+      >
         {links.map((link) => (
           <li
             key={link.label}
@@ -117,7 +122,7 @@ export default function Navbar() {
           >
             <Link
               href={link.href || "#"}
-              className="text-white transition-colors  duration-200 flex flex-row justify-center items-center gap-2"
+              className="text-white transition-colors duration-200 flex flex-row justify-center items-center gap-2"
             >
               {link.label}
               {link.sublinks && (
@@ -158,7 +163,7 @@ export default function Navbar() {
             )}
           </li>
         ))}
-      </ul>
+      </motion.ul>
 
       <div
         className="lg:hidden flex items-center justify-center  cursor-pointer"
@@ -171,7 +176,7 @@ export default function Navbar() {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="size-8 stroke-2"
+            className="size-6  md:size-8 stroke-2"
           >
             <path
               strokeLinecap="round"
@@ -186,7 +191,7 @@ export default function Navbar() {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="size-8 stroke-2"
+            className="size-6 md:size-8 stroke-2"
           >
             <path
               strokeLinecap="round"
@@ -204,7 +209,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.2 }}
             exit={{ opacity: 0, y: -10 }}
-            className="absolute top-25 left-0 w-full  bg-white shadow-lg  py-2 border border-gray-100 z-10"
+            className="absolute  top-12 pt-10 md:pt-0 md:top-20 h-screen left-0 w-full h-full bg-white shadow-lg px-10  py-2 border border-gray-100 z-10"
           >
             {links.map((link, idx) => {
               const expanded = openDropdown === link.label;
