@@ -100,7 +100,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="w-full h-fit py-20 bg-mix/10 flex flex-col justify-center items-center pb-30">
+      <div className="w-full h-fit py-20 flex flex-col justify-center items-center pb-30">
         <div className=" w-full h-fit flex gap-15 justify-center items-center text-center">
           <StatCard
             title="Over"
