@@ -270,10 +270,10 @@ export default function Home() {
 
       {/* membership */}
       <div
-        className="w-full min-h-screen flex justify-center items-center bg-ukindia "
+        className="w-full min-h-screen flex justify-center items-center bg-navy"
         ref={membershipRef}
       >
-        <div className="w-[80%] py-20 bg-ukindia flex flex-col md:flex-row items-center gap-10 md:gap-0">
+        <div className="w-[80%] py-20  flex flex-col md:flex-row items-center gap-10 md:gap-0">
           <div className="w-full md:w-1/2 flex flex-col gap-4 justify-center px-4 md:px-12">
             <p className="text-4xl md:text-5xl font-bold text-white mb-2">
               Membership
