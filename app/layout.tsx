@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { DM_Sans, Montserrat } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import { NavbarProvider } from "@/lib/navbar-context";
 
 const dmsans = DM_Sans({
   variable: "--font-dmsans",
@@ -29,8 +30,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${montserrat.variable} ${dmsans.variable} antialiased`}>
-        <Navbar />
-        {children}
+        <NavbarProvider>
+          <Navbar />
+          {children}
+        </NavbarProvider>
       </body>
     </html>
   );

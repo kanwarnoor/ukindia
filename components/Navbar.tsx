@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavbar } from "@/lib/navbar-context";
 
 interface Sublink {
   label: string;
@@ -19,6 +20,7 @@ interface NavLink {
 export default function Navbar() {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [mobileMenu, setMobileMenu] = useState<boolean>(false);
+  const change = useNavbar();
 
   const links: NavLink[] = [
     {
@@ -93,6 +95,8 @@ export default function Navbar() {
     setOpenDropdown(null);
   };
 
+  console.log(change);
+
   return (
     <nav className=" flex w-full h-fit md:bg-transparent  bg-white text-black items-center justify-between px-6 md:px-10 fixed top-0 z-50">
       <Link href="/" className="w-[120px] md:w-[190px] h-auto relative ">
@@ -102,7 +106,9 @@ export default function Navbar() {
           width={0}
           sizes="100vw"
           height={0}
-          className="w-full h-full object-contain cursor-pointer"
+          className={`w-full h-full object-contain cursor-pointer transition-all duration-300 ease-in-out ${
+            change ? "invert brightness-0" : "invert-0 brightness-100"
+          }`}
           priority
         />
       </Link>

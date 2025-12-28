@@ -12,11 +12,20 @@ import Footer from "@/components/Footer";
 import axios from "axios";
 import InfoCard from "@/components/InfoCard";
 import { motion } from "framer-motion";
+import { useSetNavbar } from "@/lib/navbar-context";
+import { useInView } from "react-intersection-observer";
 
 export default function Home() {
   const [video, setVideo] = useState(false);
 
   const [posts, setPosts] = useState([]);
+
+  const setNavbar = useSetNavbar();
+
+  const { ref: membershipRef, inView: membershipInView } = useInView({
+    threshold: [0.05, 0.5],
+    rootMargin: "0px 0px -89% 0px",
+  });
 
   useEffect(() => {
     axios
@@ -29,6 +38,10 @@ export default function Home() {
         console.log(err);
       });
   }, []);
+
+  useEffect(() => {
+    setNavbar(membershipInView);
+  }, [membershipInView, setNavbar]);
 
   return (
     <>
@@ -47,7 +60,7 @@ export default function Home() {
         ]}
       />
 
-      <div className="w-full min-h-screen flex flex-col gap-2 justify-center items-center py-20">
+      <div className="w-full h-fit flex flex-col gap-2 justify-center items-center py-20">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -100,7 +113,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="w-full h-fit py-20 flex flex-col justify-center items-center pb-30">
+      <div className="w-full h-fit pt-10 flex flex-col justify-center items-center pb-30">
         <div className=" w-full h-fit flex gap-15 justify-center items-center text-center">
           <StatCard
             title="Over"
@@ -246,9 +259,9 @@ export default function Home() {
               )}
             </div>
             <motion.div
-              initial={{ opacity: 0, x: -20 , y: -20 }}
+              initial={{ opacity: 0, x: -20, y: -20 }}
               whileInView={{ opacity: 1, x: 0, y: 0 }}
-              transition={{ duration: 0.5 , delay: 0.2 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
               className="w-[600px] h-[337.5px] bg-tiger rounded-xl absolute translate-x-5 translate-y-13 -z-10"
             />
           </div>
@@ -256,7 +269,10 @@ export default function Home() {
       </div>
 
       {/* membership */}
-      <div className="w-full h-fit flex justify-center items-center bg-ukindia ">
+      <div
+        className="w-full min-h-screen flex justify-center items-center bg-ukindia "
+        ref={membershipRef}
+      >
         <div className="w-[80%] py-20 bg-ukindia flex flex-col md:flex-row items-center gap-10 md:gap-0">
           <div className="w-full md:w-1/2 flex flex-col gap-4 justify-center px-4 md:px-12">
             <p className="text-4xl md:text-5xl font-bold text-white mb-2">
