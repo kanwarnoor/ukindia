@@ -106,6 +106,7 @@ export default function Home() {
             title="Over"
             valueBefore=""
             valueAfter="+"
+            animation="left"
             number={825}
             description="businesses and universities have used our services"
             link="/interaction"
@@ -115,6 +116,7 @@ export default function Home() {
             number={40000}
             valueBefore=""
             valueAfter=""
+            animation="center"
             description="students from UKIBC Consortium Universities"
             link="/launchpad"
           />
@@ -123,6 +125,7 @@ export default function Home() {
             valueBefore="£"
             number={600}
             valueAfter=" Billion"
+            animation="right"
             description="of revenue to the worlds economy"
             link="/meet-out-members"
           />
@@ -131,9 +134,16 @@ export default function Home() {
         <div className="w-1/2 h-5 mt-10 my-20 border-b-2 border-black" />
         {/* who we are */}
         <section className=" flex flex-row w-[70%] justify-center items-center">
-          <div className="mx-auto max-w-4xl w-1/2 mr-10">
+          <div className="mx-auto max-w-4xl w-1/2 mr-10 ">
             {/* Heading */}
-            <h2 className="mb-10 text-5xl font-bold text-navy">Who we are</h2>
+            <motion.h2
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className="mb-10 text-5xl font-bold text-navy"
+            >
+              Who we are
+            </motion.h2>
 
             {/* List */}
             <ul className="gap-5 flex flex-col text-lg text-gray-900 font-medium">
@@ -143,7 +153,13 @@ export default function Home() {
                 "We help you realise your potential through forward-looking insights, powerful networks, policy advocacy, and hands-on market-entry support.",
               ].map((item, index) => {
                 return (
-                  <li key={index} className="flex items-start gap-4">
+                  <motion.li
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.2 * index }}
+                    className="flex items-start gap-4"
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
@@ -158,24 +174,32 @@ export default function Home() {
                     </svg>
 
                     <p className="leading-5 w-full">{item}</p>
-                  </li>
+                  </motion.li>
                 );
               })}
             </ul>
 
             {/* Button */}
-            <a
+            <motion.a
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
               href="/meet-the-team"
               className="mt-12 rounded-full  bg-tiger px-5 py-3 text-md font-bold tracking-wide cursor-pointer text-white transition hover:bg-navy inline-block duration-200"
             >
               Meet the team
-            </a>
+            </motion.a>
           </div>
           <div className="w-1/2 flex flex-col justify-center items-center gap-5 ml-10">
-            <p className="text-gray-900 font-medium text-lg leading-5">
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+              className="text-gray-900 font-medium text-lg leading-5"
+            >
               Here is a look into our purpose, our people, and the impact we
               strive to create.
-            </p>
+            </motion.p>
 
             <div className="w-[600px] h-[337.5px] bg-white rounded-xl relative">
               {!video && (
@@ -221,7 +245,12 @@ export default function Home() {
                 </div>
               )}
             </div>
-            <div className="w-[600px] h-[337.5px] bg-tiger rounded-xl absolute translate-x-5 translate-y-13 -z-10" />
+            <motion.div
+              initial={{ opacity: 0, x: -20 , y: -20 }}
+              whileInView={{ opacity: 1, x: 0, y: 0 }}
+              transition={{ duration: 0.5 , delay: 0.2 }}
+              className="w-[600px] h-[337.5px] bg-tiger rounded-xl absolute translate-x-5 translate-y-13 -z-10"
+            />
           </div>
         </section>
       </div>
