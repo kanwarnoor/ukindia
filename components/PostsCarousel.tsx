@@ -121,7 +121,7 @@ export default function PostsCarousel({ posts }: PostsCarouselProps) {
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="currentColor"
-              className="size-11 text-ukindia"
+              className="size-11 text-navy"
             >
               <path
                 fillRule="evenodd"
@@ -139,7 +139,7 @@ export default function PostsCarousel({ posts }: PostsCarouselProps) {
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="currentColor"
-              className="size-11 text-ukindia rotate-180"
+              className="size-11 text-navy rotate-180"
             >
               <path
                 fillRule="evenodd"
@@ -160,8 +160,8 @@ export default function PostsCarousel({ posts }: PostsCarouselProps) {
               type="button"
               className={`w-3 h-3 rounded-full cursor-pointer transition-all duration-200 ${
                 selectedIndex === index
-                  ? "bg-ukindia scale-110"
-                  : "bg-ukindia/30 hover:bg-ukindia/60"
+                  ? "bg-navy scale-110"
+                  : "bg-navy/30 hover:bg-navy/60"
               }`}
               onClick={() => emblaApi?.scrollTo(index)}
               aria-label={`Go to slide ${index + 1}`}

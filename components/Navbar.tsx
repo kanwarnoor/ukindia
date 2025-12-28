@@ -117,7 +117,7 @@ export default function Navbar() {
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5 }}
-        className=" hidden lg:flex items-center justify-center gap-6 md:gap-8 text-base md:text-sm xl:text-lg font-medium h-12 px-10 bg-black/50 backdrop-blur-xl rounded-full border border-mix"
+        className=" hidden lg:flex items-center justify-center gap-6 md:gap-8 text-base md:text-sm xl:text-lg font-medium h-12 px-10 bg-black/50 backdrop-blur-sm rounded-full border border-mix"
       >
         {links.map((link) => (
           <li

@@ -14,6 +14,7 @@ import InfoCard from "@/components/InfoCard";
 import { motion } from "framer-motion";
 import { useSetNavbar } from "@/lib/navbar-context";
 import { useInView } from "react-intersection-observer";
+import { AuroraBackground } from "@/components/ui/aurora-background";
 
 export default function Home() {
   const [video, setVideo] = useState(false);
@@ -23,6 +24,10 @@ export default function Home() {
   const setNavbar = useSetNavbar();
 
   const { ref: membershipRef, inView: membershipInView } = useInView({
+    threshold: [0.05, 0.5],
+    rootMargin: "0px 0px -89% 0px",
+  });
+  const { ref: aboutRef, inView: aboutInView } = useInView({
     threshold: [0.05, 0.5],
     rootMargin: "0px 0px -89% 0px",
   });
@@ -40,8 +45,12 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    setNavbar(membershipInView);
-  }, [membershipInView, setNavbar]);
+    if ( aboutInView || membershipInView ) {
+      setNavbar(true);
+    } else {
+      setNavbar(false);
+    }
+  }, [membershipInView, aboutInView, setNavbar]);
 
   return (
     <>
@@ -273,41 +282,43 @@ export default function Home() {
         className="w-full min-h-screen flex justify-center items-center bg-navy"
         ref={membershipRef}
       >
-        <div className="w-[80%] py-20  flex flex-col md:flex-row items-center gap-10 md:gap-0">
-          <div className="w-full md:w-1/2 flex flex-col gap-4 justify-center px-4 md:px-12">
-            <p className="text-4xl md:text-5xl font-bold text-white mb-2">
-              Membership
-            </p>
-            <p className="text-white text-lg font-bold italic mb-2">
-              The Right Rooms. The Right People.
-            </p>
-            <p className="text-white text-base md:text-lg leading-5 font-medium mb-6">
-              Join a trusted ecosystem where business, government, and academia
-              meet with intent. As a member, you gain access to curated B2G and
-              B2B forums that turn dialogue into insight and insight into
-              opportunity. Our platform connects you with decision-makers,
-              leading institutions, and growth-ready enterprises to build
-              relationships that deliver long-term value.
-            </p>
-            <a
-              href="/membership"
-              className="rounded-full bg-white px-8 py-3 text-sm font-semibold tracking-wide text-ukindia transition hover:bg-gray-200 hover:underline w-max"
-            >
-              JOIN THE NETWORK
-            </a>
+        <AuroraBackground>
+          <div className="w-[80%] py-20 z-10  flex flex-col md:flex-row items-center gap-10 md:gap-0">
+            <div className="w-full md:w-1/2 flex flex-col gap-4 justify-center px-4 md:px-12">
+              <p className="text-4xl md:text-5xl font-bold text-white mb-2">
+                Membership
+              </p>
+              <p className="text-white text-lg font-bold italic mb-2">
+                The Right Rooms. The Right People.
+              </p>
+              <p className="text-white text-base md:text-lg leading-5 font-medium mb-6">
+                Join a trusted ecosystem where business, government, and
+                academia meet with intent. As a member, you gain access to
+                curated B2G and B2B forums that turn dialogue into insight and
+                insight into opportunity. Our platform connects you with
+                decision-makers, leading institutions, and growth-ready
+                enterprises to build relationships that deliver long-term value.
+              </p>
+              <a
+                href="/membership"
+                className="rounded-full  bg-tiger px-8 py-3 text-sm font-semibold tracking-wide text-white  transition hover:bg-mix hover:text-black hover:scale-105 duration-200 w-max"
+              >
+                JOIN THE NETWORK
+              </a>
+            </div>
+            <div className="w-full md:w-1/2 flex justify-center items-center px-4 md:px-0 mt-8 md:mt-0">
+              <Image
+                src="/home-membership.jpg"
+                alt="membership-image"
+                width={600}
+                height={337}
+                sizes="(max-width: 768px) 90vw, 600px"
+                className="rounded-xl object-cover max-w-full h-auto shadow-lg"
+                priority
+              />
+            </div>
           </div>
-          <div className="w-full md:w-1/2 flex justify-center items-center px-4 md:px-0 mt-8 md:mt-0">
-            <Image
-              src="/home-membership.jpg"
-              alt="membership-image"
-              width={600}
-              height={337}
-              sizes="(max-width: 768px) 90vw, 600px"
-              className="rounded-xl object-cover max-w-full h-auto shadow-lg"
-              priority
-            />
-          </div>
-        </div>
+        </AuroraBackground>
       </div>
 
       {/* testimonials */}
@@ -339,37 +350,42 @@ export default function Home() {
         />
       </div>
 
-      <div className="w-full h-fit flex justify-center items-center bg-ukindia ">
-        <div className="w-[80%] py-20 bg-ukindia flex flex-col md:flex-row items-center gap-10 md:gap-0">
-          <div className="w-full md:w-1/2 flex flex-col gap-4 justify-center px-4 md:px-12">
-            <p className="text-4xl md:text-5xl font-bold text-white mb-2">
-              UK India Business Council
-            </p>
-            <p className="text-white text-lg font-bold italic mb-2">
-              Boosting trade and investment collaboration.
-            </p>
-            <p className="text-white text-base md:text-lg leading-5 font-medium mb-6">
-              An equal UK–India economic partnership built to create jobs and
-              fuel shared prosperity—a force for global good.
-            </p>
-            <a
-              href="/membership"
-              className="rounded-full bg-white px-8 py-3 text-sm font-semibold tracking-wide text-ukindia transition hover:bg-gray-200 hover:underline w-max"
-            >
-              About UKIBC
-            </a>
-          </div>
+      <div className="w-full min-h-screen flex justify-center items-center bg-navy">
+        <AuroraBackground>
+          <div
+            className="w-[80%] h-full py-20 flex flex-col z-10 md:flex-row items-center gap-10 md:gap-0"
+            ref={aboutRef}
+          >
+            <div className="w-full md:w-1/2 flex flex-col gap-4 justify-center px-4 md:px-12">
+              <p className="text-4xl md:text-5xl font-bold text-white mb-2">
+                UK India Business Council
+              </p>
+              <p className="text-white text-lg font-bold italic mb-2">
+                Boosting trade and investment collaboration.
+              </p>
+              <p className="text-white text-base md:text-lg leading-5 font-medium mb-6">
+                An equal UK–India economic partnership built to create jobs and
+                fuel shared prosperity—a force for global good.
+              </p>
+              <a
+                href="/membership"
+                className="rounded-full  bg-tiger px-8 py-3 text-sm font-semibold tracking-wide text-white  transition hover:bg-mix hover:text-black hover:scale-105 duration-200 w-max"
+              >
+                About UKIBC
+              </a>
+            </div>
 
-          <div className="w-full md:w-1/2">
-            <WistiaPlayer
-              mediaId="ouhxny6plv"
-              className="w-full h-full rounded-xl"
-            />
+            <div className="w-full md:w-1/2">
+              <WistiaPlayer
+                mediaId="ouhxny6plv"
+                className="w-full h-full rounded-xl"
+              />
+            </div>
           </div>
-        </div>
+        </AuroraBackground>
       </div>
 
-      <div className="w-full h-fit flex flex-col justify-center items-center py-10 bg-gray-50">
+      <div className="w-full h-fit flex flex-col justify-center items-center py-10 ">
         <Companies
           images={[
             "/home-company1.png",
@@ -384,10 +400,10 @@ export default function Home() {
         <div className="w-1/2 h-5 my-10 border-b-2 border-black" />
 
         <div className=" h-fit flex justify-between items-center w-full max-w-7xl mx-auto pt-10">
-          <p className="text-5xl font-bold text-ukindia">UKIBC news</p>
+          <p className="text-5xl font-bold text-navy">UKIBC news</p>
           <a
             href="/news"
-            className="text-ukindia text-xl font-medium hover:underline hover:text-ukindia/80 transition-colors inline-block"
+            className="text-navy text-xl font-medium hover:scale-105 hover:text-navy/80 transition-all duration-200 inline-block"
           >
             {"View all >"}
           </a>

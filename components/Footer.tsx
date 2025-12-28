@@ -44,7 +44,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="w-full bg-ukindia text-white">
+    <footer className="w-full bg-navy text-white">
       <div className="max-w-7xl mx-auto px-4 md:px-8 py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
           {/* Column 1: Branding and Social Media */}
@@ -98,7 +98,7 @@ export default function Footer() {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-ukindia/80 hover:bg-ukindia/60 border border-white/20 rounded flex items-center justify-center transition-colors"
+                className="w-10 h-10 bg-navy/80 hover:bg-navy/60 border border-white/20 rounded flex items-center justify-center transition-colors"
                 aria-label="LinkedIn"
               >
                 <svg
@@ -114,7 +114,7 @@ export default function Footer() {
                 href="https://twitter.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-ukindia/80 hover:bg-ukindia/60 border border-white/20 rounded flex items-center justify-center transition-colors"
+                className="w-10 h-10 bg-navy/80 hover:bg-navy/60 border border-white/20 rounded flex items-center justify-center transition-colors"
                 aria-label="X (Twitter)"
               >
                 <svg
@@ -130,7 +130,7 @@ export default function Footer() {
                 href="https://youtube.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-ukindia/80 hover:bg-ukindia/60 border border-white/20 rounded flex items-center justify-center transition-colors"
+                className="w-10 h-10 bg-navy/80 hover:bg-navy/60 border border-white/20 rounded flex items-center justify-center transition-colors"
                 aria-label="YouTube"
               >
                 <svg
@@ -146,7 +146,7 @@ export default function Footer() {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-ukindia/80 hover:bg-ukindia/60 border border-white/20 rounded flex items-center justify-center transition-colors"
+                className="w-10 h-10 bg-navy/80 hover:bg-navy/60 border border-white/20 rounded flex items-center justify-center transition-colors"
                 aria-label="Instagram"
               >
                 <svg

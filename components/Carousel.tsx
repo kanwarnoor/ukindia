@@ -67,7 +67,7 @@ export default function Carousel({ data }: CarouselProps) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="overflow-hidden rounded-xl bg-ukindia/10" ref={emblaRef}>
+      <div className="overflow-hidden rounded-xl bg-mix" ref={emblaRef}>
         <div className="flex">
           {data.map((item, index) => (
             <div
@@ -83,9 +83,9 @@ export default function Carousel({ data }: CarouselProps) {
                       alt={item.name}
                       width={110}
                       height={110}
-                      className="rounded-full object-cover w-full h-full flex z-10"
+                      className="rounded-full object-cover w-full h-full flex z-10 "
                     />
-                    <div className="w-[130px] h-[130px] absolute bg-ukindia/50 rounded-full shadow-lg flex items-center justify-center"></div>
+                    <div className="w-[130px] h-[130px] absolute bg-navy rounded-full shadow-lg flex items-center justify-center"></div>
                   </div>
                 </div>
 
@@ -97,15 +97,15 @@ export default function Carousel({ data }: CarouselProps) {
                       alt="quote-start"
                       width={40}
                       height={40}
-                      className="w-10 h-10"
+                      className="w-10 h-10 invert-0 brightness-0 filter "
                     />
-                    <p className="text-2xl font-medium text-gray-700">
+                    <p className="text-2xl font-medium text-gray-950">
                       {item.quote}
                     </p>
-                    <p className="text-xl text-gray-500 font-bold mt-10">
+                    <p className="text-xl text-gray-800 font-bold mt-10">
                       {item.name}
                     </p>
-                    <p className="text-sm text-gray-400 font-medium w-1/2">
+                    <p className="text-sm text-gray-600 font-medium w-1/2">
                       {item.role}
                     </p>
                   </div>
@@ -126,7 +126,7 @@ export default function Carousel({ data }: CarouselProps) {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           fill="currentColor"
-          className="size-10 text-ukindia "
+          className="size-10 text-navy "
         >
           <path
             fillRule="evenodd"
@@ -144,7 +144,7 @@ export default function Carousel({ data }: CarouselProps) {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           fill="currentColor"
-          className="size-10 text-ukindia rotate-180"
+          className="size-10 text-navy rotate-180"
         >
           <path
             fillRule="evenodd"
@@ -162,8 +162,8 @@ export default function Carousel({ data }: CarouselProps) {
             type="button"
             className={`w-3 h-3 rounded-full cursor-pointer transition-all duration-200 ${
               selectedIndex === index
-                ? "bg-ukindia scale-110"
-                : "bg-ukindia/30 hover:bg-ukindia/60"
+                ? "bg-navy scale-110"
+                : "bg-navy/30 hover:bg-navy/60"
             }`}
             onClick={() => scrollTo(index)}
             aria-label={`Go to slide ${index + 1}`}
