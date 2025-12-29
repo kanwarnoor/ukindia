@@ -121,7 +121,7 @@ export default function Lander({ title, images }: LanderProps) {
               </svg>
             </motion.a>
 
-            <motion.p
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.5 }}
@@ -185,7 +185,7 @@ export default function Lander({ title, images }: LanderProps) {
                 </svg>
                 INR: <b>{currency.INR.toFixed(2)}</b>
               </div>
-            </motion.p>
+            </motion.div>
           </div>
 
           <div className="w-full md:w-[70%] h-1/2 mt-auto p-10 rounded-xl lg:hidden flex">

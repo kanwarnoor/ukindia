@@ -10,11 +10,11 @@ import Companies from "@/components/Companies";
 import PostsCarousel from "@/components/PostsCarousel";
 import Footer from "@/components/Footer";
 import axios from "axios";
-import InfoCard from "@/components/InfoCard";
 import { motion } from "framer-motion";
 import { useSetNavbar } from "@/lib/navbar-context";
 import { useInView } from "react-intersection-observer";
 import FullCard from "@/components/FullCard";
+import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
 
 export default function Home() {
   const [video, setVideo] = useState(false);
@@ -100,6 +100,7 @@ export default function Home() {
             large={true}
             idiot={true}
             link="/influence"
+            time={5000}
             images={[
               { image: "/home/eyes/influence-1.png", position: "50%_50%" },
               { image: "/home/eyes/influence-2.png", position: "50%_50%" },
@@ -113,6 +114,7 @@ export default function Home() {
             des="We put you in the room with decision-makers through high-level convening across the UK-India corridor."
             animation="center"
             large={true}
+            time={8000}
             images={[
               { image: "/home/eyes/interact-1.png", position: "50%_100%" },
               { image: "/home/eyes/interact-2.png", position: "50%_50%" },
@@ -130,6 +132,7 @@ export default function Home() {
             large={true}
             idiot={true}
             link="/intelligence"
+            time={5000}
             images={[
               { image: "/home/eyes/intel-1.png", position: "50%_100%" },
               { image: "/home/eyes/intel-2.png", position: "50%_50%" },
@@ -296,13 +299,24 @@ export default function Home() {
       </div>
 
       {/* membership */}
-      <div
-        className="w-full min-h-screen flex justify-center items-center bg-navy"
-        ref={membershipRef}
+
+      <BackgroundGradientAnimation
+        gradientBackgroundStart="rgb(1 45 107)"
+        gradientBackgroundEnd="rgb(0 11 25)"
+        firstColor="3, 107, 252"
+        secondColor="2, 87, 207"
+        thirdColor="1, 30, 71"
+        fourthColor="139, 187, 254"
+        fifthColor="139, 187, 254"
+        interactive={false}
+        containerClassName="w-full min-h-screen flex bg-red-200 justify-center items-center bg-navy relative"
       >
         {/* <AuroraBackground> */}
-        <div className="w-[80%] py-20 z-10  flex flex-col md:flex-row items-center gap-10 md:gap-0">
-          <div className="w-full md:w-1/2 flex flex-col gap-4 justify-center px-4 md:px-12">
+        <div
+          className="w-[80%] z-10 h-full mx-auto left-0 right-0 top-0 bottom-0 absolute  py-20 flex flex-col md:flex-row items-center gap-10 md:gap-0"
+          ref={membershipRef}
+        >
+          <div className="w-full md:w-1/2  flex flex-col gap-4 justify-center px-4 md:px-12">
             <p className="text-4xl md:text-5xl font-bold text-white mb-2">
               Membership
             </p>
@@ -337,7 +351,7 @@ export default function Home() {
           </div>
         </div>
         {/* </AuroraBackground> */}
-      </div>
+      </BackgroundGradientAnimation>
 
       {/* testimonials */}
       <div className="w-full h-fit flex justify-center items-center py-20">
@@ -368,12 +382,20 @@ export default function Home() {
         />
       </div>
 
-      <div
-        className="w-full min-h-screen flex justify-center items-center bg-navy"
-        ref={aboutRef}
+      <BackgroundGradientAnimation
+        gradientBackgroundStart="rgb(1 45 107)"
+        gradientBackgroundEnd="rgb(0 11 25)"
+        firstColor="3, 107, 252"
+        secondColor="2, 87, 207"
+        thirdColor="1, 30, 71"
+        fourthColor="139, 187, 254"
+        fifthColor="139, 187, 254"
+        interactive={false}
+        containerClassName="w-full min-h-screen flex bg-red-200 justify-center items-center bg-navy relative"
       >
         {/* <AuroraBackground> */}
-        <div className="w-[80%] h-full py-20 flex flex-col z-10 md:flex-row items-center gap-10 md:gap-0">
+
+        <div className="w-[80%] z-10 h-full mx-auto left-0 right-0 top-0 bottom-0 absolute  py-20 flex flex-col md:flex-row items-center gap-10 md:gap-0" ref={aboutRef}>
           <div className="w-full md:w-1/2 flex flex-col gap-4 justify-center px-4 md:px-12">
             <p className="text-4xl md:text-5xl font-bold text-white mb-2">
               UK India Business Council
@@ -400,8 +422,9 @@ export default function Home() {
             />
           </div>
         </div>
+
         {/* </AuroraBackground> */}
-      </div>
+      </BackgroundGradientAnimation>
 
       <div className="w-full h-fit flex flex-col justify-center items-center py-10 ">
         <Companies

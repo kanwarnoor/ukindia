@@ -1,14 +1,16 @@
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, time } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function ImageSlider({
   hasMultipleImages,
   currentImage,
+  time,
   images,
 }: {
   hasMultipleImages: boolean;
   currentImage: number;
+  time?: number;
   images: { image: string; position: string }[];
 }) {
   const [currentImageState, setCurrentImageState] = useState(0);
@@ -16,7 +18,7 @@ export default function ImageSlider({
     if (hasMultipleImages) {
       const interval = setInterval(() => {
         setCurrentImageState((prev) => (prev + 1) % images.length);
-      }, 5000);
+      }, time ? time : 5000);
       return () => clearInterval(interval);
     }
   }, [hasMultipleImages, images, currentImageState]);

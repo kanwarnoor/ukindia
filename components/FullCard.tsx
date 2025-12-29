@@ -13,6 +13,7 @@ interface InfoCardProps {
   date?: string;
   link?: string;
   large?: boolean | false;
+  time?: number;
   idiot?: boolean | false;
   animation: "left" | "center" | "right";
   images: { image: string; position: string }[];
@@ -22,6 +23,7 @@ export default function InfoCard({
   title1,
   date,
   images,
+  time,
   des,
   description,
   animation,
@@ -80,6 +82,7 @@ export default function InfoCard({
               images={images}
               hasMultipleImages={true}
               currentImage={0}
+              time={time}
             />
 
             <div
