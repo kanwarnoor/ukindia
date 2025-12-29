@@ -19,7 +19,6 @@ interface LanderProps {
 
 export default function Lander({ title, images }: LanderProps) {
   const [currentTitle, setCurrentTitle] = useState(0);
-  const [currentImage, setCurrentImage] = useState(0);
 
   const [currency, setCurrency] = useState<{ GBP: number; INR: number }>({
     GBP: 0.0,
@@ -32,25 +31,13 @@ export default function Lander({ title, images }: LanderProps) {
       .then((res) => {
         setCurrency({
           GBP: res.data.fx.GBP,
-          INR: res.data.fx.INR,
+        INR: res.data.fx.INR,
         });
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
-
-  useEffect(() => {
-    if (!images || images.length <= 1) return;
-
-    const interval = setInterval(() => {
-      setCurrentTitle((prev) => (prev + 1) % title.length);
-      setCurrentImage((prev) => (prev + 1) % images.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [title.length, images]);
-
-  const hasMultipleImages = images && images.length > 1;
 
   return (
     <div className="max-w-screen overflow-hidden h-screen flex flex-col lg:flex-row justify-center bg-white">
@@ -189,11 +176,7 @@ export default function Lander({ title, images }: LanderProps) {
           </div>
 
           <div className="w-full md:w-[70%] h-1/2 mt-auto p-10 rounded-xl lg:hidden flex">
-            <ImageSlider
-              hasMultipleImages={hasMultipleImages}
-              currentImage={currentImage}
-              images={images}
-            />
+            <ImageSlider images={images} />
           </div>
         </WavyBackground>
       </div>
@@ -205,13 +188,8 @@ export default function Lander({ title, images }: LanderProps) {
         transition={{ duration: 0.5, delay: 0.2 }}
         className="w-full hidden lg:flex lg:w-1/2 h-1/2  sm:h-[60vh] lg:h-screen flex flex-col items-center justify-center relative"
       >
-        <ImageSlider
-          hasMultipleImages={hasMultipleImages}
-          currentImage={currentImage}
-          images={images}
-        />
+        <ImageSlider images={images} />
       </motion.div>
     </div>
   );
 }
-
