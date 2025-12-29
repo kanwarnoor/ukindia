@@ -173,20 +173,20 @@ export default function Home() {
 
         <div className="w-1/2 h-5 mt-10 my-20 border-b-2 border-black" />
         {/* who we are */}
-        <section className=" flex flex-row w-[70%] justify-center items-center">
-          <div className="mx-auto max-w-4xl w-1/2 mr-10 ">
+        <section className="flex  w-[70%] justify-center items-center flex-col">
+          <div className="mx-auto max-w-4xl w-full md:w-full ">
             {/* Heading */}
             <motion.h2
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              className="mb-10 text-5xl font-bold text-navy"
+              className="mb-10 text-5xl font-bold text-navy text-center"
             >
               Who we are
             </motion.h2>
 
             {/* List */}
-            <ul className="gap-5 flex flex-col text-lg text-gray-900 font-medium">
+            <ul className="gap-5 flex flex-row text-lg text-gray-900 font-medium">
               {[
                 "The UK India Business Council champions partnerships that drive jobs and growth in both countries.",
                 "The UK India Business Council champions partnerships that drive jobs and growth in both countries.",
@@ -225,12 +225,12 @@ export default function Home() {
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.5 }}
               href="/meet-the-team"
-              className="mt-12 rounded-full  bg-tiger px-5 py-3 text-md font-bold tracking-wide cursor-pointer text-white transition hover:bg-navy inline-block duration-200"
+              className="mt-12 flex mx-auto w-fit justify-center items-center rounded-full text-center  bg-tiger px-5 py-3 text-md font-bold tracking-wide cursor-pointer text-white transition hover:bg-navy duration-200"
             >
               Meet the team
             </motion.a>
           </div>
-          <div className="w-1/2 flex flex-col justify-center items-center gap-5 ml-10">
+          <div className="w-1/2 flex flex-col justify-center items-center gap-5 mt-10">
             <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
