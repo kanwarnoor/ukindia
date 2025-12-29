@@ -159,8 +159,8 @@ export default function Navbar() {
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5 }}
-        className={`hidden lg:flex items-center justify-center transistion-all duration-200 gap-6 md:gap-8 text-base md:text-sm  xl:text-base font-medium h-12 px-10 bg-black/50 backdrop-blur-sm rounded-full border border-mix ${
-          scroll ? " absolute left-1/2 -translate-x-1/2" : ""
+        className={`hidden lg:flex items-center justify-center transistion-all duration-200 gap-1 md:gap-6 text-xs md:text-sm  xl:text-base font-medium h-12 px-10 bg-black/50 backdrop-blur-sm rounded-full border border-mix ${
+          scroll ? "2xl:absolute 2xl:left-1/2 2xl:-translate-x-1/2  2xl:w-fit" : ""
         }`}
       >
         {links.map((link) => (
@@ -216,7 +216,7 @@ export default function Navbar() {
       </motion.ul>
 
       <ul
-        className={`hidden lg:flex items-center justify-center transition-all duration-200 gap-6 md:gap-5 text-base md:text-sm  xl:text-base font-medium h-12 px-5 bg-black/50 backdrop-blur-sm rounded-full border border-mix ml-3`}
+        className={`hidden 2xl:flex items-center justify-center transition-all duration-200 gap-6 md:gap-5 text-sm md:text-  xl:text-base font-medium h-12 px-5 bg-black/50 backdrop-blur-sm rounded-full border border-mix ml-3`}
       >
         <li className="ml-auto flex items-center gap-2 text-white">
           <span>GMT:</span>

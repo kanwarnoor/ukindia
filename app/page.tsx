@@ -101,7 +101,7 @@ export default function Home() {
             idiot={true}
             link="/influence"
             images={[
-              { image: "/home/eyes/influence-1.png", position: "50%_100%" },
+              { image: "/home/eyes/influence-1.png", position: "50%_50%" },
               { image: "/home/eyes/influence-2.png", position: "50%_50%" },
               { image: "/home/eyes/influence-3.png", position: "50%_50%" },
               // { image: "/home/eyes/influence-4.jpg", position: "bottom-right" },
