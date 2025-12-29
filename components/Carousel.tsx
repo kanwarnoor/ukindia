@@ -67,7 +67,7 @@ export default function Carousel({ data }: CarouselProps) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="overflow-hidden rounded-xl bg-mix" ref={emblaRef}>
+      <div className="overflow-hidden rounded-xl bg-mix2" ref={emblaRef}>
         <div className="flex">
           {data.map((item, index) => (
             <div
