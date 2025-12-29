@@ -62,10 +62,10 @@ export default function Home() {
           "Insight that Connects Impact that Counts",
         ]}
         images={[
-          { image: "/home-1.png", position: "50%_100%" },
-          { image: "/home-2.jpeg", position: "50%_50%" },
-          { image: "/home-3.jpeg", position: "10%_10%" },
-          { image: "/home-4.jpeg", position: "bottom-right" },
+          { image: "/home/lander/1.webp", position: "50%_100%" },
+          { image: "/home/lander/2.webp", position: "50%_50%" },
+          { image: "/home/lander/3.webp", position: "10%_10%" },
+          { image: "/home/lander/4.webp", position: "bottom-right" },
         ]}
       />
 
@@ -395,7 +395,10 @@ export default function Home() {
       >
         {/* <AuroraBackground> */}
 
-        <div className="w-[80%] z-10 h-full mx-auto left-0 right-0 top-0 bottom-0 absolute  py-20 flex flex-col md:flex-row items-center gap-10 md:gap-0" ref={aboutRef}>
+        <div
+          className="w-[80%] z-10 h-full mx-auto left-0 right-0 top-0 bottom-0 absolute  py-20 flex flex-col md:flex-row items-center gap-10 md:gap-0"
+          ref={aboutRef}
+        >
           <div className="w-full md:w-1/2 flex flex-col gap-4 justify-center px-4 md:px-12">
             <p className="text-4xl md:text-5xl font-bold text-white mb-2">
               UK India Business Council
