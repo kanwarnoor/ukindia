@@ -15,6 +15,7 @@ import { useSetNavbar } from "@/lib/navbar-context";
 import { useInView } from "react-intersection-observer";
 import FullCard from "@/components/FullCard";
 import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
+import LiquidButton from "@/components/LiquidButton";
 
 export default function Home() {
   const [video, setVideo] = useState(false);
@@ -223,15 +224,18 @@ export default function Home() {
             </ul>
 
             {/* Button */}
-            <motion.a
+            <div className="w-full h-fit flex justify-center items-center mt-12">
+              <LiquidButton text="Meet the team" link="/meet-the-team" />
+            </div>
+            {/* <motion.a
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.5 }}
               href="/meet-the-team"
-              className="mt-12 flex mx-auto w-fit justify-center items-center rounded-full text-center  bg-tiger px-5 py-3 text-md font-bold tracking-wide cursor-pointer text-white transition hover:bg-navy duration-200"
+              className="mt-12 flex mx-auto w-fit justify-center items-center rounded-full text-center  bg-tiger px-5 py-3 text-md font-bold tracking-wide cursor-pointer text-white transition hover:bg-navy duration-200 "
             >
               Meet the team
-            </motion.a>
+            </motion.a> */}
           </div>
           <div className="w-1/2 flex flex-col justify-center items-center gap-5 mt-10">
             <motion.p
@@ -331,6 +335,7 @@ export default function Home() {
               leading institutions, and growth-ready enterprises to build
               relationships that deliver long-term value.
             </p>
+            {/* <LiquidButton text="Join the network" link="/membership" /> */}
             <a
               href="/membership"
               className="rounded-full  bg-tiger px-8 py-3 text-sm font-semibold tracking-wide text-white  transition hover:bg-mix hover:text-black hover:scale-105 duration-200 w-max"
@@ -401,7 +406,27 @@ export default function Home() {
         >
           <div className="w-full md:w-1/2 flex flex-col gap-4 justify-center px-4 md:px-12">
             <p className="text-4xl md:text-5xl font-bold text-white mb-2">
-              UK India Business Council
+              {"UK India Business Council"
+                .split(" ")
+                .map((word, wIdx) => (
+                  <span key={wIdx} className="inline-block whitespace-nowrap mr-2">
+                    {word.split("").map((char, cIdx) => (
+                      <motion.span
+                        key={cIdx}
+                        className="text-white inline-block"
+                        initial={{ rotateX: 90, opacity: 0 }}
+                        whileInView={{ rotateX: 0, opacity: 1 }}
+                        transition={{
+                          duration: 1,
+                          delay: (wIdx * 5 + cIdx) * 0.1,
+                        }}
+                        viewport={{ once: false }}
+                      >
+                        {char}
+                      </motion.span>
+                    ))}
+                  </span>
+                ))}
             </p>
             <p className="text-white text-lg font-bold italic mb-2">
               Boosting trade and investment collaboration.

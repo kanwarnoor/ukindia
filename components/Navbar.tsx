@@ -124,20 +124,20 @@ export default function Navbar() {
     setOpenDropdown(null);
   };
 
-  const [scroll, setScroll] = useState(false);
+  const [scroll, setScroll] = useState(true);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      if (scrollY > 100) {
-        setScroll(true);
-      } else {
-        setScroll(false);
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const scrollY = window.scrollY;
+  //     if (scrollY > 100) {
+  //       setScroll(true);
+  //     } else {
+  //       setScroll(false);
+  //     }
+  //   };
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, []);
 
   return (
     <nav className=" flex w-full h-fit md:bg-transparent  bg-white text-black items-center px-6 md:px-10 fixed top-0 z-50">
