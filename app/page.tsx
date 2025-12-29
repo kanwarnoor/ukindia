@@ -193,7 +193,7 @@ export default function Home() {
             <ul className="gap-5 flex flex-row text-lg text-gray-900 font-medium">
               {[
                 "The UK India Business Council champions partnerships that drive jobs and growth in both countries.",
-                "The UK India Business Council champions partnerships that drive jobs and growth in both countries.",
+                "We strengthen last-mile connectivity between government, industry, and academia, creating a trusted pathway for trade, investment, and high-impact collaboration.",
                 "We help you realise your potential through forward-looking insights, powerful networks, policy advocacy, and hands-on market-entry support.",
               ].map((item, index) => {
                 return (
