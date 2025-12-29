@@ -14,7 +14,6 @@ import InfoCard from "@/components/InfoCard";
 import { motion } from "framer-motion";
 import { useSetNavbar } from "@/lib/navbar-context";
 import { useInView } from "react-intersection-observer";
-import { AuroraBackground } from "@/components/ui/aurora-background";
 
 export default function Home() {
   const [video, setVideo] = useState(false);
@@ -282,7 +281,7 @@ export default function Home() {
         className="w-full min-h-screen flex justify-center items-center bg-navy"
         ref={membershipRef}
       >
-        <AuroraBackground>
+        {/* <AuroraBackground> */}
           <div className="w-[80%] py-20 z-10  flex flex-col md:flex-row items-center gap-10 md:gap-0">
             <div className="w-full md:w-1/2 flex flex-col gap-4 justify-center px-4 md:px-12">
               <p className="text-4xl md:text-5xl font-bold text-white mb-2">
@@ -318,7 +317,7 @@ export default function Home() {
               />
             </div>
           </div>
-        </AuroraBackground>
+        {/* </AuroraBackground> */}
       </div>
 
       {/* testimonials */}
@@ -351,7 +350,7 @@ export default function Home() {
       </div>
 
       <div className="w-full min-h-screen flex justify-center items-center bg-navy">
-        <AuroraBackground>
+        {/* <AuroraBackground> */}
           <div
             className="w-[80%] h-full py-20 flex flex-col z-10 md:flex-row items-center gap-10 md:gap-0"
             ref={aboutRef}
@@ -382,7 +381,7 @@ export default function Home() {
               />
             </div>
           </div>
-        </AuroraBackground>
+        {/* </AuroraBackground> */}
       </div>
 
       <div className="w-full h-fit flex flex-col justify-center items-center py-10 ">
