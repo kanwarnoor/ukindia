@@ -31,7 +31,7 @@ export default function Companies({ images }: CompaniesProps) {
   }, [emblaApi, isHovered]);
 
   return (
-    <div className="w-full h-fit flex justify-center items-center py-10 bg-gray-50">
+    <div className="w-full h-fit flex justify-center items-center py-10 bg-white">
       <div className="w-full max-w-7xl mx-auto px-4">
         <div
           className="overflow-hidden"
