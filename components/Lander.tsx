@@ -3,7 +3,9 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import axios from "axios";
 import { WavyBackground } from "@/components/ui/wavy-background";
+import ImageSlider from "@/components/ImageSlider";
 
 interface LanderProps {
   title: string[];
@@ -18,6 +20,25 @@ interface LanderProps {
 export default function Lander({ title, images }: LanderProps) {
   const [currentTitle, setCurrentTitle] = useState(0);
   const [currentImage, setCurrentImage] = useState(0);
+
+  const [currency, setCurrency] = useState<{ GBP: number; INR: number }>({
+    GBP: 0.0,
+    INR: 0.0,
+  });
+
+  useEffect(() => {
+    axios
+      .get("/api/currency")
+      .then((res) => {
+        setCurrency({
+          GBP: res.data.fx.GBP,
+          INR: res.data.fx.INR,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   useEffect(() => {
     if (!images || images.length <= 1) return;
@@ -76,7 +97,6 @@ export default function Lander({ title, images }: LanderProps) {
               We boost UK-India trade, investment and collaboration. Connecting
               businesses to thrive through ideas, networks and impact.
             </motion.p>
-
             <motion.a
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -100,6 +120,72 @@ export default function Lander({ title, images }: LanderProps) {
                 />
               </svg>
             </motion.a>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="text-black/90 w-fit md:text-xl font-medium mt-10 text-base  text-black px-4 py-2 rounded-full flex flex-row gap-2 "
+            >
+              <div className="flex flex-row items-center gap-2">
+                <svg
+                  viewBox="0 0 36 36"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlnsXlink="http://www.w3.org/1999/xlink"
+                  aria-hidden="true"
+                  role="img"
+                  className="iconify iconify--twemoji size-4 md:size-6"
+                  preserveAspectRatio="xMidYMid meet"
+                >
+                  <path
+                    fill="#00247D"
+                    d="M0 9.059V13h5.628zM4.664 31H13v-5.837zM23 25.164V31h8.335zM0 23v3.941L5.63 23zM31.337 5H23v5.837zM36 26.942V23h-5.631zM36 13V9.059L30.371 13zM13 5H4.664L13 10.837z"
+                  ></path>
+                  <path
+                    fill="#CF1B2B"
+                    d="M25.14 23l9.712 6.801a3.977 3.977 0 0 0 .99-1.749L28.627 23H25.14zM13 23h-2.141l-9.711 6.8c.521.53 1.189.909 1.938 1.085L13 23.943V23zm10-10h2.141l9.711-6.8a3.988 3.988 0 0 0-1.937-1.085L23 12.057V13zm-12.141 0L1.148 6.2a3.994 3.994 0 0 0-.991 1.749L7.372 13h3.487z"
+                  ></path>
+                  <path
+                    fill="#EEE"
+                    d="M36 21H21v10h2v-5.836L31.335 31H32a3.99 3.99 0 0 0 2.852-1.199L25.14 23h3.487l7.215 5.052c.093-.337.158-.686.158-1.052v-.058L30.369 23H36v-2zM0 21v2h5.63L0 26.941V27c0 1.091.439 2.078 1.148 2.8l9.711-6.8H13v.943l-9.914 6.941c.294.07.598.116.914.116h.664L13 25.163V31h2V21H0zM36 9a3.983 3.983 0 0 0-1.148-2.8L25.141 13H23v-.943l9.915-6.942A4.001 4.001 0 0 0 32 5h-.663L23 10.837V5h-2v10h15v-2h-5.629L36 9.059V9zM13 5v5.837L4.664 5H4a3.985 3.985 0 0 0-2.852 1.2l9.711 6.8H7.372L.157 7.949A3.968 3.968 0 0 0 0 9v.059L5.628 13H0v2h15V5h-2z"
+                  ></path>
+                  <path
+                    fill="#CF1B2B"
+                    d="M21 15V5h-6v10H0v6h15v10h6V21h15v-6z"
+                  ></path>
+                </svg>
+                GBP: <b>{currency.GBP.toFixed(2)}</b> &nbsp; &nbsp; &nbsp;
+              </div>
+              <div className="flex flex-row items-center gap-2">
+                <svg
+                  viewBox="0 0 36 36"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlnsXlink="http://www.w3.org/1999/xlink"
+                  aria-hidden="true"
+                  role="img"
+                  className="iconify iconify--twemoji size-6"
+                  preserveAspectRatio="xMidYMid meet"
+                >
+                  <path
+                    fill="#138808"
+                    d="M0 27a4 4 0 0 0 4 4h28a4 4 0 0 0 4-4v-4H0v4z"
+                  ></path>
+                  <path fill="#EEE" d="M0 13h36v10H0z"></path>
+                  <path
+                    fill="#F93"
+                    d="M36 13V9a4 4 0 0 0-4-4H4a4 4 0 0 0-4 4v4h36z"
+                  ></path>
+                  <circle fill="navy" cx="18" cy="18" r="4"></circle>
+                  <circle fill="#EEE" cx="18" cy="18" r="3"></circle>
+                  <path
+                    fill="#6666B3"
+                    d="M18 15l.146 2.264l1.001-2.035l-.73 2.147l1.704-1.498l-1.497 1.705l2.147-.731l-2.035 1.002L21 18l-2.264.146l2.035 1.001l-2.147-.73l1.497 1.704l-1.704-1.497l.73 2.147l-1.001-2.035L18 21l-.146-2.264l-1.002 2.035l.731-2.147l-1.705 1.497l1.498-1.704l-2.147.73l2.035-1.001L15 18l2.264-.146l-2.035-1.002l2.147.731l-1.498-1.705l1.705 1.498l-.731-2.147l1.002 2.035z"
+                  ></path>
+                  <circle fill="navy" cx="18" cy="18" r="1"></circle>
+                </svg>
+                INR: <b>{currency.INR.toFixed(2)}</b>
+              </div>
+            </motion.p>
           </div>
 
           <div className="w-full md:w-[70%] h-1/2 mt-auto p-10 rounded-xl lg:hidden flex">
@@ -116,8 +202,7 @@ export default function Lander({ title, images }: LanderProps) {
       <motion.div
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5 , delay: 0.2 }}
-       
+        transition={{ duration: 0.5, delay: 0.2 }}
         className="w-full hidden lg:flex lg:w-1/2 h-1/2  sm:h-[60vh] lg:h-screen flex flex-col items-center justify-center relative"
       >
         <ImageSlider
@@ -130,59 +215,3 @@ export default function Lander({ title, images }: LanderProps) {
   );
 }
 
-function ImageSlider({
-  hasMultipleImages,
-  currentImage,
-  images,
-}: {
-  hasMultipleImages: boolean;
-  currentImage: number;
-  images: { image: string; position: string }[];
-}) {
-  return (
-    <div className="w-full h-full  flex items-center justify-center overflow-hidden xl:rounded-none rounded-xl">
-      {/* slideshow images */}
-      {hasMultipleImages ? (
-        <AnimatePresence mode="sync" initial={false}>
-          <motion.div
-            key={currentImage}
-            initial={{ scale: 1 }}
-            animate={{ scale: 1.1 }}
-            transition={{ duration: 10 }}
-            className="w-full h-full"
-          >
-            <div className="w-full h-full relative">
-              <Image
-                src={images![currentImage].image}
-                alt="logo"
-                width={0}
-                height={0}
-                sizes="100vw"
-                className={`w-full h-full rounded-xl object-cover scale-110 object-[${
-                  images![currentImage].position
-                }]`}
-                priority
-              />
-              {/* color overlay */}
-              <div className="absolute inset-0 w-full h-full bg-"></div>
-            </div>
-          </motion.div>
-        </AnimatePresence>
-      ) : (
-        <div className="w-full h-full absolute inset-0">
-          <Image
-            src={images![0].image}
-            alt="logo"
-            width={0}
-            height={0}
-            sizes="100vw"
-            className={`w-full h-full object-cover scale-110 object-[${
-              images![0].position
-            }] opacity-50`}
-            priority
-          />
-        </div>
-      )}
-    </div>
-  );
-}

@@ -14,6 +14,7 @@ import InfoCard from "@/components/InfoCard";
 import { motion } from "framer-motion";
 import { useSetNavbar } from "@/lib/navbar-context";
 import { useInView } from "react-intersection-observer";
+import FullCard from "@/components/FullCard";
 
 export default function Home() {
   const [video, setVideo] = useState(false);
@@ -36,7 +37,7 @@ export default function Home() {
       .get("https://bryanp25.sg-host.com/wp-json/wp/v2/posts?_embed")
       .then((res) => {
         setPosts(res.data);
-        console.log(res.data[0].yoast_head_json.og_image[0].url);
+        // console.log(res.data[0].yoast_head_json.og_image[0].url);
       })
       .catch((err) => {
         console.log(err);
@@ -44,7 +45,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    if ( aboutInView || membershipInView ) {
+    if (aboutInView || membershipInView) {
       setNavbar(true);
     } else {
       setNavbar(false);
@@ -89,9 +90,9 @@ export default function Home() {
           services.
         </motion.p>
 
-        <div className="flex lg:flex-row flex-col gap-5 mt-10 ">
+        <div className=" lg:flex-row flex-col mt-20 grid grid-cols-3">
           {" "}
-          <InfoCard
+          <FullCard
             title1="Influence"
             image="/home-card1.png"
             des="We help you influence your audience through our strategic insights and expert advice."
@@ -99,17 +100,29 @@ export default function Home() {
             large={true}
             idiot={true}
             link="/influence"
+            images={[
+              { image: "/home/eyes/influence-1.png", position: "50%_100%" },
+              { image: "/home/eyes/influence-2.png", position: "50%_50%" },
+              { image: "/home/eyes/influence-3.png", position: "50%_50%" },
+              // { image: "/home/eyes/influence-4.jpg", position: "bottom-right" },
+            ]}
           />
-          <InfoCard
+          <FullCard
             title1="Interaction"
             image="/home-card2.jpeg"
             des="We put you in the room with decision-makers through high-level convening across the UK-India corridor."
             animation="center"
             large={true}
+            images={[
+              { image: "/home/eyes/interact-1.png", position: "50%_100%" },
+              { image: "/home/eyes/interact-2.png", position: "50%_50%" },
+              { image: "/home/eyes/interact-3.png", position: "50%_50%" },
+              { image: "/home/eyes/interact-4.png", position: "50%_50%" },
+            ]}
             idiot={true}
             link="/interact"
           />
-          <InfoCard
+          <FullCard
             title1="Intelligence"
             image="/home-card3.jpg"
             des="We offer a range of solutions helping you enter, expand and grow in the Indian market"
@@ -117,6 +130,12 @@ export default function Home() {
             large={true}
             idiot={true}
             link="/intelligence"
+            images={[
+              { image: "/home/eyes/intel-1.png", position: "50%_100%" },
+              { image: "/home/eyes/intel-2.png", position: "50%_50%" },
+              { image: "/home/eyes/intel-3.png", position: "50%_50%" },
+              { image: "/home/eyes/intel-4.png", position: "50%_50%" },
+            ]}
           />
         </div>
       </div>
@@ -282,41 +301,41 @@ export default function Home() {
         ref={membershipRef}
       >
         {/* <AuroraBackground> */}
-          <div className="w-[80%] py-20 z-10  flex flex-col md:flex-row items-center gap-10 md:gap-0">
-            <div className="w-full md:w-1/2 flex flex-col gap-4 justify-center px-4 md:px-12">
-              <p className="text-4xl md:text-5xl font-bold text-white mb-2">
-                Membership
-              </p>
-              <p className="text-white text-lg font-bold italic mb-2">
-                The Right Rooms. The Right People.
-              </p>
-              <p className="text-white text-base md:text-lg leading-5 font-medium mb-6">
-                Join a trusted ecosystem where business, government, and
-                academia meet with intent. As a member, you gain access to
-                curated B2G and B2B forums that turn dialogue into insight and
-                insight into opportunity. Our platform connects you with
-                decision-makers, leading institutions, and growth-ready
-                enterprises to build relationships that deliver long-term value.
-              </p>
-              <a
-                href="/membership"
-                className="rounded-full  bg-tiger px-8 py-3 text-sm font-semibold tracking-wide text-white  transition hover:bg-mix hover:text-black hover:scale-105 duration-200 w-max"
-              >
-                JOIN THE NETWORK
-              </a>
-            </div>
-            <div className="w-full md:w-1/2 flex justify-center items-center px-4 md:px-0 mt-8 md:mt-0">
-              <Image
-                src="/home-membership.jpg"
-                alt="membership-image"
-                width={600}
-                height={337}
-                sizes="(max-width: 768px) 90vw, 600px"
-                className="rounded-xl object-cover max-w-full h-auto shadow-lg"
-                priority
-              />
-            </div>
+        <div className="w-[80%] py-20 z-10  flex flex-col md:flex-row items-center gap-10 md:gap-0">
+          <div className="w-full md:w-1/2 flex flex-col gap-4 justify-center px-4 md:px-12">
+            <p className="text-4xl md:text-5xl font-bold text-white mb-2">
+              Membership
+            </p>
+            <p className="text-white text-lg font-bold italic mb-2">
+              The Right Rooms. The Right People.
+            </p>
+            <p className="text-white text-base md:text-lg leading-5 font-medium mb-6">
+              Join a trusted ecosystem where business, government, and academia
+              meet with intent. As a member, you gain access to curated B2G and
+              B2B forums that turn dialogue into insight and insight into
+              opportunity. Our platform connects you with decision-makers,
+              leading institutions, and growth-ready enterprises to build
+              relationships that deliver long-term value.
+            </p>
+            <a
+              href="/membership"
+              className="rounded-full  bg-tiger px-8 py-3 text-sm font-semibold tracking-wide text-white  transition hover:bg-mix hover:text-black hover:scale-105 duration-200 w-max"
+            >
+              JOIN THE NETWORK
+            </a>
           </div>
+          <div className="w-full md:w-1/2 flex justify-center items-center px-4 md:px-0 mt-8 md:mt-0">
+            <Image
+              src="/home-membership.jpg"
+              alt="membership-image"
+              width={600}
+              height={337}
+              sizes="(max-width: 768px) 90vw, 600px"
+              className="rounded-xl object-cover max-w-full h-auto shadow-lg"
+              priority
+            />
+          </div>
+        </div>
         {/* </AuroraBackground> */}
       </div>
 
@@ -349,38 +368,38 @@ export default function Home() {
         />
       </div>
 
-      <div className="w-full min-h-screen flex justify-center items-center bg-navy">
+      <div
+        className="w-full min-h-screen flex justify-center items-center bg-navy"
+        ref={aboutRef}
+      >
         {/* <AuroraBackground> */}
-          <div
-            className="w-[80%] h-full py-20 flex flex-col z-10 md:flex-row items-center gap-10 md:gap-0"
-            ref={aboutRef}
-          >
-            <div className="w-full md:w-1/2 flex flex-col gap-4 justify-center px-4 md:px-12">
-              <p className="text-4xl md:text-5xl font-bold text-white mb-2">
-                UK India Business Council
-              </p>
-              <p className="text-white text-lg font-bold italic mb-2">
-                Boosting trade and investment collaboration.
-              </p>
-              <p className="text-white text-base md:text-lg leading-5 font-medium mb-6">
-                An equal UK–India economic partnership built to create jobs and
-                fuel shared prosperity—a force for global good.
-              </p>
-              <a
-                href="/membership"
-                className="rounded-full  bg-tiger px-8 py-3 text-sm font-semibold tracking-wide text-white  transition hover:bg-mix hover:text-black hover:scale-105 duration-200 w-max"
-              >
-                About UKIBC
-              </a>
-            </div>
-
-            <div className="w-full md:w-1/2">
-              <WistiaPlayer
-                mediaId="ouhxny6plv"
-                className="w-full h-full rounded-xl"
-              />
-            </div>
+        <div className="w-[80%] h-full py-20 flex flex-col z-10 md:flex-row items-center gap-10 md:gap-0">
+          <div className="w-full md:w-1/2 flex flex-col gap-4 justify-center px-4 md:px-12">
+            <p className="text-4xl md:text-5xl font-bold text-white mb-2">
+              UK India Business Council
+            </p>
+            <p className="text-white text-lg font-bold italic mb-2">
+              Boosting trade and investment collaboration.
+            </p>
+            <p className="text-white text-base md:text-lg leading-5 font-medium mb-6">
+              An equal UK–India economic partnership built to create jobs and
+              fuel shared prosperity—a force for global good.
+            </p>
+            <a
+              href="/membership"
+              className="rounded-full  bg-tiger px-8 py-3 text-sm font-semibold tracking-wide text-white  transition hover:bg-mix hover:text-black hover:scale-105 duration-200 w-max"
+            >
+              About UKIBC
+            </a>
           </div>
+
+          <div className="w-full md:w-1/2">
+            <WistiaPlayer
+              mediaId="ouhxny6plv"
+              className="w-full h-full rounded-xl"
+            />
+          </div>
+        </div>
         {/* </AuroraBackground> */}
       </div>
 

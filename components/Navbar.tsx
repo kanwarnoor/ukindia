@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -87,6 +87,35 @@ export default function Navbar() {
     },
   ];
 
+  const [time, setTime] = useState<{ ist: string; gmt: string }>({
+    ist: "00:00",
+    gmt: "00:00",
+  });
+
+  useEffect(() => {
+    const updateTime = () => {
+      const ist = new Date().toLocaleTimeString("en-IN", {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+        timeZone: "Asia/Kolkata",
+      });
+      const gmt = new Date().toLocaleTimeString("en-GB", {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+        timeZone: "Europe/London",
+      });
+      setTime({ ist: ist.toString(), gmt: gmt.toString() });
+    };
+
+    // Update immediately on mount
+    updateTime();
+
+    // Then update every second
+    const interval = setInterval(updateTime, 60000);
+    return () => clearInterval(interval);
+  }, []);
   const handleMouseEnter = (label: string) => {
     setOpenDropdown(label);
   };
@@ -95,18 +124,31 @@ export default function Navbar() {
     setOpenDropdown(null);
   };
 
-  console.log(change);
+  const [scroll, setScroll] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      if (scrollY > 100) {
+        setScroll(true);
+      } else {
+        setScroll(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <nav className=" flex w-full h-fit md:bg-transparent  bg-white text-black items-center justify-between px-6 md:px-10 fixed top-0 z-50">
-      <Link href="/" className="w-[120px] md:w-[190px] h-auto relative ">
+    <nav className=" flex w-full h-fit md:bg-transparent  bg-white text-black items-center px-6 md:px-10 fixed top-0 z-50">
+      <Link href="/" className="w-[120px] md:w-[190px] h-auto relative mr-auto">
         <Image
           src="/logo.png"
           alt="logo"
           width={0}
           sizes="100vw"
           height={0}
-          className={`w-full h-full object-contain cursor-pointer transition-all duration-300 ease-in-out ${
+          className={`w-full  h-full object-contain cursor-pointer transition-all duration-300 ease-in-out ${
             change ? "invert brightness-0" : "invert-0 brightness-100"
           }`}
           priority
@@ -117,7 +159,9 @@ export default function Navbar() {
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5 }}
-        className=" hidden lg:flex items-center justify-center gap-6 md:gap-8 text-base md:text-sm xl:text-lg font-medium h-12 px-10 bg-black/50 backdrop-blur-sm rounded-full border border-mix"
+        className={`hidden lg:flex items-center justify-center transistion-all duration-200 gap-6 md:gap-8 text-base md:text-sm  xl:text-base font-medium h-12 px-10 bg-black/50 backdrop-blur-sm rounded-full border border-mix ${
+          scroll ? " absolute left-1/2 -translate-x-1/2" : ""
+        }`}
       >
         {links.map((link) => (
           <li
@@ -171,6 +215,19 @@ export default function Navbar() {
         ))}
       </motion.ul>
 
+      <ul
+        className={`hidden lg:flex items-center justify-center transition-all duration-200 gap-6 md:gap-5 text-base md:text-sm  xl:text-base font-medium h-12 px-5 bg-black/50 backdrop-blur-sm rounded-full border border-mix ml-3`}
+      >
+        <li className="ml-auto flex items-center gap-2 text-white">
+          <span>GMT:</span>
+          <span>{time.gmt}</span>
+        </li>
+        <li className="flex items-center gap-2 text-white">
+          <span>IST:</span>
+          <span>{time.ist}</span>
+        </li>
+      </ul>
+
       <div
         className="lg:hidden flex items-center justify-center  cursor-pointer"
         onClick={() => setMobileMenu(!mobileMenu)}
@@ -215,9 +272,9 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.2 }}
             exit={{ opacity: 0, y: -10 }}
-            className="absolute  top-12 pt-10 md:pt-0 md:top-20 h-screen left-0 w-full h-full bg-white shadow-lg px-10  py-2 border border-gray-100 z-10"
+            className="absolute top-12 pt-10 md:pt-0 md:top-20 h-screen left-0 w-full bg-white shadow-lg px-10 py-2 border border-gray-100 z-10"
           >
-            {links.map((link, idx) => {
+            {links.map((link) => {
               const expanded = openDropdown === link.label;
               return (
                 <li key={link.label} className="w-full cursor-pointer">
