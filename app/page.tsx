@@ -322,7 +322,27 @@ export default function Home() {
         >
           <div className="w-full md:w-1/2  flex flex-col gap-4 justify-center px-4 md:px-12">
             <p className="text-4xl md:text-5xl font-bold text-white mb-2">
-              Membership
+            {"Membership"
+                .split(" ")
+                .map((word, wIdx) => (
+                  <span key={wIdx} className="inline-block whitespace-nowrap mr-2">
+                    {word.split("").map((char, cIdx) => (
+                      <motion.span
+                        key={cIdx}
+                        className="text-white inline-block"
+                        initial={{ rotateX: 90, opacity: 0 }}
+                        whileInView={{ rotateX: 0, opacity: 1 }}
+                        transition={{
+                          duration: 1,
+                          delay: (wIdx * 5 + cIdx) * 0.1,
+                        }}
+                        viewport={{ once: false }}
+                      >
+                        {char}
+                      </motion.span>
+                    ))}
+                  </span>
+                ))}
             </p>
             <p className="text-white text-lg font-bold italic mb-2">
               The Right Rooms. The Right People.
