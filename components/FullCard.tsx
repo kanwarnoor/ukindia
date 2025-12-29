@@ -78,12 +78,7 @@ export default function InfoCard({
           }
         >
           <div className={`relative w-full duration-300  h-full`}>
-            <ImageSlider
-              images={images}
-              hasMultipleImages={true}
-              currentImage={0}
-              time={time}
-            />
+            <ImageSlider images={images} time={time} />
 
             <div
               className={`absolute bottom-0 left-0 w-full ${

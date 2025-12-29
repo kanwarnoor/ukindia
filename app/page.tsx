@@ -91,7 +91,7 @@ export default function Home() {
           services.
         </motion.p>
 
-        <div className=" lg:flex-row flex-col mt-20 grid grid-cols-3">
+        <div className=" lg:flex-row flex-col mt-20 grid md:grid-cols-3 grid-cols-2">
           {" "}
           <FullCard
             title1="Influence"
@@ -125,27 +125,29 @@ export default function Home() {
             idiot={true}
             link="/interact"
           />
-          <FullCard
-            title1="Intelligence"
-            image="/home-card3.jpg"
-            des="We offer a range of solutions helping you enter, expand and grow in the Indian market"
-            animation="right"
-            large={true}
-            idiot={true}
-            link="/intelligence"
-            time={5000}
-            images={[
-              { image: "/home/eyes/intel-1.png", position: "50%_100%" },
-              { image: "/home/eyes/intel-2.png", position: "50%_50%" },
-              { image: "/home/eyes/intel-3.png", position: "50%_50%" },
-              { image: "/home/eyes/intel-4.png", position: "50%_50%" },
-            ]}
-          />
+          <div className="col-span-2 md:col-span-1">
+            <FullCard
+              title1="Intelligence"
+              image="/home-card3.jpg"
+              des="We offer a range of solutions helping you enter, expand and grow in the Indian market"
+              animation="right"
+              large={true}
+              idiot={true}
+              link="/intelligence"
+              time={5000}
+              images={[
+                { image: "/home/eyes/intel-1.png", position: "50%_100%" },
+                { image: "/home/eyes/intel-2.png", position: "50%_50%" },
+                { image: "/home/eyes/intel-3.png", position: "50%_50%" },
+                { image: "/home/eyes/intel-4.png", position: "50%_50%" },
+              ]}
+            />
+          </div>
         </div>
       </div>
 
       <div className="w-full h-fit pt-10 flex flex-col justify-center items-center pb-30">
-        <div className=" w-full h-fit flex gap-15 justify-center items-center text-center">
+        <div className="w-full h-fit flex flex-col sm:flex-row gap-6 sm:gap-10 md:gap-15 justify-center items-center text-center">
           <StatCard
             title="Over"
             valueBefore=""
@@ -175,84 +177,61 @@ export default function Home() {
           />
         </div>
 
-        <div className="w-1/2 h-5 mt-10 my-20 border-b-2 border-black" />
+        <div className="hidden md:flex w-1/2 h-5 mt-10 my-0 md:my-20 border-b-2 border-black" />
         {/* who we are */}
-        <section className="flex  w-[70%] justify-center items-center flex-col">
+        <section className="flex h-fit w-[90%] md:w-[75%] md:my-0 mt-10 justify-center items-center flex-col">
           <div className="mx-auto max-w-4xl w-full md:w-full ">
             {/* Heading */}
             <motion.h2
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              className="mb-10 text-5xl font-bold text-navy text-center"
+              className="mb-10 md:text-5xl  text-3xl font-bold text-navy text-center"
             >
               Who we are
             </motion.h2>
 
             {/* List */}
-            <ul className="gap-5 flex-row text-lg text-gray-900 font-medium grid grid-cols-3">
-              {[
-                "The UK India Business Council champions partnerships that drive jobs and growth in both countries.",
-                "We strengthen last-mile connectivity between government, industry, and academia, creating a trusted pathway for trade, investment, and high-impact collaboration.",
-                "We help you realise your potential through forward-looking insights, powerful networks, policy advocacy, and hands-on market-entry support.",
-              ].map((item, index) => {
-                return (
-                  <motion.li
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: 0.2 * index }}
-                    className="flex flex-col items-center gap-4"
-                  >
-                    <div className="w-20 h-20 bg-navy rounded-full flex justify-center items-center shadow-lg">
-                      {index === 0 ? (
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          strokeWidth={1.5}
-                          stroke="currentColor"
-                          className="size-10 text-white font-bold storke-3"
+            <div className="w-full flex h-[400px]  gap-2 md:gap-5">
+              <div className="w-[10%] md:w-[25%] flex flex-col justify-center items-center relative">
+                <Image
+                  src="/home/lander/1.webp"
+                  alt="team1"
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  className="w-full h-full object-cover object-[35%_10%] mix-blend-multiply brightness-110 z-10 "
+                />
+                <div className="absolute h-full top-0 left-0 w-full bg-tiger" />
+              </div>
+
+              <BackgroundGradientAnimation
+                gradientBackgroundStart="rgb(1 45 107)"
+                gradientBackgroundEnd="rgb(0 11 25)"
+                firstColor="3, 107, 252"
+                secondColor="2, 87, 207"
+                thirdColor="1, 30, 71"
+                fourthColor="139, 187, 254"
+                fifthColor="139, 187, 254"
+                interactive={false}
+                containerClassName="relative w-[80%] md:w-[50%] h-full  flex justify-center items-center"
+              >
+                <div className="w-[80%] z-10 mx-auto h-full flex justify-center items-center absolute top-0 left-0 right-0 bottom-0">
+                  <ul className=" flex gap-5 flex-col text-sm md:text-base text-white font-medium">
+                    {[
+                      "The UK India Business Council champions partnerships that drive jobs and growth in both countries.",
+                      "We strengthen last-mile connectivity between government, industry, and academia, creating a trusted pathway for trade, investment, and high-impact collaboration.",
+                      "We help you realise your potential through forward-looking insights, powerful networks, policy advocacy, and hands-on market-entry support.",
+                    ].map((item, index) => {
+                      return (
+                        <motion.li
+                          key={index}
+                          initial={{ opacity: 0, x: -20 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.5, delay: 0.2 * index }}
+                          className="flex flex-col items-center gap-4"
                         >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941"
-                          />
-                        </svg>
-                      ) : index === 1 ? (
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          strokeWidth={1.5}
-                          stroke="currentColor"
-                          className="size-8 text-white f font-bold storke-3"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244"
-                          />
-                        </svg>
-                      ) : (
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          strokeWidth={1.5}
-                          stroke="currentColor"
-                          className="size-10 text-white "
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z"
-                          />
-                        </svg>
-                      )}
-                    </div>
-                    {/* <svg
+                          {/* <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
                       fill="currentColor"
@@ -265,16 +244,30 @@ export default function Home() {
                       />
                     </svg> */}
 
-                    <p className="leading-5 w-full text-center ">{item}</p>
-                  </motion.li>
-                );
-              })}
-            </ul>
+                          <p className="leading-5 w-full text-center">
+                            {item}
+                          </p>
+                        </motion.li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              </BackgroundGradientAnimation>
 
-            {/* Button */}
-            <div className="w-full h-fit flex justify-center items-center mt-12">
-              <LiquidButton text="Meet the team" link="/meet-the-team" />
+              <div className="w-[10%] md:w-[25%] flex flex-col justify-center items-center  relative">
+                <Image
+                  src="/home/lander/1.webp"
+                  alt="team1"
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  className="w-full h-full object-cover object-[35%_100%] mix-blend-multiply brightness-110 z-10"
+                  style={{ transform: "scaleX(-1)" }}
+                />
+                <div className="absolute h-full top-0 left-0 w-full bg-tiger" />
+              </div>
             </div>
+
             {/* <motion.a
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -285,67 +278,71 @@ export default function Home() {
               Meet the team
             </motion.a> */}
           </div>
-          <div className="w-1/2 flex flex-col justify-center items-center gap-5 mt-10">
-            <motion.p
+          <div className="flex flex-col md:flex-row h-full justify-center items-center mt-10 space-y-8 md:space-y-0 md:space-x-10 ">
+            <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.5 }}
-              className="text-gray-900 font-medium text-lg leading-5"
+              className="text-gray-900 font-medium text-base md:text-lg leading-5 md:mr-10 md:mt-10 w-full md:w-auto px-4 md:px-0 text-center md:text-left"
             >
               Here is a look into our purpose, our people, and the impact we
               strive to create.
-            </motion.p>
+              <div className="w-fit h-fit flex justify-center md:justify-start mt-7 mx-auto md:mx-0">
+                <LiquidButton text="Meet the team" link="/meet-the-team" />
+              </div>
+            </motion.div>
 
-            <div className="w-[600px] h-[337.5px] bg-white rounded-xl relative">
-              {!video && (
-                <>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    onClick={() => setVideo(true)}
-                    className="size-30 text-white/80 absolute top-0 left-0 right-0 bottom-0 m-auto shadow-lg cursor-pointer"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm14.024-.983a1.125 1.125 0 0 1 0 1.966l-5.603 3.113A1.125 1.125 0 0 1 9 15.113V8.887c0-.857.921-1.4 1.671-.983l5.603 3.113Z"
-                      clipRule="evenodd"
+            <div className="w-full flex flex-col md:flex-row justify-center items-center gap-5 mt-5 md:mt-10 relative ">
+              <div className="w-full md:w-[600px] aspect-video max-w-full rounded-xl relative ">
+                {!video && (
+                  <>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      onClick={() => setVideo(true)}
+                      className="size-20 md:size-30 text-white/80 absolute top-0 left-0 right-0 bottom-0 m-auto shadow-lg cursor-pointer"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm14.024-.983a1.125 1.125 0 0 1 0 1.966l-5.603 3.113A1.125 1.125 0 0 1 9 15.113V8.887c0-.857.921-1.4 1.671-.983l5.603 3.113Z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                    <Image
+                      src="/home-youtube.jpg"
+                      alt="home-card1"
+                      width={0}
+                      height={0}
+                      sizes="100vw"
+                      onClick={() => setVideo(true)}
+                      className="object-cover w-full h-full rounded-xl object-center cursor-pointer"
                     />
-                  </svg>
-
-                  <Image
-                    src="/home-youtube.jpg"
-                    alt="home-card1"
-                    width={0}
-                    height={0}
-                    sizes="100vw"
-                    onClick={() => setVideo(true)}
-                    className="object-cover w-full h-full rounded-xl object-center cursor-pointer"
-                  />
-                </>
-              )}
-              {video && (
-                <div className="w-full h-full bg-black absolute top-0 left-0 right-0 bottom-0 rounded-xl">
-                  <iframe
-                    width="560"
-                    height="315"
-                    src="https://www.youtube.com/embed/u7z_hq0XMfM?si=28hcM-riwb-vMgNp&autoplay=1"
-                    title="YouTube video player"
-                    frameBorder="0"
-                    allow="autoplay; encrypted-media; picture-in-picture"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    className="w-full h-full rounded-xl"
-                    allowFullScreen={true}
-                  ></iframe>
-                </div>
-              )}
+                  </>
+                )}
+                {video && (
+                  <div className="w-full h-full bg-black absolute top-0 left-0 right-0 bottom-0 rounded-xl">
+                    <iframe
+                      width="100%"
+                      height="100%"
+                      src="https://www.youtube.com/embed/u7z_hq0XMfM?si=28hcM-riwb-vMgNp&autoplay=1"
+                      title="YouTube video player"
+                      frameBorder="0"
+                      allow="autoplay; encrypted-media; picture-in-picture"
+                      referrerPolicy="strict-origin-when-cross-origin"
+                      className="w-full h-full rounded-xl"
+                      allowFullScreen={true}
+                    ></iframe>
+                  </div>
+                )}
+              </div>
+              <motion.div
+                initial={{ opacity: 0, x: -20, y: -20 }}
+                whileInView={{ opacity: 1, x: 0, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="hidden md:block w-[600px] h-[337.5px] bg-tiger rounded-xl absolute translate-x-5 translate-y-5 -z-10"
+              />
             </div>
-            <motion.div
-              initial={{ opacity: 0, x: -20, y: -20 }}
-              whileInView={{ opacity: 1, x: 0, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="w-[600px] h-[337.5px] bg-tiger rounded-xl absolute translate-x-5 translate-y-13 -z-10"
-            />
           </div>
         </section>
       </div>
@@ -361,11 +358,11 @@ export default function Home() {
         fourthColor="139, 187, 254"
         fifthColor="139, 187, 254"
         interactive={false}
-        containerClassName="w-full min-h-screen flex bg-red-200 justify-center items-center bg-navy relative"
+        containerClassName="w-full min-h-screen md:h-screen h-[150vh]  flex  justify-center items-center bg-navy relative"
       >
         {/* <AuroraBackground> */}
         <div
-          className="w-[80%] z-10 h-full mx-auto left-0 right-0 top-0 bottom-0 absolute  py-20 flex flex-col md:flex-row items-center gap-10 md:gap-0"
+          className="w-[80%] z-10 h-full mx-auto left-0 right-0 top-0 bottom-0  md:absolute  py-20 flex flex-col md:flex-row items-center gap-10 md:gap-0"
           ref={membershipRef}
         >
           <div className="w-full md:w-1/2  flex flex-col gap-4 justify-center px-4 md:px-12">
@@ -465,12 +462,12 @@ export default function Home() {
         fourthColor="139, 187, 254"
         fifthColor="139, 187, 254"
         interactive={false}
-        containerClassName="w-full min-h-screen flex bg-red-200 justify-center items-center bg-navy relative"
+        containerClassName="w-full min-h-screen md:h-screen h-[120vh] flex  justify-center items-center bg-navy relative"
       >
         {/* <AuroraBackground> */}
 
         <div
-          className="w-[80%] z-10 h-full mx-auto left-0 right-0 top-0 bottom-0 absolute  py-20 flex flex-col md:flex-row items-center gap-10 md:gap-0"
+          className="w-[80%] z-10 h-full mx-auto left-0 right-0 top-0 bottom-0 md:absolute  py-20 flex flex-col md:flex-row items-center gap-10 md:gap-0"
           ref={aboutRef}
         >
           <div className="w-full md:w-1/2 flex flex-col gap-4 justify-center px-4 md:px-12">

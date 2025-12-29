@@ -20,7 +20,7 @@ export default function ImageSlider({
     return () => clearInterval(interval);
   }, [images, currentImageState]);
   return (
-    <div className="w-full h-full  flex items-center justify-center overflow-hidden xl:rounded-none rounded-xl">
+    <div className="w-full h-full  flex items-center justify-center overflow-hidden xl:rounded-none">
       {/* slideshow images */}
       <AnimatePresence mode="sync" initial={false}>
         <motion.div
@@ -37,7 +37,7 @@ export default function ImageSlider({
               width={0}
               height={0}
               sizes="100vw"
-              className={`w-full h-full rounded-xl object-cover scale-110 object-[${
+              className={`w-full h-full object-cover scale-110 object-[${
                 images![currentImageState].position
               }]`}
               priority

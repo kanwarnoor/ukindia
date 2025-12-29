@@ -74,7 +74,6 @@ export default function StatCard({
       transition={{
         duration: 0.1,
       }}
-
       onViewportLeave={() => {
         setDisplayedNumber(0);
         frame.current = requestAnimationFrame((timestamp: number) => {
@@ -94,19 +93,23 @@ export default function StatCard({
           animateCountUp(timestamp);
         });
       }}
-      className="flex flex-col gap-1  w-[350px] h-[250px] "
+      className="flex flex-col gap-1 w-full sm:w-[300px] md:w-[350px] h-auto min-h-[200px] sm:min-h-[250px] px-4 sm:px-0"
     >
-      <p className="text-xl font-bold text-navy">{title}</p>
-      <span className="text-tiger text-5xl font-bold">
+      <p className="text-base sm:text-lg md:text-xl font-bold text-navy">
+        {title}
+      </p>
+      <span className="text-tiger text-3xl sm:text-4xl md:text-5xl font-bold wrap-break-word">
         {valueBefore}
         {displayedNumber}
         {valueAfter}
       </span>
-      <p className="text-xl font-bold text-black font-bold">{description}</p>
-      <hr className="w-1/2 mx-auto h-2 my-3 border-black" />
+      <p className="text-sm sm:text-base md:text-xl font-bold text-black">
+        {description}
+      </p>
+      <hr className="w-1/2 mx-auto h-2 my-2 sm:my-3 border-black" />
       <motion.a
         href={link}
-        className="w-fit mx-auto font-bold text-navy border-2 border-navy rounded-full px-4 py-2 hover:bg-navy hover:text-white transition-all duration-200"
+        className="w-fit mx-auto font-bold text-navy border-2 border-navy rounded-full px-3 sm:px-4 py-1.5 sm:py-2 text-sm sm:text-base hover:bg-navy hover:text-white transition-all duration-200"
       >
         Read More
       </motion.a>
