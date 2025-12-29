@@ -190,7 +190,7 @@ export default function Home() {
             </motion.h2>
 
             {/* List */}
-            <ul className="gap-5 flex flex-row text-lg text-gray-900 font-medium">
+            <ul className="gap-5 flex-row text-lg text-gray-900 font-medium grid grid-cols-3">
               {[
                 "The UK India Business Council champions partnerships that drive jobs and growth in both countries.",
                 "We strengthen last-mile connectivity between government, industry, and academia, creating a trusted pathway for trade, investment, and high-impact collaboration.",
@@ -202,9 +202,57 @@ export default function Home() {
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.2 * index }}
-                    className="flex items-start gap-4"
+                    className="flex flex-col items-center gap-4"
                   >
-                    <svg
+                    <div className="w-20 h-20 bg-navy rounded-full flex justify-center items-center shadow-lg">
+                      {index === 0 ? (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={1.5}
+                          stroke="currentColor"
+                          className="size-10 text-white font-bold storke-3"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941"
+                          />
+                        </svg>
+                      ) : index === 1 ? (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={1.5}
+                          stroke="currentColor"
+                          className="size-8 text-white f font-bold storke-3"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244"
+                          />
+                        </svg>
+                      ) : (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={1.5}
+                          stroke="currentColor"
+                          className="size-10 text-white "
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z"
+                          />
+                        </svg>
+                      )}
+                    </div>
+                    {/* <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
                       fill="currentColor"
@@ -215,9 +263,9 @@ export default function Home() {
                         d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
                         clipRule="evenodd"
                       />
-                    </svg>
+                    </svg> */}
 
-                    <p className="leading-5 w-full">{item}</p>
+                    <p className="leading-5 w-full text-center ">{item}</p>
                   </motion.li>
                 );
               })}
