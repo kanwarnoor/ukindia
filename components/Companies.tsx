@@ -31,28 +31,28 @@ export default function Companies({ images }: CompaniesProps) {
   }, [emblaApi, isHovered]);
 
   return (
-    <div className="w-full h-fit flex justify-center items-center py-10 bg-white">
-      <div className="w-full max-w-7xl mx-auto px-4">
+    <div className="w-full h-fit flex justify-center items-center py-6 sm:py-8 md:py-10 bg-white">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
         <div
           className="overflow-hidden"
           ref={emblaRef}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          <div className="flex gap-8">
+          <div className="flex gap-4 sm:gap-6 md:gap-8">
             {duplicatedImages.map((image, index) => (
               <div
                 key={index}
-                className="shrink-0 flex items-center justify-center px-8"
-                style={{ minWidth: "200px" }}
+                className="shrink-0 flex items-center justify-center px-4 sm:px-6 md:px-8"
+                style={{ minWidth: "120px" }}
               >
-                <div className="relative w-full h-24  hover:grayscale-0 transition-all duration-300 ">
+                <div className="relative w-full h-16 sm:h-20 md:h-40 md:w-40 hover:grayscale-0 transition-all duration-300">
                   <Image
                     src={image}
                     alt={`Company logo ${(index % images.length) + 1}`}
                     fill
                     className="object-contain"
-                    sizes="(max-width: 768px) 150px, 200px"
+                    sizes="(max-width: 640px) 120px, (max-width: 768px) 150px, 200px"
                   />
                 </div>
               </div>

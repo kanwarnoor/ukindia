@@ -535,8 +535,8 @@ export default function Home() {
 
         <div className="w-1/2 h-5 my-10 border-b-2 border-black" />
 
-        <div className=" h-fit flex justify-between items-center w-full max-w-7xl mx-auto pt-10">
-          <p className="text-5xl font-bold text-navy">UKIBC news</p>
+        <div className=" h-fit flex justify-between items-center w-[90%] md:w-full max-w-7xl mx-auto pt-10">
+          <p className="md:text-5xl text-3xl font-bold text-navy">UKIBC news</p>
           <a
             href="/news"
             className="text-navy text-xl font-medium hover:scale-105 hover:text-navy/80 transition-all duration-200 inline-block"

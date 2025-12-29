@@ -63,9 +63,9 @@ export default function PostsCarousel({ posts }: PostsCarouselProps) {
           {posts.map((post: PostProps) => (
             <div
               key={post.id}
-              className="shrink-0 flex justify-center mr-6"
+              className="shrink-0 flex justify-center mr-0 sm:mr-6"
               style={{
-                minWidth: "350px",
+                minWidth: "320px",
                 maxWidth: "350px",
               }}
             >
@@ -114,7 +114,7 @@ export default function PostsCarousel({ posts }: PostsCarouselProps) {
         <>
           <button
             onClick={scrollPrev}
-            className="absolute left-0 cursor-pointer top-1/2 -translate-y-1/2 w-12 h-12 rounded-full  flex items-center justify-center hover:scale-110 transition-all duration-100 z-20 -ml-6"
+            className="absolute left-0 cursor-pointer top-1/2 -translate-y-1/2 w-12 h-12 rounded-full  flex items-center justify-center hover:scale-110 transition-all duration-100 z-20 md:-ml-6"
             aria-label="Previous slide"
           >
             <svg
@@ -132,7 +132,7 @@ export default function PostsCarousel({ posts }: PostsCarouselProps) {
           </button>
           <button
             onClick={scrollNext}
-            className="absolute right-0 cursor-pointer top-1/2 -translate-y-1/2 w-12 h-12 rounded-full  flex items-center justify-center hover:scale-110 transition-all duration-100 -mr-6 z-20"
+            className="absolute right-0 cursor-pointer top-1/2 -translate-y-1/2 w-12 h-12 rounded-full  flex items-center justify-center hover:scale-110 transition-all duration-100 md:-mr-6 z-20"
             aria-label="Next slide"
           >
             <svg
