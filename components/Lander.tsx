@@ -2,13 +2,15 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
 import axios from "axios";
 import { WavyBackground } from "@/components/ui/wavy-background";
 import ImageSlider from "@/components/ImageSlider";
 
 interface LanderProps {
-  title: string[];
+  title_data: {
+    title: string;
+    des: string;
+  }[];
   images:
     | Array<{
         image: string;
@@ -17,7 +19,7 @@ interface LanderProps {
     | [];
 }
 
-export default function Lander({ title, images }: LanderProps) {
+export default function Lander({ title_data, images }: LanderProps) {
   const [currentTitle, setCurrentTitle] = useState(0);
 
   const [currency, setCurrency] = useState<{ GBP: number; INR: number }>({
@@ -26,12 +28,19 @@ export default function Lander({ title, images }: LanderProps) {
   });
 
   useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTitle((prev) => (prev + 1) % title_data.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [title_data]);
+
+  useEffect(() => {
     axios
       .get("/api/currency")
       .then((res) => {
         setCurrency({
           GBP: res.data.fx.GBP,
-        INR: res.data.fx.INR,
+          INR: res.data.fx.INR,
         });
       })
       .catch((err) => {
@@ -42,48 +51,71 @@ export default function Lander({ title, images }: LanderProps) {
   return (
     <div className="max-w-screen overflow-hidden h-screen flex flex-col lg:flex-row justify-center bg-white">
       {/* Text and Wavy Background Section */}
-      <div className="w-full lg:w-1/2 relative h-full lg:min-h-screen ">
+      <div className="w-full lg:w-1/2 relative h-full lg:min-h-screen  ">
         <WavyBackground
           backgroundFill="white"
           colors={["#f15c23", "#012d6b", "#d8c4b5"]}
-          className="absolute h-full w-full flex flex-col justify-center z-10 "
+          className="absolute h-full w-full flex flex-col justify-center z-10"
         >
-          <div className="w-full mt-10 md:mt-20 xl:mt-0 lg:w-[80%] h-1/2 xl:h-fit flex flex-col justify-center px-6 md:px-10 lg:ml-15 gap-4 md:gap-5  lg:py-0  ">
+          <div className="w-full mt-10 md:mt-20 xl:mt-0 lg:w-[80%] h-1/2 xl:h-fit flex flex-col justify-center px-6 md:px-10 lg:ml-5 gap-4 md:gap-5  lg:py-0 ">
             <AnimatePresence mode="wait">
-              <motion.div
-                key={currentTitle}
-                className="flex flex-row gap-2 lg:w-full w-[70%] h-[100px] lg:h-[120px] xl:h-[150px] 2xl:h-[200px]"
-              >
-                <h1 className="text-navy text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-black leading-tight md:leading-10 xl:leading-12 2xl:leading-17 tracking-tight justify-center items-center flex  ">
-                  <motion.p
-                    key={currentTitle}
-                    className="flex flex-wrap gap-x-2 md:gap-x-3 "
-                  >
-                    {title[currentTitle].split(" ").map((word, index) => (
+              <div className="relative min-h-[100px] sm:min-h-[120px] md:min-h-[140px] lg:min-h-[150px] xl:min-h-[180px] 2xl:min-h-[220px] flex items-center">
+                <motion.div
+                  key={currentTitle}
+                  className="absolute inset-0 flex flex-row gap-2 lg:w-full w-[70%]"
+                >
+                  <h1 className="text-navy text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-black leading-tight md:leading-10 xl:leading-12 2xl:leading-17 tracking-tight justify-center items-center flex">
+                    <motion.p
+                      key={currentTitle}
+                      className="flex flex-wrap gap-x-2 md:gap-x-3"
+                    >
+                      {title_data[currentTitle].title
+                        .split(" ")
+                        .map((word, index) => (
+                          <motion.span
+                            key={index}
+                            initial={{
+                              opacity: 0,
+                              filter: "blur(10px)",
+                              y: 20,
+                            }}
+                            animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+                            transition={{ duration: 0.5, delay: 0.2 * index }}
+                            className="inline-block"
+                          >
+                            {word}{" "}
+                          </motion.span>
+                        ))}
+                    </motion.p>
+                  </h1>
+                </motion.div>
+              </div>
+
+              <div className="relative w-full min-h-[40px] sm:min-h-[50px] md:min-h-[80px]  flex items-start">
+                <motion.p
+                  key={`desc-${currentTitle}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className="absolute top-0 left-0 text-black/90 text-[12px] sm:text-sm font-medium w-[90%] flex flex-wrap gap-x-1 leading-[1.3] sm:leading-[1.4]"
+                >
+                  {title_data[currentTitle].des
+                    .split(" ")
+                    .map((word, index) => (
                       <motion.span
                         key={index}
                         initial={{ opacity: 0, filter: "blur(10px)", y: 20 }}
                         animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.2 * index }}
-                        className="flex flex-wrap"
+                        transition={{ duration: 0.5, delay: 0.1 * index }}
+                        className="inline-block"
                       >
-                        {word}
-                        <br className="hidden sm:block" />
+                        {word}{" "}
                       </motion.span>
                     ))}
-                  </motion.p>
-                </h1>
-              </motion.div>
+                </motion.p>
+              </div>
             </AnimatePresence>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-black/90 text-[12px] sm:text-sm font-medium w-[90%] lg:w-[80%] "
-            >
-              We boost UK-India trade, investment and collaboration. Connecting
-              businesses to thrive through ideas, networks and impact.
-            </motion.p>
             <motion.a
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -112,7 +144,7 @@ export default function Lander({ title, images }: LanderProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.5 }}
-              className="text-black/90 w-fit md:text-xl font-medium mt-10 text-base  text-black px-4 py-2 rounded-full flex flex-row gap-2 "
+              className="text-black/90 w-fit md:text-xl font-medium mt-10 text-base px-4 py-2 rounded-full flex flex-row gap-2"
             >
               <div className="flex flex-row items-center gap-2">
                 <svg
@@ -186,7 +218,7 @@ export default function Lander({ title, images }: LanderProps) {
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="w-full hidden lg:flex lg:w-1/2 h-1/2  sm:h-[60vh] lg:h-screen flex flex-col items-center justify-center relative"
+        className="w-full hidden lg:flex lg:w-1/2 h-1/2 sm:h-[60vh] lg:h-screen flex-col items-center justify-center relative"
       >
         <ImageSlider images={images} />
       </motion.div>

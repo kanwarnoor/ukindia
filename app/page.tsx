@@ -56,11 +56,24 @@ export default function Home() {
   return (
     <>
       <Lander
-        title={[
-          "Building Trust Driving Growth",
-          "The Catalyst for Insight, Trust and Impact",
-          "Intelligence that Builds Trust Impact that Lasts",
-          "Insight that Connects Impact that Counts",
+        title_data={[
+          {
+            title: "Intelligence that Builds Trust, Impact that Lasts",
+            des: "Policy-aware intelligence that reduces risk, builds trust, and helps organisations succeed across the UK–India corridor.",
+          },
+          {
+            title: "The Catalyst for Insight, Trust and Impact",
+            des: "We turn insight and access into influence, connecting businesses with government to deliver real outcomes.",
+          },
+          {
+            title: "Insight that Connects, Impact that Counts",
+            des: "Insight that links decision-makers, partners, and markets together, transforming conversations into measurable growth.",
+          },
+
+          {
+            title: "Building Trust Driving Growth",
+            des: "Trusted relationships across all levels of the government, credible advocacy, and practical intelligence that help businesses grow with confidence.",
+          },
         ]}
         images={[
           { image: "/home/lander/4.webp", position: "bottom-right" },
@@ -244,9 +257,7 @@ export default function Home() {
                       />
                     </svg> */}
 
-                          <p className="leading-5 w-full text-center">
-                            {item}
-                          </p>
+                          <p className="leading-5 w-full text-center">{item}</p>
                         </motion.li>
                       );
                     })}
