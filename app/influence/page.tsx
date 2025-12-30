@@ -302,7 +302,7 @@ export default function Influence() {
           buttonText="JOIN THE NETWORK"
           buttonLink="/membership"
         />
-        <div className="w-full h-fit flex justify-center items-center py-20">
+        <div className="w-full h-fit flex justify-center items-center py-20 bg-mix2/50">
           <Carousel
             data={[
               {
@@ -319,6 +319,7 @@ export default function Influence() {
                 role: "Executive Director, Tata",
                 image: "/home/testimonial/tim.webp",
               },
+              
             ]}
           />
         </div>

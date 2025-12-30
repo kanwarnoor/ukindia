@@ -312,7 +312,7 @@ export default function Home() {
         buttonLink="/membership"
       />
       {/* testimonials */}
-      <div className="w-full h-fit flex justify-center items-center py-20">
+      <div className="w-full h-fit flex justify-center items-center py-20 bg-mix2">
         <Carousel
           data={[
             {

@@ -92,7 +92,7 @@ export default function ZoomCard({ data }: ZoomCardProps) {
                   containerClassName="h-full flex justify-center items-center rounded-xl w-[350px]"
                 >
                   <div className="w-[80%] z-10 mx-auto h-full flex justify-center items-center absolute top-0 left-0 right-0 bottom-0">
-                    <p className="leading-5 w-full text-center text-white font-bold text-sm md:text-xl">
+                    <p className="leading-tight  w-full text-center text-white font-bold text-sm md:text-2xl">
                       {item.title}
                     </p>
                   </div>

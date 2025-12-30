@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 interface CarouselProps {
   data: Array<{
@@ -14,113 +15,129 @@ interface CarouselProps {
 }
 
 export default function Carousel({ data }: CarouselProps) {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
-  const [selectedIndex, setSelectedIndex] = React.useState(0);
-  const [isHovered, setIsHovered] = React.useState(false);
+  const [index, setIndex] = useState(0);
+  const [y, setY] = useState(0);
 
-  const scrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev();
-  }, [emblaApi]);
+  const [newData, setNewData] = useState([...data, ...data]);
 
-  const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext();
-  }, [emblaApi]);
+  const Next = () => {
+    setIndex((prev) => {
+      const newIndex = prev === data.length - 1 ? 0 : prev + 1;
+      setY(-166 * newIndex);
+      return newIndex;
+    });
+  };
 
-  const onSelect = useCallback(() => {
-    if (!emblaApi) return;
-    setSelectedIndex(emblaApi.selectedScrollSnap());
-  }, [emblaApi]);
+  const Prev = () => {
+    setIndex((prev) => {
+      const newIndex = prev === 0 ? data.length - 1 : prev - 1;
+      setY(-166 * newIndex);
+      return newIndex;
+    });
+  };
 
-  useEffect(() => {
-    if (!emblaApi) return;
-
-    emblaApi.on("select", onSelect);
-    emblaApi.on("reInit", onSelect);
-
-    // Trigger initial selection to set the correct index
-    emblaApi.emit("select");
-
-    return () => {
-      emblaApi.off("select", onSelect);
-      emblaApi.off("reInit", onSelect);
-    };
-  }, [emblaApi, onSelect]);
-
-  useEffect(() => {
-    if (isHovered) return; // Pause auto-scroll when hovered
-    const interval = setInterval(() => {
-      scrollNext();
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [scrollNext, isHovered]);
-
-  const scrollTo = useCallback(
-    (index: number) => {
-      if (emblaApi) emblaApi.scrollTo(index);
-    },
-    [emblaApi]
-  );
+  const scrollTo = (idx: number) => {
+    if (idx > data.length - 1) {
+      setY(0);
+      setIndex(0);
+    } else if (idx < 0) {
+      setY(-166 * (data.length - 1));
+      setIndex(0);
+    } else {
+      setY(-166 * idx);
+      setIndex(idx);
+    }
+  };
 
   return (
-    <div
-      className="relative w-[90%] max-w-[1000px] mx-auto"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <div className="overflow-hidden rounded-xl bg-mix2" ref={emblaRef}>
-        <div className="flex">
-          {data.map((item, index) => (
+    <div className="relative w-full max-w-[1000px] h-[500px] overflow-hidden mx-auto flex flex-row gap-5 ">
+      <div className="w-fit h-full relative flex flex-row sm:flex-row bg-white rounded-4xl">
+        <motion.div
+          initial={{ y: 0 }}
+          animate={{ y: `${y}px` }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+          className="w-fit h-full  items-center flex flex-col rounded-4xl gap-4 p-3"
+        >
+          {newData.map((item: { image: string; name: string }, idx: number) => (
             <div
-              key={index}
-              className="shrink-0 w-full min-h-[400px] sm:h-[500px] flex items-center justify-center"
+              key={idx}
+              onClick={() => scrollTo(idx)}
+              className={`w-[100px] h-[100px] md:w-[250px] rounded-4xl md:h-[150px] flex items-center justify-center relative transition-all duration-300 cursor-pointer ${
+                idx === index ? "border-4 border-tiger/70 md:h-[250px]" : "grayscale"
+              }`}
             >
-              <div className="w-full h-full flex flex-col sm:flex-row">
-                {/* Image Section */}
-                <div className="w-full sm:w-[30%] h-auto sm:h-full rounded-t-md sm:rounded-l-md sm:rounded-t-none flex items-center justify-center py-6 sm:py-0">
-                  <div className="w-[80px] h-[80px] sm:w-[110px] sm:h-[110px] flex items-center justify-center relative">
-                    <Image
-                      src={item.image || ""}
-                      alt={item.name}
-                      width={110}
-                      height={110}
-                      className="rounded-full object-cover w-full h-full flex z-10"
-                    />
-                    <div className="w-[100px] h-[100px] sm:w-[130px] sm:h-[130px] absolute bg-navy rounded-full shadow-lg flex items-center justify-center"></div>
-                  </div>
-                </div>
-
-                {/* Content Section */}
-                <div className="w-full sm:w-[70%] h-full rounded-b-md sm:rounded-r-md sm:rounded-b-none flex flex-col justify-start p-4 sm:p-6 md:p-10">
-                  <div>
-                    <Image
+              <Image
+                src={item.image}
+                alt={item.name}
+                width={0}
+                height={0}
+                sizes="100%"
+                className="rounded-3xl object-cover w-full h-full flex z-10 "
+              />
+            </div>
+          ))}
+        </motion.div>
+      </div>
+      <div className="overflow-hidden rounded-3xl bg-white  ">
+        <div className="flex">
+          <div
+            key={index}
+            className="shrink-0 w-full min-h-[400px] sm:h-[500px] flex items-center justify-center"
+          >
+            <div className="w-full h-full flex flex-col sm:flex-row">
+              <div className="w-full h-full rounded-b-md sm:rounded-r-md sm:rounded-b-none flex flex-col justify-start p-4 sm:p-6 md:p-15">
+                <div className="h-full flex flex-col justify-between">
+                  {/* <Image
                       src="/comma.png"
                       alt="quote-start"
                       width={40}
                       height={40}
                       className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 invert-0 brightness-0 filter mb-2"
-                    />
-                    <p className="text-sm sm:text-base md:text-xl font-medium text-gray-950 leading-relaxed">
-                      {item.quote}
-                    </p>
-                    <p className="text-lg sm:text-xl text-gray-800 font-bold mt-4 sm:mt-6 md:mt-10">
-                      {item.name}
-                    </p>
-                    <p className="text-xs sm:text-sm text-gray-600 font-medium w-full sm:w-1/2">
-                      {item.role}
-                    </p>
+                    /> */}
+                  <motion.p
+                    className="text-sm sm:text-base md:text-xl font-bold text-gray-900 leading-relaxed"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.5 }}
+                    key={newData[index].quote}
+                  >
+                    {newData[index].quote}
+                  </motion.p>
+                  <div className="flex flex-col gap-2 mt-auto">
+                    <motion.p
+                      className="text-lg sm:text-xl text-gray-800 font-bold"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.5, delay: 0.1 }}
+                      key={newData[index].name}
+                    >
+                      {newData[index].name}
+                    </motion.p>
+                    <motion.p
+                      className="text-xs sm:text-sm text-gray-600 font-medium w-full sm:w-1/2"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.5, delay: 0.15 }}
+                      key={newData[index].role}
+                    >
+                      {newData[index].role}
+                    </motion.p>
                   </div>
                 </div>
               </div>
             </div>
-          ))}
+          </div>
         </div>
       </div>
 
       {/* Navigation Controls */}
       <button
-        onClick={scrollPrev}
         className="absolute cursor-pointer left-2 sm:left-4 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/80 hover:bg-white flex items-center justify-center transition-colors z-20 shadow-lg"
         aria-label="Previous slide"
+        onClick={() => Prev()}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -136,9 +153,9 @@ export default function Carousel({ data }: CarouselProps) {
         </svg>
       </button>
       <button
-        onClick={scrollNext}
         className="absolute cursor-pointer right-2 sm:right-4 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/80 hover:bg-white flex items-center justify-center transition-colors z-20 shadow-lg"
         aria-label="Next slide"
+        onClick={() => Next()}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -155,21 +172,20 @@ export default function Carousel({ data }: CarouselProps) {
       </button>
 
       {/* dots */}
-      <div className="absolute bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 flex space-x-1.5 sm:space-x-2 z-20">
-        {data.map((item, index) => (
+      {/* <div className="absolute bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 flex space-x-1.5 sm:space-x-2 z-20">
+        {data.map((item, my_index) => (
           <button
-            key={index}
+            key={my_index}
             type="button"
             className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full cursor-pointer transition-all duration-200 ${
-              selectedIndex === index
+              index === my_index
                 ? "bg-navy scale-110"
                 : "bg-navy/30 hover:bg-navy/60"
             }`}
-            onClick={() => scrollTo(index)}
-            aria-label={`Go to slide ${index + 1}`}
+            aria-label={`Go to slide ${my_index + 1}`}
           />
         ))}
-      </div>
+      </div> */}
     </div>
   );
 }
