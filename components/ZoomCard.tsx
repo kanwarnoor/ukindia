@@ -21,6 +21,7 @@ export default function ZoomCard({ data }: ZoomCardProps) {
     slidesToScroll: 1,
   });
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
 
   const scrollPrev = useCallback(() => {
     if (emblaApi) emblaApi.scrollPrev();
@@ -46,6 +47,22 @@ export default function ZoomCard({ data }: ZoomCardProps) {
     };
   }, [emblaApi, onSelect]);
 
+  // Auto-scroll functionality
+  useEffect(() => {
+    if (!emblaApi || isHovered || data.length <= 1) return;
+
+    const interval = setInterval(() => {
+      if (emblaApi.canScrollNext()) {
+        emblaApi.scrollNext();
+      } else {
+        // If we can't scroll next, go back to the beginning
+        emblaApi.scrollTo(0);
+      }
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [emblaApi, isHovered, data.length]);
+
   const scrollTo = useCallback(
     (index: number) => {
       if (emblaApi) emblaApi.scrollTo(index);
@@ -54,7 +71,11 @@ export default function ZoomCard({ data }: ZoomCardProps) {
   );
 
   return (
-    <div className="relative h-full w-full">
+    <div
+      className="relative h-full w-full"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <div className="overflow-hidden h-full pl-[350px]" ref={emblaRef}>
         <div className="flex h-full gap-3">
           {data.map((item, index) => {
@@ -75,7 +96,7 @@ export default function ZoomCard({ data }: ZoomCardProps) {
                   containerClassName="h-full flex justify-center items-center rounded-xl w-[350px]"
                 >
                   <div className="w-[80%] z-10 mx-auto h-full flex justify-center items-center absolute top-0 left-0 right-0 bottom-0">
-                    <p className="leading-5 w-full text-center text-white font-medium text-sm md:text-base">
+                    <p className="leading-5 w-full text-center text-white font-bold text-sm md:text-xl">
                       {item.title}
                     </p>
                   </div>
