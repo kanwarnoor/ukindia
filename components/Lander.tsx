@@ -57,14 +57,14 @@ export default function Lander({ title_data, images }: LanderProps) {
           colors={["#f15c23", "#012d6b", "#d8c4b5"]}
           className="absolute h-full w-full flex flex-col justify-center z-10"
         >
-          <div className="w-full mt-10 md:mt-20 xl:mt-0 lg:w-[80%] h-1/2 xl:h-fit flex flex-col justify-center px-6 md:px-10 lg:ml-5 gap-4  lg:py-0 ">
+          <div className="w-full mt-10 md:mt-20 xl:mt-0 lg:w-[80%] h-1/2 xl:h-fit flex flex-col justify-center px-6 md:px-10 lg:ml-5 gap-6  lg:py-0 ">
             <AnimatePresence mode="wait">
               <div key={"title"} className="relative min-h-[100px] sm:min-h-[120px] md:min-h-[140px] lg:min-h-[150px] xl:min-h-[160px] 2xl:min-h-[200px] flex items-center">
                 <motion.div
                   key={currentTitle}
                   className="absolute inset-0 flex flex-row gap-2 lg:w-full w-[70%]"
                 >
-                  <h1 className="text-navy text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-black leading-tight md:leading-10 xl:leading-12 2xl:leading-17 tracking-tight justify-center items-center flex ">
+                  <h1 className="text-navy text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-black leading-tight md:leading-10 xl:leading-12 2xl:leading-16 tracking-tight justify-center items-center flex ">
                     <motion.p
                       key={currentTitle}
                       className="flex flex-wrap gap-x-2 md:gap-x-3"
