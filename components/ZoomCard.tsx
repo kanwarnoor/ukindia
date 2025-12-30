@@ -16,7 +16,7 @@ interface ZoomCardProps {
 
 export default function ZoomCard({ data }: ZoomCardProps) {
   const [emblaRef, emblaApi] = useEmblaCarousel({
-    loop: false,
+    loop: true,
     align: "center",
     slidesToScroll: 1,
   });
@@ -52,12 +52,8 @@ export default function ZoomCard({ data }: ZoomCardProps) {
     if (!emblaApi || isHovered || data.length <= 1) return;
 
     const interval = setInterval(() => {
-      if (emblaApi.canScrollNext()) {
-        emblaApi.scrollNext();
-      } else {
-        // If we can't scroll next, go back to the beginning
-        emblaApi.scrollTo(0);
-      }
+      // With loop: true, scrollNext() will automatically loop back smoothly
+      emblaApi.scrollNext();
     }, 5000);
 
     return () => clearInterval(interval);
@@ -76,13 +72,13 @@ export default function ZoomCard({ data }: ZoomCardProps) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="overflow-hidden h-full pl-[350px]" ref={emblaRef}>
-        <div className="flex h-full gap-3">
+      <div className="overflow-hidden h-full" ref={emblaRef}>
+        <div className="flex h-full ">
           {data.map((item, index) => {
             return (
               <div
-                key={index}
-                className="flex justify-center items-center gap-3"
+                key={`zoom-card-${index}`}
+                className="shrink-0 flex justify-center items-center ml-3"
               >
                 <BackgroundGradientAnimation
                   gradientBackgroundStart="rgb(1 45 107)"
@@ -101,7 +97,7 @@ export default function ZoomCard({ data }: ZoomCardProps) {
                     </p>
                   </div>
                 </BackgroundGradientAnimation>
-                <div className="w-[350px] h-full">
+                <div className="w-[350px] h-full ml-3">
                   <Image
                     src={item.image}
                     alt={item.title}
@@ -128,7 +124,7 @@ export default function ZoomCard({ data }: ZoomCardProps) {
 
       {/* Right gradient overlay */}
       <div
-        className="absolute -right-0 top-0 bottom-0 w-12 sm:w-16 md:w-20 xl:w-28 pointer-events-none z-10"
+        className="absolute right-0 top-0 bottom-0 w-12 sm:w-16 md:w-20 xl:w-64 pointer-events-none z-10"
         style={{
           background:
             "linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.5), transparent)",
@@ -139,7 +135,7 @@ export default function ZoomCard({ data }: ZoomCardProps) {
         <>
           <button
             onClick={scrollPrev}
-            className="absolute left-0 sm:left-4 xl:left-40 cursor-pointer top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-white/80 hover:bg-white flex items-center justify-center hover:scale-110 transition-all duration-100 z-20 shadow-lg"
+            className="absolute left-0 sm:left-4  cursor-pointer top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-white/80 hover:bg-white flex items-center justify-center hover:scale-110 transition-all duration-100 z-20 shadow-lg"
             aria-label="Previous slide"
           >
             <svg
@@ -157,7 +153,7 @@ export default function ZoomCard({ data }: ZoomCardProps) {
           </button>
           <button
             onClick={scrollNext}
-            className="absolute right-0 sm:-right-15 cursor-pointer top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 md:w-12  md:h-12 rounded-full bg-white/80 hover:bg-white flex items-center justify-center hover:scale-110  transition-all duration-100 z-20 shadow-lg"
+            className="absolute right-0 cursor-pointer top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 md:w-12  md:h-12 rounded-full bg-white/80 hover:bg-white flex items-center justify-center hover:scale-110  transition-all duration-100 z-20 shadow-lg"
             aria-label="Next slide"
           >
             <svg
@@ -178,7 +174,7 @@ export default function ZoomCard({ data }: ZoomCardProps) {
 
       {/* Dots Indicator */}
       {data.length > 1 && (
-        <div className="absolute bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 flex space-x-1.5 sm:space-x-2 z-20">
+        <div className="absolute bg-black/50 border border-mix backdrop-blur-sm px-4 py-2 rounded-full bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 flex space-x-1.5 sm:space-x-2 z-20">
           {Array.from({ length: emblaApi?.scrollSnapList().length || 0 }).map(
             (_, index) => (
               <button
