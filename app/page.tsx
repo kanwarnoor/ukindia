@@ -16,6 +16,7 @@ import { useInView } from "react-intersection-observer";
 import FullCard from "@/components/FullCard";
 import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
 import LiquidButton from "@/components/LiquidButton";
+import ZoomCard from "@/components/ZoomCard";
 
 export default function Home() {
   const [video, setVideo] = useState(false);
@@ -192,8 +193,8 @@ export default function Home() {
 
         <div className="hidden md:flex w-1/2 h-5 mt-10 my-0 md:my-20 border-b-2 border-black" />
         {/* who we are */}
-        <section className="flex h-fit w-[90%] md:w-[75%] md:my-0 mt-10 justify-center items-center flex-col">
-          <div className="mx-auto max-w-4xl w-full md:w-full ">
+        <section className="flex h-fit md:w-[75%] md:my-0 mt-10 justify-center items-center flex-col">
+          <div className=" w-full md:w-full">
             {/* Heading */}
             <motion.h2
               initial={{ opacity: 0, x: -20 }}
@@ -205,89 +206,30 @@ export default function Home() {
             </motion.h2>
 
             {/* List */}
-            <div className="w-full flex h-[400px]  gap-2 md:gap-5">
-              <div className="w-[10%] md:w-[25%] flex flex-col justify-center items-center relative">
-                <Image
-                  src="/home/lander/1.webp"
-                  alt="team1"
-                  width={0}
-                  height={0}
-                  sizes="100vw"
-                  className="w-full h-full object-cover object-[35%_10%] mix-blend-multiply brightness-110 z-10 "
-                />
-                <div className="absolute h-full top-0 left-0 w-full bg-tiger" />
-              </div>
-
-              <BackgroundGradientAnimation
-                gradientBackgroundStart="rgb(1 45 107)"
-                gradientBackgroundEnd="rgb(0 11 25)"
-                firstColor="3, 107, 252"
-                secondColor="2, 87, 207"
-                thirdColor="1, 30, 71"
-                fourthColor="139, 187, 254"
-                fifthColor="139, 187, 254"
-                interactive={false}
-                containerClassName="relative w-[80%] md:w-[50%] h-full  flex justify-center items-center"
-              >
-                <div className="w-[80%] z-10 mx-auto h-full flex justify-center items-center absolute top-0 left-0 right-0 bottom-0">
-                  <ul className=" flex gap-5 flex-col text-sm md:text-base text-white font-medium">
-                    {[
+            <div className="relative w-full  flex h-[450px]  justify-center items-center">
+              <ZoomCard
+                data={[
+                  {
+                    title:
                       "The UK India Business Council champions partnerships that drive jobs and growth in both countries.",
+                    image: "/home/lander/1.webp",
+                    link: "",
+                  },
+                  {
+                    title:
                       "We strengthen last-mile connectivity between government, industry, and academia, creating a trusted pathway for trade, investment, and high-impact collaboration.",
+                    image: "/home/lander/2.webp",
+                    link: "",
+                  },
+                  {
+                    title:
                       "We help you realise your potential through forward-looking insights, powerful networks, policy advocacy, and hands-on market-entry support.",
-                    ].map((item, index) => {
-                      return (
-                        <motion.li
-                          key={index}
-                          initial={{ opacity: 0, x: -20 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.5, delay: 0.2 * index }}
-                          className="flex flex-col items-center gap-4"
-                        >
-                          {/* <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      className="size-7  text-navy h-fit "
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
-                        clipRule="evenodd"
-                      />
-                    </svg> */}
-
-                          <p className="leading-5 w-full text-center">{item}</p>
-                        </motion.li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              </BackgroundGradientAnimation>
-
-              <div className="w-[10%] md:w-[25%] flex flex-col justify-center items-center  relative">
-                <Image
-                  src="/home/lander/1.webp"
-                  alt="team1"
-                  width={0}
-                  height={0}
-                  sizes="100vw"
-                  className="w-full h-full object-cover object-[35%_100%] mix-blend-multiply brightness-110 z-10"
-                  style={{ transform: "scaleX(-1)" }}
-                />
-                <div className="absolute h-full top-0 left-0 w-full bg-tiger" />
-              </div>
+                    image: "/home/lander/3.webp",
+                    link: "",
+                  },
+                ]}
+              />
             </div>
-
-            {/* <motion.a
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              href="/meet-the-team"
-              className="mt-12 flex mx-auto w-fit justify-center items-center rounded-full text-center  bg-tiger px-5 py-3 text-md font-bold tracking-wide cursor-pointer text-white transition hover:bg-navy duration-200 "
-            >
-              Meet the team
-            </motion.a> */}
           </div>
           <div className="flex flex-col md:flex-row h-full justify-center items-center mt-10 space-y-8 md:space-y-0 md:space-x-10 ">
             <motion.div

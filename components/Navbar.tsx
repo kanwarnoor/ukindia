@@ -25,7 +25,7 @@ export default function Navbar() {
   const links: NavLink[] = [
     {
       label: "What We Do",
-      href: "#",
+      href: "",
       sublinks: [
         {
           label: "Influence",

@@ -57,14 +57,14 @@ export default function Lander({ title_data, images }: LanderProps) {
           colors={["#f15c23", "#012d6b", "#d8c4b5"]}
           className="absolute h-full w-full flex flex-col justify-center z-10"
         >
-          <div className="w-full mt-10 md:mt-20 xl:mt-0 lg:w-[80%] h-1/2 xl:h-fit flex flex-col justify-center px-6 md:px-10 lg:ml-5 gap-4 md:gap-5  lg:py-0 ">
+          <div className="w-full mt-10 md:mt-20 xl:mt-0 lg:w-[80%] h-1/2 xl:h-fit flex flex-col justify-center px-6 md:px-10 lg:ml-5 gap-4  lg:py-0 ">
             <AnimatePresence mode="wait">
-              <div className="relative min-h-[100px] sm:min-h-[120px] md:min-h-[140px] lg:min-h-[150px] xl:min-h-[180px] 2xl:min-h-[220px] flex items-center">
+              <div key={"title"} className="relative min-h-[100px] sm:min-h-[120px] md:min-h-[140px] lg:min-h-[150px] xl:min-h-[160px] 2xl:min-h-[200px] flex items-center">
                 <motion.div
                   key={currentTitle}
                   className="absolute inset-0 flex flex-row gap-2 lg:w-full w-[70%]"
                 >
-                  <h1 className="text-navy text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-black leading-tight md:leading-10 xl:leading-12 2xl:leading-17 tracking-tight justify-center items-center flex">
+                  <h1 className="text-navy text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-black leading-tight md:leading-10 xl:leading-12 2xl:leading-17 tracking-tight justify-center items-center flex ">
                     <motion.p
                       key={currentTitle}
                       className="flex flex-wrap gap-x-2 md:gap-x-3"
@@ -73,7 +73,7 @@ export default function Lander({ title_data, images }: LanderProps) {
                         .split(" ")
                         .map((word, index) => (
                           <motion.span
-                            key={index}
+                            key={word+index}
                             initial={{
                               opacity: 0,
                               filter: "blur(10px)",
@@ -91,7 +91,7 @@ export default function Lander({ title_data, images }: LanderProps) {
                 </motion.div>
               </div>
 
-              <div className="relative w-full min-h-[40px] sm:min-h-[50px] md:min-h-[80px]  flex items-start">
+              <div key={"desc"} className="relative w-full min-h-[40px] sm:min-h-[50px] md:min-h-[80px]  flex items-start">
                 <motion.p
                   key={`desc-${currentTitle}`}
                   initial={{ opacity: 0, y: 20 }}
@@ -104,7 +104,7 @@ export default function Lander({ title_data, images }: LanderProps) {
                     .split(" ")
                     .map((word, index) => (
                       <motion.span
-                        key={index}
+                        key={(word+index).toString()}
                         initial={{ opacity: 0, filter: "blur(10px)", y: 20 }}
                         animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
                         transition={{ duration: 0.5, delay: 0.1 * index }}
