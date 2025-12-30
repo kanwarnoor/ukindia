@@ -29,15 +29,15 @@ export default function Navbar() {
       sublinks: [
         {
           label: "Influence",
-          href: "#influence",
+          href: "/influence",
         },
         {
           label: "Interaction",
-          href: "#interaction",
+          href: "/interaction",
         },
         {
           label: "Intelligence",
-          href: "#intelligence",
+          href: "/intelligence",
         },
       ],
     },

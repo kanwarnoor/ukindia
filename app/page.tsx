@@ -212,19 +212,19 @@ export default function Home() {
                   {
                     title:
                       "The UK India Business Council champions partnerships that drive jobs and growth in both countries.",
-                    image: "/home/lander/1.webp",
+                    image: "/home/who-we-are/1.webp",
                     link: "",
                   },
                   {
                     title:
                       "We strengthen last-mile connectivity between government, industry, and academia, creating a trusted pathway for trade, investment, and high-impact collaboration.",
-                    image: "/home/lander/2.webp",
+                    image: "/home/who-we-are/2.webp",
                     link: "",
                   },
                   {
                     title:
                       "We help you realise your potential through forward-looking insights, powerful networks, policy advocacy, and hands-on market-entry support.",
-                    image: "/home/lander/3.webp",
+                    image: "/home/who-we-are/3.webp",
                     link: "",
                   },
                 ]}
