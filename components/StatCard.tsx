@@ -12,12 +12,12 @@ export default function StatCard({
   description,
   link,
 }: {
-  title: string;
+  title?: string;
   number: number;
-  valueAfter: string;
-  valueBefore: string;
+  valueAfter?: string;
+  valueBefore?: string;
   description: string;
-  link: string;
+  link?: string;
   animation: "left" | "center" | "right";
 }) {
   const [displayedNumber, setDisplayedNumber] = useState(0);
@@ -93,7 +93,7 @@ export default function StatCard({
           animateCountUp(timestamp);
         });
       }}
-      className="flex flex-col gap-1 w-full sm:w-[300px] md:w-[350px] h-auto min-h-[200px] sm:min-h-[250px] px-4 sm:px-0"
+      className="flex flex-col gap-1 w-full sm:w-[300px] md:w-[350px] h-auto min-h-fit sm:min-h-fit px-4 sm:px-0"
     >
       <p className="text-base sm:text-lg md:text-xl font-bold text-navy">
         {title}
@@ -106,13 +106,17 @@ export default function StatCard({
       <p className="text-sm sm:text-base md:text-xl font-bold text-black">
         {description}
       </p>
-      <hr className="w-1/2 mx-auto h-2 my-2 sm:my-3 border-black" />
-      <motion.a
-        href={link}
-        className="w-fit mx-auto font-bold text-navy border-2 border-navy rounded-full px-3 sm:px-4 py-1.5 sm:py-2 text-sm sm:text-base hover:bg-navy hover:text-white transition-all duration-200"
-      >
-        Read More
-      </motion.a>
+      {link && (
+        <>
+          <hr className="w-1/2 mx-auto h-2 my-2 sm:my-3 border-black" />
+          <motion.a
+            href={link}
+            className="w-fit mx-auto font-bold text-navy border-2 border-navy rounded-full px-3 sm:px-4 py-1.5 sm:py-2 text-sm sm:text-base hover:bg-navy hover:text-white transition-all duration-200"
+          >
+            Read More
+          </motion.a>
+        </>
+      )}
     </motion.div>
   );
 }

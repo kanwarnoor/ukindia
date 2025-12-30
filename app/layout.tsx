@@ -3,6 +3,7 @@ import { DM_Sans, Montserrat } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { NavbarProvider } from "@/lib/navbar-context";
+import Footer from "@/components/Footer";
 
 const dmsans = DM_Sans({
   variable: "--font-dmsans",
@@ -33,6 +34,7 @@ export default function RootLayout({
         <NavbarProvider>
           <Navbar />
           {children}
+          <Footer />
         </NavbarProvider>
       </body>
     </html>

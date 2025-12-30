@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import React, { useState } from "react";
 import Image from "next/image";
 import ImageSlider from "@/components/ImageSlider";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 interface InfoCardProps {
   title1: string;
@@ -32,7 +34,7 @@ export default function InfoCard({
   link,
 }: InfoCardProps) {
   const [clicked, setClicked] = useState(false);
-
+  const router = useRouter();
   const betterDate = date
     ? new Date(date)
         .toLocaleDateString("en-US", {
@@ -74,10 +76,10 @@ export default function InfoCard({
           onClick={() =>
             description
               ? setClicked((clicked) => !clicked)
-              : window.open(link, "_ blank")
+              : router.push(link || "")
           }
         >
-          <div className={`relative w-full duration-300  h-full`}>
+          <div className={`relative w-full duration-300 h-full`}>
             <ImageSlider images={images} time={time} />
 
             <div
@@ -124,13 +126,12 @@ export default function InfoCard({
             </p>
 
             {idiot && (
-              <a
-                href={link}
-                target="_blank"
+              <Link
+                href={link || ""}
                 className="px-5 m-3 py-1 border-2  bg-white text-black border-white font-bold  hover:scale-105 duration-200 rounded-full"
               >
                 Read more
-              </a>
+              </Link>
             )}
           </motion.div>
         </div>
