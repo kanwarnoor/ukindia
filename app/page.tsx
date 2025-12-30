@@ -191,9 +191,9 @@ export default function Home() {
           />
         </div>
 
-        <div className="hidden md:flex w-1/2 h-5 mt-10 my-0 md:my-20 border-b-2 border-black" />
+        {/* <div className="hidden md:flex w-1/2 h-5 mt-10 my-0 md:my-20 border-b-2 border-black" /> */}
         {/* who we are */}
-        <section className="flex h-fit md:w-[75%] md:my-0 mt-10 justify-center items-center flex-col">
+        <section className="flex h-fit md:w-[75%] md:my-10 md:mt-20 mt-20 justify-center items-center flex-col">
           <div className=" w-full md:w-full">
             {/* Heading */}
             <motion.h2
@@ -245,7 +245,7 @@ export default function Home() {
               </div>
             </motion.div>
 
-            <div className="w-full flex flex-col md:flex-row justify-center items-center gap-5 mt-5 md:mt-10 relative ">
+            <div className="w-full flex flex-col md:flex-row justify-center items-center gap-5 mt-5 md:mt-20 relative ">
               <div className="w-full md:w-[600px] aspect-video max-w-full rounded-xl relative ">
                 {!video && (
                   <>
@@ -474,7 +474,7 @@ export default function Home() {
         {/* </AuroraBackground> */}
       </BackgroundGradientAnimation>
 
-      <div className="w-full h-fit flex flex-col justify-center items-center py-10 ">
+      <div className="w-full h-fit flex flex-col justify-center items-center pt-10 pb-30 ">
         <Companies
           images={[
             "/home-company1.png",
@@ -486,9 +486,9 @@ export default function Home() {
           ]}
         />
 
-        <div className="w-1/2 h-5 my-10 border-b-2 border-black" />
+        {/* <div className="w-1/2 h-5 my-10 border-b-2 border-black" /> */}
 
-        <div className=" h-fit flex justify-between items-center w-[90%] md:w-full max-w-7xl mx-auto pt-10">
+        <div className=" h-fit flex justify-between items-center w-[90%] md:w-full max-w-7xl mx-auto mt-20">
           <p className="md:text-5xl text-3xl font-bold text-navy">UKIBC news</p>
           <a
             href="/news"
