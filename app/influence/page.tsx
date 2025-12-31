@@ -71,7 +71,7 @@ export default function Influence() {
       /> */}
 
       <section id="more">
-        <div className="w-full h-fiy py-20">
+        {/* <div className="w-full h-fiy py-20">
           <p className=" text-xl font-bold w-[60%] m-auto text-justify">
             We work to create a level playing field where industries can grow
             with confidence, clarity, and fairness. This is achieved through
@@ -80,9 +80,9 @@ export default function Influence() {
             roundtables, forums, receptions, delegations, and direct
             industry–government interactions.
           </p>
-        </div>
+        </div> */}
 
-        <div className="flex flex-row w-[90%] h-[700px] mx-auto items-stretch justify-center pb-20 gap-6">
+        <div className="flex flex-row w-[90%] h-[700px] mx-auto items-stretch justify-center pb-20 gap-6 mt-20">
           <div className="w-1/2 flex flex-col gap-10 items-center justify-center bg-black/5 rounded-4xl p-15 h-full">
             <h1 className="text-5xl font-bold text-navy">Our Approach</h1>
             <p className="text-lg font-medium px-10 m-auto ">
@@ -243,7 +243,7 @@ export default function Influence() {
                 );
               })}
             </ul>
-            <div className="w-full h-fit flex flex-row sm:flex-row gap-6 sm:gap-10 md:gap-15 justify-center items-center text-center ">
+            <div className="w-full  h-fit flex flex-row sm:flex-row gap-6 sm:gap-10 md:gap-15 justify-center text-center ">
               <StatCard
                 animation="left"
                 number={105}
