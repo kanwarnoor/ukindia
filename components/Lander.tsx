@@ -7,10 +7,14 @@ import { WavyBackground } from "@/components/ui/wavy-background";
 import ImageSlider from "@/components/ImageSlider";
 
 interface LanderProps {
+  ref?: React.RefObject<HTMLDivElement>;
   title_data: {
     title: string;
+    title2?: string;
     des: string;
   }[];
+  flip?: boolean;
+  currency?: boolean;
   images:
     | Array<{
         image: string;
@@ -19,7 +23,12 @@ interface LanderProps {
     | [];
 }
 
-export default function Lander({ title_data, images }: LanderProps) {
+export default function Lander({
+  title_data,
+  images,
+  ref,
+  flip = false,
+}: LanderProps) {
   const [currentTitle, setCurrentTitle] = useState(0);
 
   const [currency, setCurrency] = useState<{ GBP: number; INR: number }>({
@@ -49,22 +58,38 @@ export default function Lander({ title_data, images }: LanderProps) {
   }, []);
 
   return (
-    <div className="max-w-screen overflow-hidden h-screen flex flex-col lg:flex-row justify-center bg-white">
+    <div
+      className={`max-w-screen overflow-hidden h-screen flex flex-col lg:flex-row ${
+        flip ? "lg:flex-row-reverse" : "lg:flex-row"
+      } justify-center bg-white`}
+      ref={ref as unknown as React.RefObject<HTMLDivElement>}
+    >
       {/* Text and Wavy Background Section */}
-      <div className="w-full lg:w-1/2 relative h-full lg:min-h-screen  ">
+      <div className="w-full  lg:w-1/2 relative h-full lg:min-h-screen  ">
         <WavyBackground
           backgroundFill="white"
           colors={["#f15c23", "#012d6b", "#d8c4b5"]}
-          className="absolute h-full w-full flex flex-col justify-center z-10"
+          className={`absolute h-full w-full flex flex-col ${
+            flip ? "items-center" : "items-start"
+          } justify-center z-10 `}
         >
-          <div className="w-full mt-10 md:mt-20 xl:mt-0 lg:w-[80%] h-1/2 xl:h-fit flex flex-col justify-center px-6 md:px-10 lg:ml-5 gap-6  lg:py-0 ">
+          <div
+            className={`w-full mt-10 md:mt-20 xl:mt-0 h-1/2 xl:h-fit flex flex-col justify-center px-6 md:px-10 lg:ml-5 gap-6 lg:py-0 ${
+              flip ? "lg:w-[80%]" : "lg:w-[80%]"
+            }`}
+          >
             <AnimatePresence mode="wait">
-              <div key={"title"} className="relative min-h-[100px] sm:min-h-[120px] md:min-h-[140px] lg:min-h-[150px] xl:min-h-[160px] 2xl:min-h-[200px] flex items-center">
+              <div
+                key={"title"}
+                className={`relative h-fit ${
+                  flip ? "2xl:min-h-[100px]" : "2xl:min-h-[200px]"
+                } flex items-center `}
+              >
                 <motion.div
                   key={currentTitle}
                   className="absolute inset-0 flex flex-row gap-2 lg:w-full w-[70%]"
                 >
-                  <h1 className="text-navy text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-black leading-tight md:leading-10 xl:leading-12 2xl:leading-16 tracking-tight justify-center items-center flex ">
+                  <h1 className="text-navy text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-black leading-tight md:leading-10 xl:leading-12 2xl:leading-16 tracking-tight justify-center items-center flex">
                     <motion.p
                       key={currentTitle}
                       className="flex flex-wrap gap-x-2 md:gap-x-3"
@@ -73,7 +98,7 @@ export default function Lander({ title_data, images }: LanderProps) {
                         .split(" ")
                         .map((word, index) => (
                           <motion.span
-                            key={word+index}
+                            key={word + index}
                             initial={{
                               opacity: 0,
                               filter: "blur(10px)",
@@ -91,20 +116,27 @@ export default function Lander({ title_data, images }: LanderProps) {
                 </motion.div>
               </div>
 
-              <div key={"desc"} className="relative w-full min-h-[40px] sm:min-h-[50px] md:min-h-[80px]  flex items-start">
+              <div
+                key={"desc"}
+                className={`relative w-full  ${
+                  flip
+                    ? "md:min-h-[130px]"
+                    : "min-h-[40px] sm:min-h-[50px] md:min-h-[80px]"
+                } flex items-start`}
+              >
                 <motion.p
                   key={`desc-${currentTitle}`}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
-                  className="absolute top-0 left-0 text-black/90 text-[12px] sm:text-sm font-medium w-[90%] flex flex-wrap gap-x-1 leading-[1.3] sm:leading-[1.4]"
+                  className="absolute text-black/90 text-[12px] sm:text-sm font-medium w-[90%] flex flex-wrap gap-x-1 leading-[1.3] sm:leading-[1.4]"
                 >
                   {title_data[currentTitle].des
                     .split(" ")
                     .map((word, index) => (
                       <motion.span
-                        key={(word+index).toString()}
+                        key={(word + index).toString()}
                         initial={{ opacity: 0, filter: "blur(10px)", y: 20 }}
                         animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
                         transition={{ duration: 0.5, delay: 0.1 * index }}
@@ -144,7 +176,9 @@ export default function Lander({ title_data, images }: LanderProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.5 }}
-              className="text-black/90 w-fit md:text-xl font-medium mt-10 text-base px-4 py-2 rounded-full flex flex-row gap-2"
+              className={`text-black/90 bg- w-fit md:text-xl font-medium mt-10 text-base px-4 py-2 rounded-full flex flex-row gap-2 ${
+                currency ? "hidden" : "flex"
+              }`}
             >
               <div className="flex flex-row items-center gap-2">
                 <svg

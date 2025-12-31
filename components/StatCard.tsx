@@ -10,11 +10,13 @@ export default function StatCard({
   valueAfter,
   valueBefore,
   description,
+  color,
   link,
 }: {
   title?: string;
   number: number;
   valueAfter?: string;
+  color?: "black" | "white";
   valueBefore?: string;
   description: string;
   link?: string;
@@ -103,7 +105,11 @@ export default function StatCard({
         {displayedNumber}
         {valueAfter}
       </span>
-      <p className="text-sm sm:text-base md:text-xl font-bold text-black">
+      <p
+        className={`text-sm sm:text-base md:text-xl font-bold ${
+          color == "white" ? "text-white" : "text-black"
+        } `}
+      >
         {description}
       </p>
       {link && (
