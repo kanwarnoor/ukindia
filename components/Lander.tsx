@@ -82,7 +82,7 @@ export default function Lander({
               <div
                 key={"title"}
                 className={`relative h-fit ${
-                  flip ? "2xl:min-h-[100px]" : "2xl:min-h-[200px]"
+                  flip ? "2xl:min-h-[60px]" : "2xl:min-h-[200px]"
                 } flex items-center `}
               >
                 <motion.div
@@ -115,6 +115,38 @@ export default function Lander({
                   </h1>
                 </motion.div>
               </div>
+              {title_data[currentTitle].title2 && (
+                <div
+                  key={"desc"}
+                  className={`relative w-full  ${
+                    flip
+                      ? "md:min-h-[30px]"
+                      : "min-h-[40px] sm:min-h-[50px] md:min-h-[80px]"
+                  } flex items-start`}
+                >
+                  <motion.p
+                    key={`desc-${currentTitle}`}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    className="absolute text-navy/90 text-xl font-bold w-[90%] flex flex-wrap gap-x-1 leading-[1.3] sm:leading-[1.4]"
+                  >
+                    {title_data[currentTitle].title2?.split(" ")
+                      .map((word, index) => (
+                        <motion.span
+                          key={(word + index).toString()}
+                          initial={{ opacity: 0, filter: "blur(10px)", y: 20 }}
+                          animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+                          transition={{ duration: 0.5, delay: 0.1 * index }}
+                          className="inline-block"
+                        >
+                          {word}{" "}
+                        </motion.span>
+                      ))}
+                  </motion.p>
+                </div>
+              )}
 
               <div
                 key={"desc"}
@@ -147,6 +179,7 @@ export default function Lander({
                     ))}
                 </motion.p>
               </div>
+             
             </AnimatePresence>
             <motion.a
               initial={{ opacity: 0, y: 20 }}

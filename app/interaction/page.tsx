@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect } from "react";
-import SimpleLander from "@/components/simpleLander";
 import { useInView } from "react-intersection-observer";
 import { useSetNavbar } from "@/lib/navbar-context";
 import Image from "next/image";
@@ -14,7 +13,7 @@ import Lander from "@/components/Lander";
 import ImageSlider from "@/components/ImageSlider";
 import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
 
-export default function Influence() {
+export default function Interaction() {
   const setNavbar = useSetNavbar();
 
   const { ref: intelligenceRef, inView: intelligenceInView } = useInView({
@@ -48,7 +47,7 @@ export default function Influence() {
         ref={landerRef as unknown as React.RefObject<HTMLDivElement>}
         title_data={[
           {
-            title: "Influence",
+            title: "Interaction",
             title2: "Shaping the Conversations That Shape Policy",
             des: "We work to create a level playing field where industries can grow with confidence, clarity, and fairness. This is achieved through sustained advocacy with government and regulatory bodies, and by facilitating highimpact engagements including policy dialogues, roundtables, forums, receptions, delegations, and direct industry–government interactions",
           },
