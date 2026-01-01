@@ -10,8 +10,10 @@ interface InfoCardProps {
   description?: string;
   image: string;
   date?: string;
-  link?: string;
+  link?: string;  
+  buttonText?: string;
   large?: boolean | false;
+  extraLarge?: boolean | false;
   idiot?: boolean | false;
   animation: "left" | "center" | "right";
 }
@@ -22,8 +24,10 @@ export default function InfoCard({
   image,
   des,
   description,
+  buttonText,
   animation,
   large,
+  extraLarge,
   idiot,
   link,
 }: InfoCardProps) {
@@ -64,7 +68,6 @@ export default function InfoCard({
       transition={{
         duration: 0.1,
       }}
-
       // onClick={() => setClicked1((clicked1) => !clicked1)}
       className="flex flex-col cursor-pointer md:w-[350px] md:h-[400px] w-[300px] h-[340px] bg-black/50 backdrop-blur-xl rounded-2xl"
     >
@@ -95,6 +98,8 @@ export default function InfoCard({
                ${
                  large
                    ? "[mask-image:linear-gradient(to_top,black_70%,transparent)]"
+                   : extraLarge
+                   ? "[mask-image:linear-gradient(to_top,black_100%,transparent)]"
                    : "[mask-image:linear-gradient(to_top,black_50%,transparent)]"
                }
                [Webkit-mask-image:linear-gradient(to_top,black_50%,transparent)] rounded-b-2xl`}
@@ -111,10 +116,10 @@ export default function InfoCard({
               duration: 0.5,
             }}
             className={` w-full ${
-              large ? "h-1/2" : "h-1/3"
+              large ? "h-1/2" : extraLarge ? "h-1/2  p-2 justify-start" : "h-1/3"
             } transition px-5 absolute flex flex-col m-auto justify-center items-center  left-0 right-0 bottom-0 rounded-b-2xl `}
-          >
-            {large ? (
+          > 
+            {large || extraLarge ? (
               <p className="text-white font-bold md:text-3xl leading-tight text-xl text-center line-clamp-3 overflow-hidden">
                 {title1}
               </p>
@@ -219,7 +224,7 @@ export default function InfoCard({
                   target="_blank"
                   className="px-5 py-2 border-2 border-white rounded-full hover:scale-110 duration-200"
                 >
-                  Read more
+                  {buttonText || "Read more"}
                 </a>
               </motion.div>
             )}

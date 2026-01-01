@@ -1,9 +1,7 @@
 "use client";
 
-import React, { useEffect } from "react";
-import SimpleLander from "@/components/simpleLander";
+import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
-import BoxImageText from "@/components/BoxImageText";
 import { useSetNavbar } from "@/lib/navbar-context";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -12,10 +10,13 @@ import Fullscreen from "@/components/Fullscreen";
 import Carousel from "@/components/Carousel";
 import StatCard from "@/components/StatCard";
 import Lander from "@/components/Lander";
+import BoxImageText from "@/components/BoxImageText";
 import ImageSlider from "@/components/ImageSlider";
+import axios from "axios";
 import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
+import InfoCard from "@/components/InfoCard";
 
-export default function Influence() {
+export default function Intelligence() {
   const setNavbar = useSetNavbar();
 
   const { ref: intelligenceRef, inView: intelligenceInView } = useInView({
@@ -31,6 +32,81 @@ export default function Influence() {
     rootMargin: "0px 0px -89% 0px",
   });
 
+  const sectors = [
+    {
+      name: "Agritech",
+      image: "/3-eyes/interaction/agritech.svg",
+    },
+    {
+      name: "Automotive",
+      image: "/3-eyes/interaction/automotive.svg",
+    },
+    {
+      name: "Chemicals",
+      image: "/3-eyes/interaction/chemicals.svg",
+    },
+    {
+      name: "Defence",
+      image: "/3-eyes/interaction/defence.svg",
+    },
+    {
+      name: "Digital Economy",
+      image: "/3-eyes/interaction/money.svg",
+    },
+    {
+      name: "Financial and Professional Services",
+      image: "/3-eyes/interaction/financial.svg",
+    },
+    {
+      name: "Food & Drink",
+      image: "/3-eyes/interaction/food-drink.svg",
+    },
+    {
+      name: "Healthcare",
+      image: "/3-eyes/interaction/healthcare.svg",
+    },
+    {
+      name: "Infrastructure",
+      image: "/3-eyes/interaction/infrastructure.svg",
+    },
+    {
+      name: "Legal Services",
+      image: "/3-eyes/interaction/legal.svg",
+    },
+    {
+      name: "Life Sciences",
+      image: "/3-eyes/interaction/life-science.svg",
+    },
+    {
+      name: "Music",
+      image: "/3-eyes/interaction/music.svg",
+    },
+    {
+      name: "Oil & Gas",
+      image: "/3-eyes/interaction/oil-gass.svg",
+    },
+    {
+      name: "Renewable Energy",
+      image: "/3-eyes/interaction/renewable-energy.svg",
+    },
+    {
+      name: "Leisure & Tourism",
+      image: "/3-eyes/interaction/tourism.svg",
+    },
+    {
+      name: "Smart Cities",
+      image: "/3-eyes/interaction/smart-cities.svg",
+    },
+    {
+      name: "Sports",
+      image: "/3-eyes/interaction/sports.svg",
+    },
+    {
+      name: "Trade Bodies and Government Agencies",
+      image: "/3-eyes/interaction/trade.svg",
+    },
+  ];
+
   useEffect(() => {
     if (intelligenceInView) {
       setNavbar(true);
@@ -43,15 +119,26 @@ export default function Influence() {
     }
   }, [intelligenceInView, membershipInView, landerInView, setNavbar]);
 
+  // const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://bryanp25.sg-host.com/wp-json/wp/v2/event?_embed")
+      .then((res) => {
+        // setEvents(res.data);
+        console.log(res.data);
+      });
+  }, []);
+
   return (
     <>
       <Lander
         ref={landerRef as unknown as React.RefObject<HTMLDivElement>}
         title_data={[
           {
-            title: "Influence",
-            title2: "Shaping the Conversations That Shape Policy",
-            des: "We work to create a level playing field where industries can grow with confidence, clarity, and fairness. This is achieved through sustained advocacy with government and regulatory bodies, and by facilitating highimpact engagements including policy dialogues, roundtables, forums, receptions, delegations, and direct industry–government interactions",
+            title: "Intelligence",
+            title2: "Markets, Momentum, Mastery",
+            des: "We help you make informed decisions across the UK–India corridor. Our intelligence services combine market research, partner identification, and strategic advisory to support entry, expansion, and scale. We deliver sector-specific research and policy-aware insights, translating complexity into clear, actionable direction so you can move with confidence and reduce risk at every stage.",
           },
         ]}
         flip={true}
@@ -83,17 +170,66 @@ export default function Influence() {
             industry–government interactions.
           </p>
         </div> */}
+        <section className="hidden w-full pt-20 bg-white text-black">
+          <div className="w-full flex flex-col items-center">
+            <h2 className="text-4xl md:text-5xl font-bold text-navy text-center mb-2">
+              Key Sectors
+            </h2>
+            <p className="text-lg text-gray-700 text-center mb-10 max-w-2xl">
+              UKIBC supports companies across a wide range of sectors
+            </p>
+            <div className="mx-auto grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-y-5 justify-items-center w-[90%] max-w-7xl">
+              {sectors.map((sector, index) => (
+                <motion.div
+                  initial={{
+                    y: 10,
+                    opacity: 0,
+                  }}
+                  whileInView={{
+                    y: 0,
+                    opacity: 1,
+                  }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  key={index}
+                  className="flex flex-col hover:scale-105  cursor-pointer text-center bg-navy/5 w-[180px] rounded-4xl h-[180px] justify-center items-center"
+                >
+                  <Image
+                    src={sector.image as string}
+                    alt={sector.name}
+                    width={80}
+                    height={80}
+                    className="w-16 h-16 mb-1 p-3"
+                  />
+                  <span className="text-base font-bold leading-tight ">
+                    {sector.name}
+                  </span>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
 
-      
-        <BoxImageText
-          title="Our Approach"
-          description="Our expert in-house team of account managers, sector specialists, and consultants curate and convene a powerful bilateral network spanning industry, academia, and government, creating platforms where informed dialogue shapes outcomes. <br/><br/>We work in partnership with multiple levels of government: at the National and State levels in India, and the devolved administration, city region, and national levels in the UK."
-          buttonText="Meet the team"
-          className="my-20"
-          buttonLink="/team"
-          images={[{ image: "/home/eyes/influence-1.png", position: "center" }, { image: "/home/eyes/influence-2.png", position: "center" }, { image: "/home/eyes/influence-3.png", position: "center" }]}
-          flip={false}
-        />
+        <div className="flex gap-5 flex-col my-20">
+          <BoxImageText
+            title="Strategic Intelligence"
+            description="Your business is unique, and so is our approach. At the UKIBC, we focus on understanding the success factors that matter most to you. Our intelligence spans all market entry research areas. We create and curate knowledge, distilling it into actionable insights that fit your exact business needs."
+            buttonText="Learn more"
+            buttonLink="/strategic-intelligence"
+            images={[
+              { image: "/3-eyes/intel/intel1.jpeg", position: "center" },
+            ]}
+            flip={false}
+          />
+
+          <BoxImageText
+            title="Incorporation and Compliance"
+            description="We provide end-to-end support, from company registration and business setup to legal, regulatory, and accounting guidance. We also connect you with a trusted network of professional service partners to help you build the right ecosystem from day one."
+            buttonText="Business Launchpad"
+            buttonLink="/launchpad"
+            images={[{ image: "/3-eyes/intel/intel4.jpg", position: "center" }]}
+            flip={true}
+          />
+        </div>
 
         <BackgroundGradientAnimation
           gradientBackgroundStart="rgb(251 206 188)"
@@ -113,7 +249,7 @@ export default function Influence() {
             <h1 className="text-5xl font-bold text-white flex   w-[40%]">
               Our intelligence network supports your
             </h1>
-            <ul className="flex gap-10">
+            {/* <ul className="flex gap-10">
               {[
                 "Business Operations",
                 "Government Relations",
@@ -193,37 +329,43 @@ export default function Influence() {
                   </motion.div>
                 );
               })}
-            </ul>
+            </ul> */}
             <div className="w-full  h-fit flex flex-row sm:flex-row gap-6 sm:gap-10 md:gap-15 justify-center text-center ">
               <StatCard
                 animation="left"
-                number={105}
-                description="UKIBC Members"
+                number={825}
+                valueAfter="+"
+                title="Over"
+                description="Businesses and universities have used our services"
                 color="white"
               />
               <StatCard
                 animation="center"
-                number={1200}
-                description="Attendees in financial year 2024/25"
+                number={40000}
+                title="UKIBC recruited"
+                description="students from UKIBC Consortium Universities"
                 color="white"
               />
               <StatCard
                 animation="right"
-                number={4}
-                description="MoUs with State Governments Signed"
+                title="Our Members Contribute"
+                valueBefore="£"
+                number={600}
+                valueAfter=" Billion"
+                description="of revenue to the worlds economy"
                 color="white"
               />
             </div>
           </div>
         </BackgroundGradientAnimation>
 
-        <div className="w-full h-fit py-20 px-0 bg-transparent">
+        <div className=" hidden w-full h-fit py-20 px-0 bg-transparent">
           <div className="w-full max-w-6xl mx-auto flex flex-col gap-12">
             {/* Top Row: Image (moving images) + Text */}
             <div className=" w-full flex flex-col md:flex-row gap-6 bg-mix/10 p-4 rounded-4xl justify-center items-center ">
               {/* Left: Image or video placeholder */}
               <div className="flex-1 flex items-stretch rounded-2xl overflow-hidden min-h-[150px] max-h-[230px] relative bg-blue-200">
-                {/* Replace the div below with an animated image carousel or video as needed */}
+                {/* Replace the div below with an <animate>d image carousel or video as needed */}
                 <ImageSlider
                   images={[
                     { image: "/home/eyes/influence-1.png", position: "center" },
@@ -316,6 +458,56 @@ export default function Influence() {
           </div>
         </div>
 
+        <div className="w-full h-fit flex justify-center items-center py-20 bg-black/5">
+          <Carousel
+            data={[
+              {
+                quote:
+                  "UKIBC provided us with excellent advice and support at every stage in the recruitment. Our membership enables us to tap into a network of universities and other UK-focused organisations. This is useful for our wider objectives of engagement with Indian universities and businesses with whom we seek research collaboration and employment opportunities for our graduates.",
+                name: "Richard Cotton",
+                role: "Director of Student Recruitment and Outreach, University of Manchester",
+                image: "/home/testimonial/richard.jpg",
+              },
+              {
+                quote:
+                  "I have nothing but praise for Gunjan’s team. They have been very proactive about delivering what they said they would. I’d highly recommend them. What they’re delivering for us is exactly what we asked them to deliver. Their reports are bespoke to us and delivered what they said they would.",
+                name: "Cameron Hunt",
+                role: "Anglo American",
+                image: "/home/testimonial/hunt.png",
+              },
+              {
+                quote:
+                  "The UKIBC set up our subsidiary. They have been managing our India company compliance over the past five years and providing market advice when needed. Our team has tripled as we build valuable business ties.",
+                name: "Jonathan Mahoney",
+                role: "Biocomposites",
+                image: "/person.jpg",
+              },
+            ]}
+          />
+        </div>
+        <div className="w-full h-fit flex flex-row justify-center items-center gap-10 pb-20 bg-black/5">
+          <InfoCard
+            animation="left"
+            title1="Reports"
+            des="Our intelligence comes to life through rigorous reports grounded in market research and policy insight"
+            image="/3-eyes/intel/intel1.jpeg"
+            buttonText="Reports"
+            idiot={true}
+            extraLarge={true}
+            link="/reports"
+          />
+          <InfoCard
+            animation="right"
+            title1="Case Studies"
+            des="See how our members have successfully entered, expanded, and scaled across the UK–India corridor, offering practical lessons, strategic clarity, and proven pathways for informed decision-making."
+            image="/3-eyes/intel/intel1.jpeg"
+            buttonText="Case Studies"
+            idiot={true}
+            extraLarge={true}
+            link="/business-solution-projects"
+          />
+        </div>
+
         <Fullscreen
           ref={membershipRef as unknown as React.RefObject<HTMLDivElement>}
           title1="Membership"
@@ -325,26 +517,6 @@ export default function Influence() {
           buttonText="JOIN THE NETWORK"
           buttonLink="/membership"
         />
-        <div className="w-full h-fit flex justify-center items-center py-20 bg-black/5">
-          <Carousel
-            data={[
-              {
-                quote:
-                  "UKIBC is now at the forefront of their dialogue for sustainability and how energy transition is advancing and the technology benefits that can happen between the two countries.",
-                name: "Nandita- Sahgal Tully",
-                role: "Group Board Member UKIBC",
-                image: "/home/testimonial/nandita.webp",
-              },
-              {
-                quote:
-                  "Tata is a long-standing UKIBC member as we value the insights their excellent team provide and the interactions they curate with senior figures from business and government.",
-                name: "Tim Jones",
-                role: "Executive Director, Tata",
-                image: "/home/testimonial/tim.webp",
-              },
-            ]}
-          />
-        </div>
 
         <div className="w-full h-fit flex flex-row justify-center items-center">
           <div className="w-full max-w-6xl mx-auto flex flex-col gap-8 items-center justify-center text-center">

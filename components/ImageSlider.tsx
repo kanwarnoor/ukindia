@@ -35,19 +35,23 @@ export default function ImageSlider({
       <AnimatePresence mode="sync" initial={false}>
         <motion.div
           key={currentImageState}
-          initial={{ scale: 1, y: 0 }}
+          initial={{ scale: 1, y: 0, opacity: 1 }}
           animate={
             animation === "zoom"
-              ? { scale: 1.1 }
+              ? { scale: 1.1, opacity: 1 }
               : animation === "up"
-              ? { y: -10 }
+              ? { y: -10, opacity: 1 }
               : {}
           }
           transition={
             animation === "zoom"
-              ? { duration: 10 }
+              ? { duration: 10, opacity: { duration: 0.5, ease: "easeInOut" } }
               : animation === "up"
-              ? { duration: 10, y: { ease: "easeInOut" } }
+              ? {
+                  duration: 10,
+                  y: { duration: 0.5, ease: "easeInOut" },
+                  opacity: { duration: 0.5, ease: "easeInOut" },
+                }
               : {}
           }
           className="w-full h-full"

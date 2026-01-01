@@ -117,7 +117,7 @@ export default function Lander({
               </div>
               {title_data[currentTitle].title2 && (
                 <div
-                  key={"desc"}
+                  key={"title2"}
                   className={`relative w-full  ${
                     flip
                       ? "md:min-h-[30px]"
@@ -132,7 +132,8 @@ export default function Lander({
                     transition={{ duration: 0.5, delay: 0.2 }}
                     className="absolute text-navy/90  text-base md:text-xl font-bold w-[90%] flex flex-wrap gap-x-1 leading-[1.3] sm:leading-[1.4]"
                   >
-                    {title_data[currentTitle].title2?.split(" ")
+                    {title_data[currentTitle].title2
+                      ?.split(" ")
                       .map((word, index) => (
                         <motion.span
                           key={(word + index).toString()}
@@ -149,7 +150,7 @@ export default function Lander({
               )}
 
               <div
-                key={"desc"}
+                key={"description"}
                 className={`relative w-full  ${
                   flip
                     ? "md:min-h-[130px]"
@@ -179,7 +180,6 @@ export default function Lander({
                     ))}
                 </motion.p>
               </div>
-             
             </AnimatePresence>
             <motion.a
               initial={{ opacity: 0, y: 20 }}

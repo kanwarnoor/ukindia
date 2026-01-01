@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { useSetNavbar } from "@/lib/navbar-context";
 import Image from "next/image";
@@ -11,6 +11,8 @@ import Carousel from "@/components/Carousel";
 import StatCard from "@/components/StatCard";
 import Lander from "@/components/Lander";
 import ImageSlider from "@/components/ImageSlider";
+import BoxImageText from "@/components/BoxImageText";
+import axios from "axios";
 import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
 
 export default function Interaction() {
@@ -116,6 +118,17 @@ export default function Interaction() {
     }
   }, [intelligenceInView, membershipInView, landerInView, setNavbar]);
 
+  // const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://bryanp25.sg-host.com/wp-json/wp/v2/event?_embed")
+      .then((res) => {
+        // setEvents(res.data);
+        console.log(res.data);
+      });
+  }, []);
+
   return (
     <>
       <Lander
@@ -195,72 +208,20 @@ export default function Interaction() {
           </div>
         </section>
 
-        <div className="flex flex-row w-[90%] h-[700px] mx-auto items-stretch justify-center pb-20 gap-6 mt-20">
-          <div className="w-1/2 flex flex-col gap-10 items-center justify-center bg-black/5 rounded-4xl p-15 h-full">
-            <h1 className="text-4xl font-bold text-navy text-center w-[80%] m-auto">
-              The Higher Education Success Blueprint
-            </h1>
-            <p className="text-lg font-medium px-10 m-auto ">
-              India’s higher education landscape is undergoing a structural
-              shift under NEP 2020, opening new pathways for transnational
-              education and global collaboration. To compete in this evolving
-              environment, universities need policy clarity, local intelligence,
-              and last-mile connectivity.
-              <br /> <br />
-              UKIBC enables institutions to navigate change, identify
-              opportunity, and establish a credible presence across India’s
-              education ecosystem. Our Intelligence Unit delivers
-              forward-looking market research, institutional mapping, and policy
-              insight, translating complexity into actionable strategy.
-            </p>
-            <LiquidButton text="Meet the team" link="/team" />
-          </div>
-          <div className="w-1/2 flex items-center bg-black/5 justify-center relative rounded-4xl p-10 h-full min-h-full">
-            <ImageSlider
-              rounded={true}
-              animation="up"
-              images={[
-                { image: "/home/who-we-are/3.webp", position: "center" },
-                { image: "/home/eyes/intel-4.png", position: "center" },
-              ]}
-            />
-            {/* <motion.div
-              initial={{
-                x: 10,
-                y: 10,
-              }}
-              whileInView={{
-                x: 0,
-                y: 0,
-                transition: { duration: 0.5 },
-              }}
-              whileTap={{
-                x: 10,
-                y: 10,
-                transition: { duration: 0.1 },
-              }}
-              transition={{ duration: 0.1 }}
-              className="w-[400px] h-[350px] z-10 cursor-pointer "
-            >
-              <Image
-                src="/3-eyes/influence1.webp"
-                alt="influence"
-                width={0}
-                height={0}
-                sizes="100vw"
-                className="w-full h-full object-cover rounded-xl"
-              />
-            </motion.div>
-            <motion.div
-              initial={{
-                x: 20,
-                y: 20,
-              }}
-              className="absolute w-[400px] h-[350px] bg-tiger rounded-xl"
-            ></motion.div> */}
-          </div>
-        </div>
-
+        <BoxImageText
+          title="The Higher Education Success Blueprint"
+          description="India’s higher education landscape is undergoing a structural shift under NEP 2020, opening new pathways for transnational education and global collaboration. To compete in this evolving environment, universities need policy clarity, local intelligence, and last-mile connectivity. <br/><br/>UKIBC enables institutions to navigate change, identify opportunity, and establish a credible presence across India’s education ecosystem. Our Intelligence Unit delivers forward-looking market research, institutional mapping, and policy insight, translating complexity into actionable strategy."
+          buttonText="Meet the team"
+          buttonLink="/team"
+          className="my-20"
+          images={[
+            { image: "/home/who-we-are/3.webp", position: "center" },
+            { image: "/home/eyes/intel-4.png", position: "center" },
+          ]}
+          flip={false}
+        />
+       
+ 
         <BackgroundGradientAnimation
           gradientBackgroundStart="rgb(251 206 188)"
           gradientBackgroundEnd="rgb(241 92 35)"
