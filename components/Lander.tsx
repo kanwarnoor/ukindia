@@ -82,7 +82,7 @@ export default function Lander({
               <div
                 key={"title"}
                 className={`relative h-fit ${
-                  flip ? "2xl:min-h-[60px]" : "2xl:min-h-[200px]"
+                  flip ? "2xl:min-h-[60px]" : "2xl:min-h-[200px] min-h-[70px] "
                 } flex items-center `}
               >
                 <motion.div
@@ -92,7 +92,7 @@ export default function Lander({
                   <h1 className="text-navy text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-black leading-tight md:leading-10 xl:leading-12 2xl:leading-16 tracking-tight justify-center items-center flex">
                     <motion.p
                       key={currentTitle}
-                      className="flex flex-wrap gap-x-2 md:gap-x-3"
+                      className="flex flex-wrap gap-x-2 md:gap-x-3 "
                     >
                       {title_data[currentTitle].title
                         .split(" ")
@@ -121,7 +121,7 @@ export default function Lander({
                   className={`relative w-full  ${
                     flip
                       ? "md:min-h-[30px]"
-                      : "min-h-[40px] sm:min-h-[50px] md:min-h-[80px]"
+                      : "min-h-[80px] sm:min-h-[50px] md:min-h-[80px]"
                   } flex items-start`}
                 >
                   <motion.p
@@ -130,7 +130,7 @@ export default function Lander({
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
-                    className="absolute text-navy/90 text-xl font-bold w-[90%] flex flex-wrap gap-x-1 leading-[1.3] sm:leading-[1.4]"
+                    className="absolute text-navy/90  text-base md:text-xl font-bold w-[90%] flex flex-wrap gap-x-1 leading-[1.3] sm:leading-[1.4]"
                   >
                     {title_data[currentTitle].title2?.split(" ")
                       .map((word, index) => (
@@ -153,7 +153,7 @@ export default function Lander({
                 className={`relative w-full  ${
                   flip
                     ? "md:min-h-[130px]"
-                    : "min-h-[40px] sm:min-h-[50px] md:min-h-[80px]"
+                    : "min-h-[70px] sm:min-h-[50px] md:min-h-[80px]"
                 } flex items-start`}
               >
                 <motion.p
@@ -162,7 +162,7 @@ export default function Lander({
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
-                  className="absolute text-black/90 text-[12px] sm:text-sm font-medium w-[90%] flex flex-wrap gap-x-1 leading-[1.3] sm:leading-[1.4]"
+                  className="absolute text-black/90 text-[12px] sm:text-sm font-medium w-[90%] flex flex-wrap gap-x-1 leading-[1.3] sm:leading-[1.4] "
                 >
                   {title_data[currentTitle].des
                     .split(" ")

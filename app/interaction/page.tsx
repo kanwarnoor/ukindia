@@ -29,6 +29,81 @@ export default function Interaction() {
     rootMargin: "0px 0px -89% 0px",
   });
 
+  const sectors = [
+    {
+      name: "Agritech",
+      image: "/3-eyes/interaction/agritech.svg",
+    },
+    {
+      name: "Automotive",
+      image: "/3-eyes/interaction/automotive.svg",
+    },
+    {
+      name: "Chemicals",
+      image: "/3-eyes/interaction/chemicals.svg",
+    },
+    {
+      name: "Defence",
+      image: "/3-eyes/interaction/defence.svg",
+    },
+    {
+      name: "Digital Economy",
+      image: "/3-eyes/interaction/money.svg",
+    },
+    {
+      name: "Financial and Professional Services",
+      image: "/3-eyes/interaction/financial.svg",
+    },
+    {
+      name: "Food & Drink",
+      image: "/3-eyes/interaction/food-drink.svg",
+    },
+    {
+      name: "Healthcare",
+      image: "/3-eyes/interaction/healthcare.svg",
+    },
+    {
+      name: "Infrastructure",
+      image: "/3-eyes/interaction/infrastructure.svg",
+    },
+    {
+      name: "Legal Services",
+      image: "/3-eyes/interaction/legal.svg",
+    },
+    {
+      name: "Life Sciences",
+      image: "/3-eyes/interaction/life-science.svg",
+    },
+    {
+      name: "Music",
+      image: "/3-eyes/interaction/music.svg",
+    },
+    {
+      name: "Oil & Gas",
+      image: "/3-eyes/interaction/oil-gass.svg",
+    },
+    {
+      name: "Renewable Energy",
+      image: "/3-eyes/interaction/renewable-energy.svg",
+    },
+    {
+      name: "Leisure & Tourism",
+      image: "/3-eyes/interaction/tourism.svg",
+    },
+    {
+      name: "Smart Cities",
+      image: "/3-eyes/interaction/smart-cities.svg",
+    },
+    {
+      name: "Sports",
+      image: "/3-eyes/interaction/sports.svg",
+    },
+    {
+      name: "Trade Bodies and Government Agencies",
+      image: "/3-eyes/interaction/trade.svg",
+    },
+  ];
+
   useEffect(() => {
     if (intelligenceInView) {
       setNavbar(true);
@@ -48,8 +123,8 @@ export default function Interaction() {
         title_data={[
           {
             title: "Interaction",
-            title2: "Shaping the Conversations That Shape Policy",
-            des: "We work to create a level playing field where industries can grow with confidence, clarity, and fairness. This is achieved through sustained advocacy with government and regulatory bodies, and by facilitating highimpact engagements including policy dialogues, roundtables, forums, receptions, delegations, and direct industry–government interactions",
+            title2: "Dialogue That Moves Markets",
+            des: "Deeply embedded across government, industry, and academia, we connect insight to engagement through high-level dialogues, roundtables, delegations, and curated receptions, dinners, and forums. These platforms help you build partnerships that stand out, scale sustainably, and deliver long-term impact across the UK–India corridor.",
           },
         ]}
         flip={true}
@@ -81,6 +156,44 @@ export default function Interaction() {
             industry–government interactions.
           </p>
         </div> */}
+        <section className="w-full pt-20 bg-white text-black">
+          <div className="w-full flex flex-col items-center">
+            <h2 className="text-4xl md:text-5xl font-bold text-navy text-center mb-2">
+              Key Sectors
+            </h2>
+            <p className="text-lg text-gray-700 text-center mb-10 max-w-2xl">
+              UKIBC supports companies across a wide range of sectors
+            </p>
+            <div className="mx-auto grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-y-5 justify-items-center w-[90%] max-w-7xl">
+              {sectors.map((sector, index) => (
+                <motion.div
+                  initial={{
+                    y: 10,
+                    opacity: 0,
+                  }}
+                  whileInView={{
+                    y: 0,
+                    opacity: 1,
+                  }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  key={index}
+                  className="flex flex-col hover:scale-105  cursor-pointer text-center bg-navy/5 w-[180px] rounded-4xl h-[180px] justify-center items-center"
+                >
+                  <Image
+                    src={sector.image as string}
+                    alt={sector.name}
+                    width={80}
+                    height={80}
+                    className="w-16 h-16 mb-1 p-3"
+                  />
+                  <span className="text-base font-bold leading-tight ">
+                    {sector.name}
+                  </span>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
 
         <div className="flex flex-row w-[90%] h-[700px] mx-auto items-stretch justify-center pb-20 gap-6 mt-20">
           <div className="w-1/2 flex flex-col gap-10 items-center justify-center bg-black/5 rounded-4xl p-15 h-full">
