@@ -74,66 +74,175 @@ export default function Lander({
           } justify-center z-10 `}
         >
           <div
-            className={`w-full mt-10 md:mt-20 xl:mt-0 h-1/2 xl:h-fit flex flex-col justify-center px-6 md:px-10 lg:ml-5 gap-6 lg:py-0 ${
+            className={`w-full mt-10 md:mt-20 xl:mt-0 h-1/2 xl:h-fit flex flex-col justify-center px-6 md:px-10 lg:ml-5 gap-4 md:gap-5 lg:gap-6 lg:py-0 ${
               flip ? "lg:w-[80%]" : "lg:w-[80%]"
             }`}
           >
             <AnimatePresence mode="wait">
               <div
                 key={"title"}
-                className={`relative h-fit ${
-                  flip ? "2xl:min-h-[60px]" : "2xl:min-h-[200px] min-h-[70px] "
-                } flex items-center `}
+                className={`${
+                  flip
+                    ? "relative h-fit"
+                    : "relative min-h-[60px] sm:min-h-[80px] md:min-h-[100px] lg:min-h-[120px] xl:min-h-[140px] 2xl:min-h-[180px]"
+                } flex items-center`}
               >
-                <motion.div
-                  key={currentTitle}
-                  className="absolute inset-0 flex flex-row gap-2 lg:w-full w-[70%]"
+                {flip ? (
+                  <motion.div
+                    key={currentTitle}
+                    className="flex flex-row gap-2 lg:w-full w-[70%]"
+                  >
+                    <h1 className="text-navy text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-black leading-tight md:leading-10 xl:leading-12 2xl:leading-16 tracking-tight justify-center items-center flex">
+                      <motion.p
+                        key={currentTitle}
+                        className="flex flex-wrap gap-x-2 md:gap-x-3"
+                      >
+                        {title_data[currentTitle].title
+                          .split(" ")
+                          .map((word, index) => (
+                            <motion.span
+                              key={word + index}
+                              initial={{
+                                opacity: 0,
+                                filter: "blur(10px)",
+                                y: 20,
+                              }}
+                              animate={{
+                                opacity: 1,
+                                filter: "blur(0px)",
+                                y: 0,
+                              }}
+                              transition={{ duration: 0.5, delay: 0.2 * index }}
+                              className="inline-block"
+                            >
+                              {word}{" "}
+                            </motion.span>
+                          ))}
+                      </motion.p>
+                    </h1>
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key={currentTitle}
+                    className="absolute inset-0 flex flex-row gap-2 lg:w-full w-[70%]"
+                  >
+                    <h1 className="text-navy text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-black leading-tight md:leading-10 xl:leading-12 2xl:leading-16 tracking-tight justify-center items-center flex">
+                      <motion.p
+                        key={currentTitle}
+                        className="flex flex-wrap gap-x-2 md:gap-x-3"
+                      >
+                        {title_data[currentTitle].title
+                          .split(" ")
+                          .map((word, index) => (
+                            <motion.span
+                              key={word + index}
+                              initial={{
+                                opacity: 0,
+                                filter: "blur(10px)",
+                                y: 20,
+                              }}
+                              animate={{
+                                opacity: 1,
+                                filter: "blur(0px)",
+                                y: 0,
+                              }}
+                              transition={{ duration: 0.5, delay: 0.2 * index }}
+                              className="inline-block"
+                            >
+                              {word}{" "}
+                            </motion.span>
+                          ))}
+                      </motion.p>
+                    </h1>
+                  </motion.div>
+                )}
+              </div>
+              {title_data[currentTitle].title2 && (
+                <div
+                  key={"title2"}
+                  className={`${
+                    flip
+                      ? "relative w-full h-fit"
+                      : "relative w-full min-h-[30px] sm:min-h-[40px] md:min-h-[50px]"
+                  } flex items-start`}
                 >
-                  <h1 className="text-navy text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-black leading-tight md:leading-10 xl:leading-12 2xl:leading-16 tracking-tight justify-center items-center flex">
+                  {flip ? (
                     <motion.p
-                      key={currentTitle}
-                      className="flex flex-wrap gap-x-2 md:gap-x-3 "
+                      key={`title2-${currentTitle}`}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.5, delay: 0.2 }}
+                      className="text-navy/90 text-base md:text-xl font-bold w-[90%] flex flex-wrap gap-x-1 leading-[1.3] sm:leading-[1.4]"
                     >
-                      {title_data[currentTitle].title
-                        .split(" ")
+                      {title_data[currentTitle].title2
+                        ?.split(" ")
                         .map((word, index) => (
                           <motion.span
-                            key={word + index}
+                            key={(word + index).toString()}
                             initial={{
                               opacity: 0,
                               filter: "blur(10px)",
                               y: 20,
                             }}
                             animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-                            transition={{ duration: 0.5, delay: 0.2 * index }}
+                            transition={{ duration: 0.5, delay: 0.1 * index }}
                             className="inline-block"
                           >
                             {word}{" "}
                           </motion.span>
                         ))}
                     </motion.p>
-                  </h1>
-                </motion.div>
-              </div>
-              {title_data[currentTitle].title2 && (
-                <div
-                  key={"title2"}
-                  className={`relative w-full  ${
-                    flip
-                      ? "md:min-h-[30px]"
-                      : "min-h-[80px] sm:min-h-[50px] md:min-h-[80px]"
-                  } flex items-start`}
-                >
+                  ) : (
+                    <motion.p
+                      key={`title2-${currentTitle}`}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.5, delay: 0.2 }}
+                      className="absolute top-0 left-0 text-navy/90 text-base md:text-xl font-bold w-[90%] flex flex-wrap gap-x-1 leading-[1.3] sm:leading-[1.4]"
+                    >
+                      {title_data[currentTitle].title2
+                        ?.split(" ")
+                        .map((word, index) => (
+                          <motion.span
+                            key={(word + index).toString()}
+                            initial={{
+                              opacity: 0,
+                              filter: "blur(10px)",
+                              y: 20,
+                            }}
+                            animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+                            transition={{ duration: 0.5, delay: 0.1 * index }}
+                            className="inline-block"
+                          >
+                            {word}{" "}
+                          </motion.span>
+                        ))}
+                    </motion.p>
+                  )}
+                </div>
+              )}
+
+              <div
+                key={"description"}
+                className={`${
+                  flip
+                    ? "relative w-full h-fit"
+                    : "relative w-full min-h-[40px] sm:min-h-[50px] md:min-h-[60px] lg:min-h-[70px]"
+                } flex items-start`}
+              >
+                {flip ? (
                   <motion.p
                     key={`desc-${currentTitle}`}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
-                    className="absolute text-navy/90  text-base md:text-xl font-bold w-[90%] flex flex-wrap gap-x-1 leading-[1.3] sm:leading-[1.4]"
+                    className="text-black/90 text-[12px] sm:text-sm font-medium w-[90%] flex flex-wrap gap-x-1 leading-[1.3] sm:leading-[1.4]"
                   >
-                    {title_data[currentTitle].title2
-                      ?.split(" ")
+                    {title_data[currentTitle].des
+                      .split(" ")
                       .map((word, index) => (
                         <motion.span
                           key={(word + index).toString()}
@@ -146,39 +255,30 @@ export default function Lander({
                         </motion.span>
                       ))}
                   </motion.p>
-                </div>
-              )}
-
-              <div
-                key={"description"}
-                className={`relative w-full  ${
-                  flip
-                    ? "md:min-h-[130px]"
-                    : "min-h-[70px] sm:min-h-[50px] md:min-h-[80px]"
-                } flex items-start`}
-              >
-                <motion.p
-                  key={`desc-${currentTitle}`}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                  className="absolute text-black/90 text-[12px] sm:text-sm font-medium w-[90%] flex flex-wrap gap-x-1 leading-[1.3] sm:leading-[1.4] "
-                >
-                  {title_data[currentTitle].des
-                    .split(" ")
-                    .map((word, index) => (
-                      <motion.span
-                        key={(word + index).toString()}
-                        initial={{ opacity: 0, filter: "blur(10px)", y: 20 }}
-                        animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.1 * index }}
-                        className="inline-block"
-                      >
-                        {word}{" "}
-                      </motion.span>
-                    ))}
-                </motion.p>
+                ) : (
+                  <motion.p
+                    key={`desc-${currentTitle}`}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    className="absolute top-0 left-0 text-black/90 text-[12px] sm:text-sm font-medium w-[90%] flex flex-wrap gap-x-1 leading-[1.3] sm:leading-[1.4]"
+                  >
+                    {title_data[currentTitle].des
+                      .split(" ")
+                      .map((word, index) => (
+                        <motion.span
+                          key={(word + index).toString()}
+                          initial={{ opacity: 0, filter: "blur(10px)", y: 20 }}
+                          animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+                          transition={{ duration: 0.5, delay: 0.1 * index }}
+                          className="inline-block"
+                        >
+                          {word}{" "}
+                        </motion.span>
+                      ))}
+                  </motion.p>
+                )}
               </div>
             </AnimatePresence>
             <motion.a

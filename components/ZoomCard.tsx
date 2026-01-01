@@ -73,12 +73,12 @@ export default function ZoomCard({ data }: ZoomCardProps) {
       onMouseLeave={() => setIsHovered(false)}
     >
       <div className="overflow-hidden h-full" ref={emblaRef}>
-        <div className="flex h-full ">
+        <div className="flex h-full gap-2 sm:gap-3">
           {data.map((item, index) => {
             return (
               <div
                 key={`zoom-card-${index}`}
-                className="shrink-0 flex justify-center items-center ml-3"
+                className="shrink-0 flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-3 px-2 sm:px-0 sm:ml-3 w-full sm:w-auto sm:min-w-[calc(280px+350px+12px)]"
               >
                 <BackgroundGradientAnimation
                   gradientBackgroundStart="rgb(1 45 107)"
@@ -89,21 +89,21 @@ export default function ZoomCard({ data }: ZoomCardProps) {
                   fourthColor="139, 187, 254"
                   fifthColor="139, 187, 254"
                   interactive={false}
-                  containerClassName="h-full flex justify-center items-center rounded-xl w-[350px]"
+                  containerClassName="h-[200px] sm:h-full flex justify-center items-center rounded-xl w-full sm:w-[280px] md:w-[350px]"
                 >
-                  <div className="w-[80%] z-10 mx-auto h-full flex justify-center items-center absolute top-0 left-0 right-0 bottom-0">
-                    <p className="leading-tight  w-full text-center text-white font-bold text-sm md:text-2xl">
+                  <div className="w-[85%] sm:w-[80%] z-10 mx-auto h-full flex justify-center items-center absolute top-0 left-0 right-0 bottom-0">
+                    <p className="leading-tight w-full text-center text-white font-bold text-xs sm:text-sm md:text-xl lg:text-2xl px-2">
                       {item.title}
                     </p>
                   </div>
                 </BackgroundGradientAnimation>
-                <div className="w-[350px] h-full ml-3">
+                <div className="w-full sm:w-[280px] md:w-[350px] h-[200px] sm:h-full">
                   <Image
                     src={item.image}
                     alt={item.title}
                     width={0}
                     height={0}
-                    sizes="100%"
+                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 280px, 350px"
                     className="w-full h-full object-cover object-center rounded-xl"
                   />
                 </div>
@@ -115,7 +115,7 @@ export default function ZoomCard({ data }: ZoomCardProps) {
 
       {/* Left gradient overlay */}
       <div
-        className="absolute left-0 top-0 bottom-0 w-32 sm:w-40 md:w-48 xl:w-64 pointer-events-none z-10"
+        className=" hidden md:absolute  left-0 top-0 bottom-0 w-8 sm:w-32 md:w-40 xl:w-64 pointer-events-none z-10"
         style={{
           background:
             "linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.8), transparent)",
@@ -124,18 +124,18 @@ export default function ZoomCard({ data }: ZoomCardProps) {
 
       {/* Right gradient overlay */}
       <div
-        className="absolute right-0 top-0 bottom-0 w-12 sm:w-16 md:w-20 xl:w-64 pointer-events-none z-10"
+        className=" hidden md:absolute right-0 top-0 bottom-0 w-8 sm:w-12 md:w-20 xl:w-64 pointer-events-none z-10"
         style={{
           background:
             "linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.5), transparent)",
         }}
       />
       {/* Navigation Buttons */}
-      {data.length > 1 && (
+      {data.length >= 1 && (
         <>
           <button
             onClick={scrollPrev}
-            className="absolute left-0 sm:left-4  cursor-pointer top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-white/80 hover:bg-white flex items-center justify-center hover:scale-110 transition-all duration-100 z-20 shadow-lg"
+            className="absolute left-2 sm:left-4 cursor-pointer top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-white shadow-lg hover:bg-white flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-100 z-30"
             aria-label="Previous slide"
           >
             <svg
@@ -153,7 +153,7 @@ export default function ZoomCard({ data }: ZoomCardProps) {
           </button>
           <button
             onClick={scrollNext}
-            className="absolute right-0 cursor-pointer top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 md:w-12  md:h-12 rounded-full bg-white/80 hover:bg-white flex items-center justify-center hover:scale-110  transition-all duration-100 z-20 shadow-lg"
+            className="absolute right-2 sm:right-4 cursor-pointer top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-white shadow-lg hover:bg-white flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-100 z-30"
             aria-label="Next slide"
           >
             <svg
@@ -174,22 +174,20 @@ export default function ZoomCard({ data }: ZoomCardProps) {
 
       {/* Dots Indicator */}
       {data.length > 1 && (
-        <div className="absolute bg-black/50 border border-mix backdrop-blur-sm px-4 py-2 rounded-full bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 flex space-x-1.5 sm:space-x-2 z-20">
-          {Array.from({ length: emblaApi?.scrollSnapList().length || 0 }).map(
-            (_, index) => (
-              <button
-                key={index}
-                type="button"
-                className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full cursor-pointer transition-all duration-200 ${
-                  selectedIndex === index
-                    ? "bg-white scale-110"
-                    : "bg-white/30 hover:bg-white/60"
-                }`}
-                onClick={() => scrollTo(index)}
-                aria-label={`Go to slide ${index + 2}`}
-              />
-            )
-          )}
+        <div className="absolute bg-black/50 border border-mix backdrop-blur-sm px-2 sm:px-4 py-1.5 sm:py-2 rounded-full bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 flex space-x-1 sm:space-x-1.5 md:space-x-2 z-30">
+          {data.map((_, index) => (
+            <button
+              key={index}
+              type="button"
+              className={`w-2 h-2 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 rounded-full cursor-pointer transition-all duration-200 ${
+                selectedIndex === index
+                  ? "bg-white scale-110"
+                  : "bg-white/30 hover:bg-white/60"
+              }`}
+              onClick={() => scrollTo(index)}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
         </div>
       )}
     </div>

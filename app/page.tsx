@@ -202,11 +202,11 @@ export default function Home() {
               transition={{ duration: 0.5 }}
               className="mb-10 md:text-5xl  text-3xl font-bold text-navy text-center"
             >
-              Who we are
+              Who we are 
             </motion.h2>
 
             {/* List */}
-            <div className="relative w-full  flex h-[450px]  justify-center items-center">
+            <div className="relative w-full flex h-[450px]  justify-center items-center">
               <ZoomCard
                 data={[
                   {
@@ -236,7 +236,7 @@ export default function Home() {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.5 }}
-              className="text-gray-900 font-medium text-base md:text-lg leading-5 md:mr-10 md:mt-10 w-full md:w-auto px-4 md:px-0 text-center md:text-left"
+              className="text-gray-900 font-medium text-sm md:text-lg leading-5 md:mr-10 md:mt-10 w-full md:w-auto px-4 md:px-0 text-center md:text-left"
             >
               Here is a look into our purpose, our people, and the impact we
               strive to create.
@@ -246,7 +246,7 @@ export default function Home() {
             </motion.div>
 
             <div className="w-full flex flex-col md:flex-row justify-center items-center gap-5 mt-5 md:mt-20 relative ">
-              <div className="w-full md:w-[600px] aspect-video max-w-full rounded-xl relative ">
+              <div className="w-4/5 h-full md:w-[600px] aspect-video max-w-full rounded-xl relative ">
                 {!video && (
                   <>
                     <svg
@@ -283,7 +283,7 @@ export default function Home() {
                       frameBorder="0"
                       allow="autoplay; encrypted-media; picture-in-picture"
                       referrerPolicy="strict-origin-when-cross-origin"
-                      className="w-full h-full rounded-xl"
+                      className="w-full h-full rounded-xl flex m-auto"
                       allowFullScreen={true}
                     ></iframe>
                   </div>

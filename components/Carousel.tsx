@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useCallback, useEffect, useState } from "react";
-import useEmblaCarousel from "embla-carousel-react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -17,13 +16,32 @@ interface CarouselProps {
 export default function Carousel({ data }: CarouselProps) {
   const [index, setIndex] = useState(0);
   const [y, setY] = useState(0);
+  const [itemHeight, setItemHeight] = useState(116); // Default mobile height (100px + 16px gap)
+  const [isMobile, setIsMobile] = useState(false);
 
-  const [newData, setNewData] = useState([...data, ...data]);
+  const [newData] = useState([...data, ...data]);
+
+  // Calculate item height based on screen size
+  useEffect(() => {
+    const updateHeight = () => {
+      const width = window.innerWidth;
+      setIsMobile(width < 640);
+      if (width >= 768) {
+        setItemHeight(166); // Desktop: 150px + 16px gap
+      } else {
+        setItemHeight(110); // Mobile: 100px + 16px gap
+      }
+    };
+
+    updateHeight();
+    window.addEventListener("resize", updateHeight);
+    return () => window.removeEventListener("resize", updateHeight);
+  }, []);
 
   const Next = () => {
     setIndex((prev) => {
       const newIndex = prev === data.length - 1 ? 0 : prev + 1;
-      setY(-166 * newIndex);
+      setY(-itemHeight * newIndex);
       return newIndex;
     });
   };
@@ -31,7 +49,7 @@ export default function Carousel({ data }: CarouselProps) {
   const Prev = () => {
     setIndex((prev) => {
       const newIndex = prev === 0 ? data.length - 1 : prev - 1;
-      setY(-166 * newIndex);
+      setY(-itemHeight * newIndex);
       return newIndex;
     });
   };
@@ -41,29 +59,35 @@ export default function Carousel({ data }: CarouselProps) {
       setY(0);
       setIndex(0);
     } else if (idx < 0) {
-      setY(-166 * (data.length - 1));
+      setY(-itemHeight * (data.length - 1));
       setIndex(0);
     } else {
-      setY(-166 * idx);
+      setY(-itemHeight * idx);
       setIndex(idx);
     }
   };
 
   return (
-    <div className="relative w-full max-w-[1000px] h-[500px] overflow-hidden mx-auto flex flex-row gap-5 ">
-      <div className="w-fit h-full relative flex flex-row sm:flex-row bg-white rounded-4xl">
+    <div className="relative w-full max-w-[1000px] min-h-[400px] sm:h-[500px] overflow-hidden mx-auto flex flex-col sm:flex-row gap-3 sm:gap-5 px-5 sm:px-0 ">
+      {/* Thumbnail Navigation */}
+      <div className="w-full sm:w-fit h-[120px] sm:h-full relative flex flex-row sm:flex-col bg-white rounded-2xl sm:rounded-4xl overflow-hidden ">
         <motion.div
-          initial={{ y: 0 }}
-          animate={{ y: `${y}px` }}
+          initial={{ y: 0, x: 0 }}
+          animate={{
+            y: !isMobile ? `${y}px` : 0,
+            x: isMobile ? `${y}px` : 0,
+          }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
-          className="w-fit h-full  items-center flex flex-col rounded-4xl gap-4 p-3"
+          className="w-fit h-full items-center flex flex-row sm:flex-col rounded-2xl sm:rounded-4xl gap-2 sm:gap-4 p-3 sm:p-3"
         >
           {newData.map((item: { image: string; name: string }, idx: number) => (
             <div
               key={idx}
               onClick={() => scrollTo(idx)}
-              className={`w-[100px] h-[100px] md:w-[250px] rounded-4xl md:h-[150px] flex items-center justify-center relative transition-all duration-300 cursor-pointer ${
-                idx === index ? "border-4 border-tiger/70 md:h-[250px]" : "grayscale"
+              className={`w-[100px] h-[100px] sm:w-[100px] sm:h-[100px] md:w-[150px] md:h-[150px] rounded-2xl sm:rounded-4xl flex items-center justify-center relative transition-all duration-300 cursor-pointer shrink-0 ${
+                idx === index
+                  ? "border-2 sm:border-4 border-tiger/70 scale-110 sm:scale-100 md:h-[200px]"
+                  : "grayscale opacity-60 hover:opacity-80"
               }`}
             >
               <Image
@@ -71,31 +95,26 @@ export default function Carousel({ data }: CarouselProps) {
                 alt={item.name}
                 width={0}
                 height={0}
-                sizes="100%"
-                className="rounded-3xl object-cover w-full h-full flex z-10 "
+                sizes="(max-width: 640px) 80px, (max-width: 768px) 100px, 150px"
+                className="rounded-xl sm:rounded-3xl object-cover w-full h-full flex z-10"
               />
             </div>
           ))}
         </motion.div>
       </div>
-      <div className="overflow-hidden rounded-3xl bg-white  ">
+
+      {/* Content Area */}
+      <div className="flex-1 overflow-hidden rounded-2xl sm:rounded-3xl bg-white">
         <div className="flex">
           <div
             key={index}
-            className="shrink-0 w-full min-h-[400px] sm:h-[500px] flex items-center justify-center"
+            className="shrink-0 w-full min-h-[300px] sm:min-h-[400px] md:h-[500px] flex items-center justify-center"
           >
-            <div className="w-full h-full flex flex-col sm:flex-row">
-              <div className="w-full h-full rounded-b-md sm:rounded-r-md sm:rounded-b-none flex flex-col justify-start p-4 sm:p-6 md:p-15">
-                <div className="h-full flex flex-col justify-between">
-                  {/* <Image
-                      src="/comma.png"
-                      alt="quote-start"
-                      width={40}
-                      height={40}
-                      className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 invert-0 brightness-0 filter mb-2"
-                    /> */}
+            <div className="w-full h-full flex flex-col">
+              <div className="w-full h-full rounded-b-md flex flex-col justify-start p-4 sm:p-6 md:p-10 lg:p-15">
+                <div className="h-full flex flex-col justify-between gap-4">
                   <motion.p
-                    className="text-sm sm:text-base md:text-xl font-bold text-gray-900 leading-relaxed"
+                    className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-gray-900 leading-relaxed"
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
@@ -106,7 +125,7 @@ export default function Carousel({ data }: CarouselProps) {
                   </motion.p>
                   <div className="flex flex-col gap-2 mt-auto">
                     <motion.p
-                      className="text-lg sm:text-xl text-gray-800 font-bold"
+                      className="text-base sm:text-lg md:text-xl text-gray-800 font-bold"
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
@@ -116,7 +135,7 @@ export default function Carousel({ data }: CarouselProps) {
                       {newData[index].name}
                     </motion.p>
                     <motion.p
-                      className="text-xs sm:text-sm text-gray-600 font-medium w-full sm:w-1/2"
+                      className="text-xs sm:text-sm text-gray-600 font-medium w-full"
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
@@ -135,7 +154,7 @@ export default function Carousel({ data }: CarouselProps) {
 
       {/* Navigation Controls */}
       <button
-        className="absolute cursor-pointer left-2 sm:left-4 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/80 hover:bg-white flex items-center justify-center transition-colors z-20 shadow-lg"
+        className="absolute cursor-pointer left-1 sm:left-2 md:left-4 top-1/2 -translate-y-1/2 w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-full bg-white shadow-lg hover:bg-white flex items-center justify-center transition-colors z-20 active:scale-95"
         aria-label="Previous slide"
         onClick={() => Prev()}
       >
@@ -143,7 +162,7 @@ export default function Carousel({ data }: CarouselProps) {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           fill="currentColor"
-          className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-navy"
+          className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-8 lg:h-8 text-navy"
         >
           <path
             fillRule="evenodd"
@@ -153,7 +172,7 @@ export default function Carousel({ data }: CarouselProps) {
         </svg>
       </button>
       <button
-        className="absolute cursor-pointer right-2 sm:right-4 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/80 hover:bg-white flex items-center justify-center transition-colors z-20 shadow-lg"
+        className="absolute cursor-pointer right-1 sm:right-2 md:right-4 top-1/2 -translate-y-1/2 w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-full bg-white shadow-lg hover:bg-white flex items-center justify-center transition-colors z-20 active:scale-95"
         aria-label="Next slide"
         onClick={() => Next()}
       >
@@ -161,7 +180,7 @@ export default function Carousel({ data }: CarouselProps) {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           fill="currentColor"
-          className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-navy rotate-180"
+          className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-8 lg:h-8 text-navy rotate-180"
         >
           <path
             fillRule="evenodd"
