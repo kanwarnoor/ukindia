@@ -197,16 +197,21 @@ export default function Interaction() {
 
         <div className="flex flex-row w-[90%] h-[700px] mx-auto items-stretch justify-center pb-20 gap-6 mt-20">
           <div className="w-1/2 flex flex-col gap-10 items-center justify-center bg-black/5 rounded-4xl p-15 h-full">
-            <h1 className="text-5xl font-bold text-navy">Our Approach</h1>
+            <h1 className="text-4xl font-bold text-navy text-center w-[80%] m-auto">
+              The Higher Education Success Blueprint
+            </h1>
             <p className="text-lg font-medium px-10 m-auto ">
-              Our expert in-house team of account managers, sector specialists,
-              and consultants curate and convene a powerful bilateral network
-              spanning industry, academia, and government, creating platforms
-              where informed dialogue shapes outcomes.
+              India’s higher education landscape is undergoing a structural
+              shift under NEP 2020, opening new pathways for transnational
+              education and global collaboration. To compete in this evolving
+              environment, universities need policy clarity, local intelligence,
+              and last-mile connectivity.
               <br /> <br />
-              We work in partnership with multiple levels of government: at the
-              National and State levels in India, and the devolved
-              administration, city region, and national levels in the UK.
+              UKIBC enables institutions to navigate change, identify
+              opportunity, and establish a credible presence across India’s
+              education ecosystem. Our Intelligence Unit delivers
+              forward-looking market research, institutional mapping, and policy
+              insight, translating complexity into actionable strategy.
             </p>
             <LiquidButton text="Meet the team" link="/team" />
           </div>
@@ -215,9 +220,8 @@ export default function Interaction() {
               rounded={true}
               animation="up"
               images={[
-                { image: "/home/eyes/influence-1.png", position: "center" },
-                { image: "/home/eyes/influence-2.png", position: "center" },
-                { image: "/home/eyes/influence-3.png", position: "center" },
+                { image: "/home/who-we-are/3.webp", position: "center" },
+                { image: "/home/eyes/intel-4.png", position: "center" },
               ]}
             />
             {/* <motion.div
@@ -275,7 +279,7 @@ export default function Interaction() {
             <h1 className="text-5xl font-bold text-white flex   w-[40%]">
               Our intelligence network supports your
             </h1>
-            <ul className="flex gap-10">
+            {/* <ul className="flex gap-10">
               {[
                 "Business Operations",
                 "Government Relations",
@@ -355,31 +359,36 @@ export default function Interaction() {
                   </motion.div>
                 );
               })}
-            </ul>
+            </ul> */}
             <div className="w-full  h-fit flex flex-row sm:flex-row gap-6 sm:gap-10 md:gap-15 justify-center text-center ">
               <StatCard
                 animation="left"
-                number={105}
-                description="UKIBC Members"
+                number={42}
+                valueBefore="£"
+                valueAfter=" billion"
+                title="International Students worth"
+                description="to UK Economy"
                 color="white"
               />
               <StatCard
                 animation="center"
-                number={1200}
-                description="Attendees in financial year 2024/25"
+                number={40000}
+                title="UKIBC recruited"
+                description="students from UKIBC Consortium universities"
                 color="white"
               />
               <StatCard
                 animation="right"
-                number={4}
-                description="MoUs with State Governments Signed"
+                title="A total of"
+                number={36}
+                description="formal UK TNE partnerships were verified, delivered through 58 Indian institutions."
                 color="white"
               />
             </div>
           </div>
         </BackgroundGradientAnimation>
 
-        <div className="w-full h-fit py-20 px-0 bg-transparent">
+        <div className=" hidden w-full h-fit py-20 px-0 bg-transparent">
           <div className="w-full max-w-6xl mx-auto flex flex-col gap-12">
             {/* Top Row: Image (moving images) + Text */}
             <div className=" w-full flex flex-col md:flex-row gap-6 bg-mix/10 p-4 rounded-4xl justify-center items-center ">
@@ -478,6 +487,27 @@ export default function Interaction() {
           </div>
         </div>
 
+        <div className="w-full h-fit flex justify-center items-center py-20 bg-black/5">
+          <Carousel
+            data={[
+              {
+                quote:
+                  "UKIBC and their expert staff have been instrumental in ensuring that our expansion in India has had minimal risk, stability and the ingredients for long-term success.",
+                name: "Sian Impey",
+                role: "Head International Development Office, Swansea University",
+                image: "/home-person3.jpg",
+              },
+              {
+                quote:
+                  "Transnational Education is the beacon illuminating the path to a truly interconnected world, where knowledge transcends borders, cultures unite, and understanding flourishes. Durham University embraces the transformative power of TNE, transcending borders to ignite minds, cultivate global citizenship, and bridge cultures, ensuring knowledge knows no bounds.",
+                name: "Professor Kieran Fernandes",
+                role: "Durham University",
+                image: "/person.jpg",
+              },
+            ]}
+          />
+        </div>
+
         <Fullscreen
           ref={membershipRef as unknown as React.RefObject<HTMLDivElement>}
           title1="Membership"
@@ -487,26 +517,6 @@ export default function Interaction() {
           buttonText="JOIN THE NETWORK"
           buttonLink="/membership"
         />
-        <div className="w-full h-fit flex justify-center items-center py-20 bg-black/5">
-          <Carousel
-            data={[
-              {
-                quote:
-                  "UKIBC is now at the forefront of their dialogue for sustainability and how energy transition is advancing and the technology benefits that can happen between the two countries.",
-                name: "Nandita- Sahgal Tully",
-                role: "Group Board Member UKIBC",
-                image: "/home/testimonial/nandita.webp",
-              },
-              {
-                quote:
-                  "Tata is a long-standing UKIBC member as we value the insights their excellent team provide and the interactions they curate with senior figures from business and government.",
-                name: "Tim Jones",
-                role: "Executive Director, Tata",
-                image: "/home/testimonial/tim.webp",
-              },
-            ]}
-          />
-        </div>
 
         <div className="w-full h-fit flex flex-row justify-center items-center">
           <div className="w-full max-w-6xl mx-auto flex flex-col gap-8 items-center justify-center text-center">

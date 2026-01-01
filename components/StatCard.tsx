@@ -97,7 +97,11 @@ export default function StatCard({
       }}
       className="flex flex-col gap-1 w-full sm:w-[300px] md:w-[350px] h-auto min-h-fit sm:min-h-fit px-4 sm:px-0"
     >
-      <p className="text-base sm:text-lg md:text-xl font-bold text-navy">
+      <p
+        className={`text-base sm:text-lg md:text-xl font-bold ${
+          color === "white" ? "text-white" : "text-navy"
+        }`}
+      >
         {title}
       </p>
       <span className="text-tiger text-3xl sm:text-4xl md:text-5xl font-bold wrap-break-word">
@@ -106,7 +110,7 @@ export default function StatCard({
         {valueAfter}
       </span>
       <p
-        className={`text-sm sm:text-base md:text-xl font-bold ${
+        className={`text-sm sm:text-base md:text-base font-bold leading-tight ${
           color == "white" ? "text-white" : "text-black"
         } `}
       >
