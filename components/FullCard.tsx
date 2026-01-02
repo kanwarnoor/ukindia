@@ -128,7 +128,7 @@ export default function InfoCard({
             {idiot && (
               <Link
                 href={link || ""}
-                className="px-5 m-3 py-1 border-2  bg-white text-black border-white font-bold  hover:scale-105 duration-200 rounded-full"
+                className="px-5 m-3 py-1 border-2  bg-white text-black border-white font-bold  hover:scale-105 duration-200 rounded-full whitespace-nowrap"
               >
                 Read more
               </Link>

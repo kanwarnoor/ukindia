@@ -86,7 +86,7 @@ export default function Home() {
         ]}
       />
 
-      <div className="w-full h-fit flex flex-col gap-2 justify-center items-center py-20">
+      <div className="w-full h-fit flex flex-col gap-2 justify-center items-center py-20 overflow-x-hidden max-w-full">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -107,7 +107,7 @@ export default function Home() {
           services.
         </motion.p>
 
-        <div className=" lg:flex-row flex-col mt-20 grid md:grid-cols-3 grid-cols-2">
+        <div className="w-full lg:flex-row flex-col mt-20 grid md:grid-cols-3 grid-cols-2 overflow-x-hidden max-w-full">
           {" "}
           <FullCard
             title1="Influence"
@@ -208,7 +208,7 @@ export default function Home() {
             </motion.h2>
 
             {/* List */}
-            <div className="relative w-full flex h-[450px]  justify-center items-center">
+            <div className="relative w-full max-w-full overflow-x-hidden flex h-[450px] justify-center items-center">
               <ZoomCard
                 data={[
                   {
@@ -295,7 +295,7 @@ export default function Home() {
                 initial={{ opacity: 0, x: -20, y: -20 }}
                 whileInView={{ opacity: 1, x: 0, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="hidden md:block w-[600px] h-[337.5px] bg-tiger rounded-xl absolute translate-x-5 translate-y-5 -z-10"
+                className="hidden md:block w-[600px] h-[337.5px] bg-tiger rounded-xl absolute md:translate-x-5 translate-y-5 -z-10 right-0 md:right-auto"
               />
             </div>
           </div>
@@ -360,11 +360,11 @@ export default function Home() {
           ref={aboutRef}
         >
           <div className="w-full md:w-1/2 flex flex-col gap-4 justify-center px-4 md:px-12">
-            <p className="text-4xl md:text-5xl font-bold text-white mb-2">
+            <p className="text-4xl md:text-5xl font-bold text-white mb-2 wrap-break-word">
               {"UK India Business Council".split(" ").map((word, wIdx) => (
                 <span
                   key={wIdx}
-                  className="inline-block whitespace-nowrap mr-2"
+                  className="inline-block md:whitespace-nowrap mr-2"
                 >
                   {word.split("").map((char, cIdx) => (
                     <motion.span
@@ -394,7 +394,7 @@ export default function Home() {
             <Link
               href="/about"
               className="rounded-full  bg-tiger px-8 py-3 text-sm font-semibold tracking-wide text-white  transition hover:bg-mix hover:text-black hover:scale-105 duration-200 w-max"
-            > 
+            >
               About UKIBC
             </Link>
           </div>
