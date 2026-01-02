@@ -115,7 +115,7 @@ export default function ZoomCard({ data }: ZoomCardProps) {
 
       {/* Left gradient overlay */}
       <div
-        className=" hidden md:absolute  left-0 top-0 bottom-0 w-8 sm:w-32 md:w-40 xl:w-64 pointer-events-none z-10"
+        className=" hidden md:absolute md:flex  left-0 top-0 bottom-0 w-8 sm:w-32 md:w-40 xl:w-64 pointer-events-none z-10"
         style={{
           background:
             "linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.8), transparent)",
@@ -124,7 +124,7 @@ export default function ZoomCard({ data }: ZoomCardProps) {
 
       {/* Right gradient overlay */}
       <div
-        className=" hidden md:absolute right-0 top-0 bottom-0 w-8 sm:w-12 md:w-20 xl:w-64 pointer-events-none z-10"
+        className=" hidden md:absolute md:flex right-0 top-0 bottom-0 w-8 sm:w-12 md:w-20 xl:w-64 pointer-events-none z-10"
         style={{
           background:
             "linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.5), transparent)",

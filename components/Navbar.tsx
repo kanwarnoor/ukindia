@@ -47,11 +47,11 @@ export default function Navbar() {
       sublinks: [
         {
           label: "About Us",
-          href: "#about",
+          href: "/about",
         },
         {
           label: "Meet the Team",
-          href: "#team",
+          href: "/team",
         },
       ],
     },
@@ -61,29 +61,29 @@ export default function Navbar() {
       sublinks: [
         {
           label: "Reports",
-          href: "#reports",
+          href: "/reports",
         },
         {
           label: "Projects",
-          href: "#projects",
+          href: "/projects",
         },
         {
           label: "Events",
-          href: "#events",
+          href: "/events",
         },
         {
           label: "News",
-          href: "#news",
+          href: "/news",
         },
       ],
     },
     {
       label: "Membership",
-      href: "#membership",
+      href: "/membership",
     },
     {
       label: "Contact Us",
-      href: "#contact",
+      href: "/contact",
     },
   ];
 
@@ -160,7 +160,9 @@ export default function Navbar() {
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5 }}
         className={`hidden lg:flex items-center justify-center transistion-all duration-200 gap-1 md:gap-6 text-xs md:text-sm  xl:text-base font-medium h-12 px-10 bg-black/50 backdrop-blur-sm rounded-full border border-mix ${
-          scroll ? "2xl:absolute 2xl:left-1/2 2xl:-translate-x-1/2  2xl:w-fit" : ""
+          scroll
+            ? "2xl:absolute 2xl:left-1/2 2xl:-translate-x-1/2  2xl:w-fit"
+            : ""
         }`}
       >
         {links.map((link) => (

@@ -7,22 +7,26 @@ import Image from "next/image";
 interface InfoCardProps {
   title1: string;
   des?: string;
+  des2?: string;
   description?: string;
   image: string;
   date?: string;
-  link?: string;  
+  link?: string;
   buttonText?: string;
   large?: boolean | false;
   extraLarge?: boolean | false;
+  textPosition?: "left" | "center" | "right";
   idiot?: boolean | false;
   animation: "left" | "center" | "right";
 }
 
 export default function InfoCard({
   title1,
+  textPosition = "center",
   date,
   image,
   des,
+  des2,
   description,
   buttonText,
   animation,
@@ -116,9 +120,13 @@ export default function InfoCard({
               duration: 0.5,
             }}
             className={` w-full ${
-              large ? "h-1/2" : extraLarge ? "h-1/2  p-2 justify-start" : "h-1/3"
+              large
+                ? "h-1/2"
+                : extraLarge
+                ? "h-1/2  p-2 justify-start"
+                : "h-1/3"
             } transition px-5 absolute flex flex-col m-auto justify-center items-center  left-0 right-0 bottom-0 rounded-b-2xl `}
-          > 
+          >
             {large || extraLarge ? (
               <p className="text-white font-bold md:text-3xl leading-tight text-xl text-center line-clamp-3 overflow-hidden">
                 {title1}
@@ -130,9 +138,17 @@ export default function InfoCard({
             )}
 
             <p
-              className={`text-center text-white text-xs opacity-80 font-semibold mt-1`}
+              className={`text-${textPosition} text-white text-xs opacity-80 font-semibold mt-1`}
             >
-              {date ? betterDate : des}
+              <>
+                {date ? betterDate : des}
+                {des2 && (
+                  <>
+                    <br /> <br />
+                    {des2}
+                  </>
+                )}
+              </>
             </p>
 
             {idiot && (
