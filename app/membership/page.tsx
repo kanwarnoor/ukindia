@@ -287,6 +287,11 @@ export default function Membership() {
           buttonText="JOIN THE NETWORK"
           buttonLink="/membership"
         /> */}
+        <Connect
+          title="Enquiries"
+          description="To find out more about UKIBC, speak to one of our experts. Gain instant access to a network of businesses and organisations across sectors such as Digital, Food and Drink, Legal and Professional Services, and Higher Education."
+          image="/home/eyes/influence-1.png"
+        />
         <div className="w-full h-fit flex justify-center items-center py-20 bg-black/5">
           <Carousel
             data={[
@@ -307,12 +312,6 @@ export default function Membership() {
             ]}
           />
         </div>
-
-        <Connect
-          title="Enquiries"
-          description="To find out more about UKIBC, speak to one of our experts. Gain instant access to a network of businesses and organisations across sectors such as Digital, Food and Drink, Legal and Professional Services, and Higher Education."
-          image="/home/eyes/influence-1.png"
-        />
       </section>
     </>
   );
