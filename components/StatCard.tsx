@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 export default function StatCard({
   animation,
@@ -25,7 +26,7 @@ export default function StatCard({
   const [displayedNumber, setDisplayedNumber] = useState(0);
   const duration = 2000; // total duration of animation in ms
   const frame = useRef<number>(0);
-
+  const router = useRouter();
   useEffect(() => {
     let start: number | null = null;
 
@@ -119,12 +120,12 @@ export default function StatCard({
       {link && (
         <>
           <hr className="w-1/2 mx-auto h-2 my-2 sm:my-3 border-black" />
-          <motion.a
-            href={link}
-            className="w-fit mx-auto font-bold text-navy border-2 border-navy rounded-full px-3 sm:px-4 py-1.5 sm:py-2 text-sm sm:text-base hover:bg-navy hover:text-white transition-all duration-200"
+          <motion.div
+            onClick={() => router.push(link)}
+            className="w-fit mx-auto cursor-pointer font-bold text-navy border-2 border-navy rounded-full px-3 sm:px-4 py-1.5 sm:py-2 text-sm sm:text-base hover:bg-navy hover:text-white transition-all duration-200"
           >
             Read More
-          </motion.a>
+          </motion.div>
         </>
       )}
     </motion.div>

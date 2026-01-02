@@ -2,6 +2,7 @@ import React from "react";
 import { BackgroundGradientAnimation } from "./ui/background-gradient-animation";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 interface FullscreenProps {
   ref: React.RefObject<HTMLDivElement>;
@@ -14,6 +15,7 @@ interface FullscreenProps {
 }
 
 export default function Fullscreen({ ref, title1, title2, description, image, buttonText, buttonLink }: FullscreenProps) {
+  const router = useRouter();
   return (
     <BackgroundGradientAnimation
       gradientBackgroundStart="rgb(1 45 107)"
@@ -60,12 +62,12 @@ export default function Fullscreen({ ref, title1, title2, description, image, bu
             {description}
           </p>
           {/* <LiquidButton text="Join the network" link="/membership" /> */}
-          <a
-            href={buttonLink || "/"}
-            className="rounded-full  bg-tiger px-8 py-3 text-sm font-semibold tracking-wide text-white  transition hover:bg-mix hover:text-black hover:scale-105 duration-200 w-max"
+          <div
+            onClick={() => router.push(buttonLink || "/")}
+            className="rounded-full cursor-pointer bg-tiger px-8 py-3 text-sm font-semibold tracking-wide text-white  transition hover:bg-mix hover:text-black hover:scale-105 duration-200 w-max"
           >
             {buttonText || "JOIN THE NETWORK"}
-          </a>
+          </div>
         </div>
         <div className="w-full md:w-1/2 flex justify-center items-center px-4 md:px-0 mt-8 md:mt-0">
           <Image

@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { WistiaPlayer } from "@wistia/wistia-player-react";
 import Companies from "@/components/Companies";
 import PostsCarousel from "@/components/PostsCarousel";
+import Link from "next/link";
 import axios from "axios";
 import { motion } from "framer-motion";
 import { useSetNavbar } from "@/lib/navbar-context";
@@ -188,7 +189,7 @@ export default function Home() {
             valueAfter=" Billion"
             animation="right"
             description="of revenue to the worlds economy"
-            link="/meet-out-members"
+            link="/members"
           />
         </div>
 
@@ -242,7 +243,7 @@ export default function Home() {
               Here is a look into our purpose, our people, and the impact we
               strive to create.
               <div className="w-fit h-fit flex justify-center md:justify-start mt-7 mx-auto md:mx-0">
-                <LiquidButton text="Meet the team" link="/meet-the-team" />
+                <LiquidButton text="Meet the team" link="/team" />
               </div>
             </motion.div>
 
@@ -390,12 +391,12 @@ export default function Home() {
               An equal UK–India economic partnership built to create jobs and
               fuel shared prosperity—a force for global good.
             </p>
-            <a
-              href="/membership"
+            <Link
+              href="/about"
               className="rounded-full  bg-tiger px-8 py-3 text-sm font-semibold tracking-wide text-white  transition hover:bg-mix hover:text-black hover:scale-105 duration-200 w-max"
-            >
+            > 
               About UKIBC
-            </a>
+            </Link>
           </div>
 
           <div className="w-full md:w-1/2">
@@ -425,12 +426,12 @@ export default function Home() {
 
         <div className=" h-fit flex justify-between items-center w-[90%] md:w-full max-w-7xl mx-auto mt-20">
           <p className="md:text-5xl text-3xl font-bold text-navy">UKIBC news</p>
-          <a
+          <Link
             href="/news"
             className="text-navy text-xl font-medium hover:scale-105 hover:text-navy/80 transition-all duration-200 inline-block"
           >
             {"View all >"}
-          </a>
+          </Link>
         </div>
         <PostsCarousel posts={posts} />
       </div>
