@@ -137,7 +137,7 @@ export default function Home() {
               { image: "/home/eyes/interact-4.png", position: "50%_50%" },
             ]}
             idiot={true}
-            link="/interact"
+            link="/interaction"
           />
           <div className="col-span-2 md:col-span-1">
             <FullCard
