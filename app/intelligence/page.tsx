@@ -217,7 +217,10 @@ export default function Intelligence() {
             buttonText="Learn more"
             buttonLink="/strategic-intelligence"
             images={[
-              { image: "/3-eyes/intel/intel1.jpeg", position: "center" },
+              { image: "/strategicIntelligence.jpg", position: "center" },
+              { image: "/glassi.jpg", position: "center" },
+              { image: "/jet.jpg", position: "center" },
+              { image: "/annual.jpg", position: "center" },
             ]}
             flip={false}
           />
@@ -227,7 +230,11 @@ export default function Intelligence() {
             description="We provide end-to-end support, from company registration and business setup to legal, regulatory, and accounting guidance. We also connect you with a trusted network of professional service partners to help you build the right ecosystem from day one."
             buttonText="Business Launchpad"
             buttonLink="/launchpad"
-            images={[{ image: "/3-eyes/intel/intel4.jpg", position: "center" }]}
+            images={[
+              { image: "/3-eyes/intel/intel4.jpg", position: "center" },
+              { image: "/compliance1.jpg", position: "center" },
+              { image: "/3-eyes/intel/intel5.jpeg", position: "center" },
+            ]}
             flip={true}
           />
         </div>
@@ -518,7 +525,6 @@ export default function Intelligence() {
           buttonText="JOIN THE NETWORK"
           buttonLink="/membership"
         />
-
 
         <Connect
           title="Connect with us:"
