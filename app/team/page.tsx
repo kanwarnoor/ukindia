@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import SimpleLander from "@/components/simpleLander";
 import { useInView } from "react-intersection-observer";
 import BoxImageText from "@/components/BoxImageText";
@@ -33,6 +33,41 @@ export default function Team() {
     threshold: [0.05, 0.5],
     rootMargin: "0px 0px -89% 0px",
   });
+
+  const [filter, setFilter] = useState<
+    { name: string; active: boolean; sort: number }[]
+  >([
+    {
+      name: "Executive Leadership Team",
+      active: true,
+      sort: 0,
+    },
+    {
+      name: "Business Solutions",
+      active: false,
+      sort: 1,
+    },
+    {
+      name: "Membership and Advocacy",
+      active: false,
+      sort: 2,
+    },
+    {
+      name: "Business Operations",
+      active: false,
+      sort: 3,
+    },
+    {
+      name: "Events",
+      active: false,
+      sort: 4,
+    },
+    {
+      name: "All",
+      active: false,
+      sort: 5,
+    },
+  ]);
 
   useEffect(() => {
     if (intelligenceInView) {
@@ -95,6 +130,33 @@ export default function Team() {
 
         <div className="w-full h-fit flex flex-col gap-10 items-center justify-center py-20">
           <p className="text-4xl font-bold text-navy">Our Team Members</p>
+          <div className="w-fit h-fit flex flex-row gap-4 items-center justify-center">
+            {filter.map((item) => (
+              <div
+                key={item.sort}
+                className="w-fit h-full flex flex-row items-center justify-center cursor-pointer"
+                onClick={() =>
+                  setFilter(
+                    filter.map((i) =>
+                      i.sort === item.sort
+                        ? { ...i, active: true }
+                        : { ...i, active: false }
+                    )
+                  )
+                }
+              >
+                <p
+                  className={`text-sm font-bold  px-4 py-2 rounded-full cursor-pointer  duration-300 ${
+                    item.active
+                      ? "bg-navy border-2 border-navy text-white"
+                      : "text-navy bg-white border-2 border-navy"
+                  }`}
+                >
+                  {item.name}
+                </p>
+              </div>
+            ))}
+          </div>
           <div
             className="  w-fit grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-20 items-center justify-items-center justify-center
 "
