@@ -11,6 +11,7 @@ import Carousel from "@/components/Carousel";
 import StatCard from "@/components/StatCard";
 import Lander from "@/components/Lander";
 import ImageSlider from "@/components/ImageSlider";
+import Connect from "@/components/Connect";
 import BoxImageText from "@/components/BoxImageText";
 import axios from "axios";
 import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
@@ -220,8 +221,7 @@ export default function Interaction() {
           ]}
           flip={false}
         />
-       
- 
+
         <BackgroundGradientAnimation
           gradientBackgroundStart="rgb(251 206 188)"
           gradientBackgroundEnd="rgb(241 92 35)"
@@ -479,29 +479,12 @@ export default function Interaction() {
           buttonLink="/membership"
         />
 
-        <div className="w-full h-fit flex flex-row justify-center items-center">
-          <div className="w-full max-w-6xl mx-auto flex flex-col gap-8 items-center justify-center text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-navy">
-              Connect with us:
-            </h1>
-            <p className="text-lg font-medium leading-relaxed w-[60%] m-auto text-justify">
-              To connect with one of our India Experts simply email us or send
-              us a message via our contact page. We look forward to connecting
-              with you.
-            </p>
-            <LiquidButton text="Contact Us" link="/contact" />
-          </div>
-          <div className="w-full h-screen max-w-6xl bg-red-200 mx-auto flex flex-col gap-8 items-center justify-center text-center">
-            <Image
-              src="/home/eyes/influence-1.png"
-              alt="influence"
-              width={0}
-              height={0}
-              sizes="100vw"
-              className="w-full h-full object-cover"
-            />
-          </div>
-        </div>
+        <Connect
+          title="Connect with us:"
+          description="To connect with one of our India Experts simply email us or send us a message via our contact page. We look forward to connecting with you."
+          image="/home-card1.png"
+        />  
+      
       </section>
     </>
   );

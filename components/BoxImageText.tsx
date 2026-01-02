@@ -3,10 +3,10 @@ import LiquidButton from "./LiquidButton";
 import ImageSlider from "./ImageSlider";
 
 interface BoxImageTextProps {
-  title: string;
+  title?: string;
   description: string | React.ReactNode;
-  buttonText: string;
-  buttonLink: string;
+  buttonText?: string;
+  buttonLink?: string;
   className?: string;
   flip?: boolean;
   images: { image: string; position: string }[];
@@ -36,7 +36,9 @@ export default function BoxImageText({
             className="text-xs sm:text-sm md:text-sm lg:text-sm xl:text-base 2xl:text-base leading-tight sm:leading-relaxed md:leading-normal font-medium px-4 sm:px-6 md:px-8 lg:px-10 mb-auto w-full text-center"
             dangerouslySetInnerHTML={{ __html: description as string }}
           />
-          <LiquidButton text={buttonText} link={buttonLink} />
+          {buttonText && buttonLink && (
+            <LiquidButton text={buttonText} link={buttonLink} />
+          )}
         </div>
       </div>
       <div className="w-full xl:w-1/2 flex items-center bg-black/5 justify-center relative rounded-2xl sm:rounded-3xl md:rounded-4xl p-4 sm:p-6 md:p-8 lg:p-10 h-[300px] sm:h-[400px] md:h-full min-h-[300px] sm:min-h-[400px] md:min-h-full">

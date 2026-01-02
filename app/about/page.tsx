@@ -15,8 +15,9 @@ import ImageSlider from "@/components/ImageSlider";
 import axios from "axios";
 import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
 import InfoCard from "@/components/InfoCard";
+import Connect from "@/components/Connect";
 
-export default function Intelligence() {
+export default function About() {
   const setNavbar = useSetNavbar();
 
   const { ref: intelligenceRef, inView: intelligenceInView } = useInView({
@@ -206,29 +207,30 @@ export default function Intelligence() {
           />
         </div>
 
-        <div className="flex gap-5 flex-col my-20">
+        <div className="flex gap-5 flex-col my-20 text-navy ">
+          <h1 className="text-3xl font-bold text-center w-[70%] mx-auto mb-5">
+            We provide insight to help businesses influence policy, interact
+            with the right stakeholders and turn intelligence into growth.
+          </h1>
           <BoxImageText
-            title="Strategic Intelligence"
-            description="Your business is unique, and so is our approach. At the UKIBC, we focus on understanding the success factors that matter most to you. Our intelligence spans all market entry research areas. We create and curate knowledge, distilling it into actionable insights that fit your exact business needs."
-            buttonText="Learn more"
-            buttonLink="/strategic-intelligence"
-            images={[{ image: "/visionMission.png", position: "center" }]}
+            description="Our first-hand experience of entering and growing businesses make us uniquely qualified. We want to share our experiences to help others achieve success whether they are well-established in India or in the early stages of their engagement. <br/><br/> Working with the both Governments and other influential and connected partners, we ensure business interests are conveyed. The UK India Business Council seek to influence decisions that will make it easier for UK businesses to operate in India and vice versa."
+            images={[{ image: "/home-card1.png", position: "center" }]}
             flip={false}
           />
 
           <BoxImageText
-            title="Incorporation and Compliance"
-            description="We provide end-to-end support, from company registration and business setup to legal, regulatory, and accounting guidance. We also connect you with a trusted network of professional service partners to help you build the right ecosystem from day one."
-            buttonText="Business Launchpad"
-            buttonLink="/launchpad"
-            images={[{ image: "/3-eyes/intel/intel4.jpg", position: "center" }]}
+            title="Our Membership network is at the heart of our support"
+            description="The UK India Business Council (UKIBC) team is committed to enhancing the trade and investment relationship between the UK and India, fostering a level-playing field that creates jobs and prosperity in both nations while serving as a force for global good."
+            buttonText="Meet the team"
+            buttonLink="/team"
+            images={[{ image: "/home/who-we-are/3.webp", position: "center" }]}
             flip={true}
           />
         </div>
 
         <BackgroundGradientAnimation
-          gradientBackgroundStart="rgb(251 206 188)"
-          gradientBackgroundEnd="rgb(241 92 35)"
+          gradientBackgroundStart="rgb(1 45 107)"
+          gradientBackgroundEnd="rgb(0 11 25)"
           firstColor="3, 107, 252"
           secondColor="2, 87, 207"
           thirdColor="1, 30, 71"
@@ -241,9 +243,17 @@ export default function Intelligence() {
             className=" z-10 absolute top-0 left-0 mx-auto w-full h-screen flex flex-col justify-center items-center text-center gap-20 py-30 "
             ref={intelligenceRef as unknown as React.RefObject<HTMLDivElement>}
           >
-            <h1 className="text-5xl font-bold text-white flex   w-[40%]">
-              Our intelligence network supports your
-            </h1>
+            <div className="flex flex-col gap-5 items-center justify-center">
+              <h1 className="text-5xl font-bold text-white flex ">
+                For those seeking practical advice,
+              </h1>
+              <p className="text-white text-base w-[70%] mx-auto">
+                We provide insight to help businesses influence policy, interact
+                with the right stakeholders and turn intelligence into growth.
+              </p>
+            </div>
+
+            {/* <LiquidButton text="Learn more" link="/about" /> */}
             {/* <ul className="flex gap-10">
               {[
                 "Business Operations",
@@ -326,7 +336,65 @@ export default function Intelligence() {
               })}
             </ul> */}
             <div className="w-full  h-fit flex flex-row sm:flex-row gap-6 sm:gap-10 md:gap-15 justify-center text-center ">
-              <StatCard
+              <div className="flex flex-col gap-2 items-center justify-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="size-10 text-white"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M15.22 6.268a.75.75 0 0 1 .968-.431l5.942 2.28a.75.75 0 0 1 .431.97l-2.28 5.94a.75.75 0 1 1-1.4-.537l1.63-4.251-1.086.484a11.2 11.2 0 0 0-5.45 5.173.75.75 0 0 1-1.199.19L9 12.312l-6.22 6.22a.75.75 0 0 1-1.06-1.061l6.75-6.75a.75.75 0 0 1 1.06 0l3.606 3.606a12.695 12.695 0 0 1 5.68-4.974l1.086-.483-4.251-1.632a.75.75 0 0 1-.432-.97Z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                <p className="text-white text-xl font-bold">Market Advisory</p>
+                <LiquidButton text="Learn more" link="/intelligence" />
+              </div>
+              <div className="flex flex-col gap-2 items-center justify-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="size-10 text-white"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0 0 12 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75Z"
+                  />
+                </svg>
+
+                <p className="text-white text-xl font-bold">
+                  Higher Education Advisory
+                </p>
+                <LiquidButton text="Learn more" link="/interaction" />
+              </div>
+              <div className="flex flex-col gap-2 items-center justify-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="size-10 text-white"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M7.5 14.25v2.25m3-4.5v4.5m3-6.75v6.75m3-9v9M6 20.25h12A2.25 2.25 0 0 0 20.25 18V6A2.25 2.25 0 0 0 18 3.75H6A2.25 2.25 0 0 0 3.75 6v12A2.25 2.25 0 0 0 6 20.25Z"
+                  />
+                </svg>
+
+                <p className="text-white text-xl font-bold">
+                  Government Advisory
+                </p>
+                <LiquidButton text="Learn more" link="/influence" />
+              </div>
+              {/* <StatCard
                 animation="left"
                 number={825}
                 valueAfter="+"
@@ -349,7 +417,7 @@ export default function Intelligence() {
                 valueAfter=" Billion"
                 description="of revenue to the worlds economy"
                 color="white"
-              />
+              /> */}
             </div>
           </div>
         </BackgroundGradientAnimation>
@@ -453,7 +521,7 @@ export default function Intelligence() {
           </div>
         </div>
 
-        <div className="w-full h-fit flex justify-center items-center py-20 bg-black/5">
+        {/* <div className="w-full h-fit flex justify-center items-center py-20 bg-black/5">
           <Carousel
             data={[
               {
@@ -479,8 +547,8 @@ export default function Intelligence() {
               },
             ]}
           />
-        </div>
-        <div className="w-full h-fit flex flex-row justify-center items-center gap-10 pb-20 bg-black/5">
+        </div> */}
+        {/* <div className="w-full h-fit flex flex-row justify-center items-center gap-10 pb-20 bg-black/5">
           <InfoCard
             animation="left"
             title1="Reports"
@@ -501,9 +569,9 @@ export default function Intelligence() {
             extraLarge={true}
             link="/business-solution-projects"
           />
-        </div>
+        </div> */}
 
-        <Fullscreen
+        {/* <Fullscreen
           ref={membershipRef as unknown as React.RefObject<HTMLDivElement>}
           title1="Membership"
           title2="The Right Rooms. The Right People."
@@ -511,31 +579,13 @@ export default function Intelligence() {
           image="/home-membership.jpg"
           buttonText="JOIN THE NETWORK"
           buttonLink="/membership"
-        />
+        /> */}
 
-        <div className="w-full h-fit flex flex-row justify-center items-center">
-          <div className="w-full max-w-6xl mx-auto flex flex-col gap-8 items-center justify-center text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-navy">
-              Connect with us:
-            </h1>
-            <p className="text-lg font-medium leading-relaxed w-[60%] m-auto text-justify">
-              To connect with one of our India Experts simply email us or send
-              us a message via our contact page. We look forward to connecting
-              with you.
-            </p>
-            <LiquidButton text="Contact Us" link="/contact" />
-          </div>
-          <div className="w-full h-screen max-w-6xl bg-red-200 mx-auto flex flex-col gap-8 items-center justify-center text-center">
-            <Image
-              src="/home/eyes/influence-1.png"
-              alt="influence"
-              width={0}
-              height={0}
-              sizes="100vw"
-              className="w-full h-full object-cover"
-            />
-          </div>
-        </div>
+        <Connect
+          title="Connect with us:"
+          description="To connect with one of our India Experts simply email us or send us a message via our contact page. We look forward to connecting with you."
+          image="/home-card1.png"
+        />
       </section>
     </>
   );

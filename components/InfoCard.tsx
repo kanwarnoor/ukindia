@@ -24,7 +24,7 @@ export default function InfoCard({
   title1,
   textPosition = "center",
   date,
-  image,
+  image,  
   des,
   des2,
   description,

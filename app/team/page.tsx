@@ -15,8 +15,10 @@ import Lander from "@/components/Lander";
 import ImageSlider from "@/components/ImageSlider";
 import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
 import Connect from "@/components/Connect";
+import TeamCard from "@/components/Team";
+import Person from "@/components/Person";
 
-export default function Influence() {
+export default function Team() {
   const setNavbar = useSetNavbar();
 
   const { ref: intelligenceRef, inView: intelligenceInView } = useInView({
@@ -50,9 +52,9 @@ export default function Influence() {
         ref={landerRef as unknown as React.RefObject<HTMLDivElement>}
         title_data={[
           {
-            title: "Influence",
-            title2: "Shaping the Conversations That Shape Policy",
-            des: "We work to create a level playing field where industries can grow with confidence, clarity, and fairness. This is achieved through sustained advocacy with government and regulatory bodies, and by facilitating highimpact engagements including policy dialogues, roundtables, forums, receptions, delegations, and direct industry–government interactions",
+            title: "Meet the Team",
+            // title2: "Shaping the Conversations That Shape Policy",
+            des: "The UK India Business Council (UKIBC) team is committed to enhancing the trade and investment relationship between the UK and India, fostering a vibrant and equitable economic partnership that creates jobs and prosperity in both nations while serving as a force for global good.",
           },
         ]}
         flip={true}
@@ -84,8 +86,63 @@ export default function Influence() {
             industry–government interactions.
           </p>
         </div> */}
+        {/* <TeamCard
+          name="Sonal Malviya"
+          role="Chief Executive Officer"
+          location="London, UK"
+          image="/home/eyes/influence-1.png"
+        /> */}
 
-        <BoxImageText
+        <div className="w-full h-fit flex flex-col gap-10 items-center justify-center py-20">
+          <p className="text-4xl font-bold text-navy">Our Team Members</p>
+          <div
+            className="  w-fit grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-20 items-center justify-items-center justify-center
+"
+          >
+            <Person
+              name={"Name"}
+              image={"/person.jpg"}
+              role={"role"}
+              location={"location"}
+              theme="dark"
+              des1={
+                "laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos."
+              }
+            />
+            <Person
+              name={"Name"}
+              image={"/person.jpg"}
+              role={"role"}
+              location={"location"}
+              theme="dark"
+              des1={
+                "laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos."
+              }
+            />
+            <Person
+              name={"Name"}
+              image={"/person.jpg"}
+              role={"role"}
+              location={"location"}
+              theme="dark"
+              des1={
+                "laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos."
+              }
+            />
+            <Person
+              name={"Name"}
+              image={"/person.jpg"}
+              role={"role"}
+              location={"location"}
+              theme="dark"
+              des1={
+                "laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos."
+              }
+            />
+          </div>
+        </div>
+
+        {/* <BoxImageText
           title="Our Approach"
           description="Our expert in-house team of account managers, sector specialists, and consultants curate and convene a powerful bilateral network spanning industry, academia, and government, creating platforms where informed dialogue shapes outcomes. <br/><br/>We work in partnership with multiple levels of government: at the National and State levels in India, and the devolved administration, city region, and national levels in the UK."
           buttonText="Meet the team"
@@ -97,9 +154,9 @@ export default function Influence() {
             { image: "/home/eyes/influence-3.png", position: "center" },
           ]}
           flip={false}
-        />
+        /> */}
 
-        <BackgroundGradientAnimation
+        {/* <BackgroundGradientAnimation
           gradientBackgroundStart="rgb(251 206 188)"
           gradientBackgroundEnd="rgb(241 92 35)"
           firstColor="3, 107, 252"
@@ -219,108 +276,9 @@ export default function Influence() {
               />
             </div>
           </div>
-        </BackgroundGradientAnimation>
+        </BackgroundGradientAnimation> */}
 
-        <div className="w-full h-fit py-20 px-0 bg-transparent">
-          <div className="w-full max-w-6xl mx-auto flex flex-col gap-12">
-            {/* Top Row: Image (moving images) + Text */}
-            <div className=" w-full flex flex-col md:flex-row gap-6 bg-mix/10 p-4 rounded-4xl justify-center items-center ">
-              {/* Left: Image or video placeholder */}
-              <div className="flex-1 flex items-stretch rounded-2xl overflow-hidden min-h-[150px] max-h-[230px] relative bg-blue-200">
-                {/* Replace the div below with an animated image carousel or video as needed */}
-                <ImageSlider
-                  images={[
-                    { image: "/home/eyes/influence-1.png", position: "center" },
-                    { image: "/home/eyes/influence-2.png", position: "center" },
-                    { image: "/home/eyes/influence-3.png", position: "center" },
-                  ]}
-                />
-              </div>
-              {/* Right: Heading and Paragraph */}
-              <div className="flex-1 flex flex-col justify-center py-4 px-4 md:px-8 gap-2">
-                <h1 className="text-3xl md:text-4xl font-bold text-navy mb-2">
-                  Government Relations
-                </h1>
-                <p className="text-base md:text-lg font-medium text-gray-700 leading-relaxed">
-                  We are uniquely connected at every level of both governments.
-                  From key officials in state and regional administrations, we
-                  ensure your priorities are heard in the right rooms, helping
-                  create a more level playing field for businesses.
-                </p>
-              </div>
-            </div>
-
-            {/* Advocacy Intro Paragraph */}
-            <div className="w-full flex flex-col gap-2 text-gray-700">
-              <p className="text-base md:text-lg font-medium leading-relaxed">
-                If your business faces a specific policy or regulatory
-                challenge, we help you create the right conversation with the
-                government, shape your case, and design the tactical pathway to
-                resolve the issue.
-              </p>
-              <p className="text-base md:text-lg font-semibold leading-relaxed mt-2">
-                Our advocacy runs through three core routes:
-              </p>
-            </div>
-
-            {/* Three core routes in cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
-              {/* Card 1 */}
-              <div className="flex flex-col gap-2 bg-mix/10 rounded-2xl shadow-md h-full p-6">
-                <h2 className="text-lg md:text-xl font-bold text-navy">
-                  1. Ease of Doing Business Working Group
-                </h2>
-                <p className="text-base md:text-base font-medium leading-relaxed text-gray-800 mt-1">
-                  A collective platform where members raise cross-cutting
-                  barriers to business, shape reform agendas, and influence
-                  policy through structured dialogue with government.
-                </p>
-              </div>
-              {/* Card 2 */}
-              <div className="flex flex-col gap-2 bg-mix/10 rounded-2xl shadow-md h-full p-6">
-                <h2 className="text-lg md:text-xl font-bold text-navy">
-                  2. Sector Advocacy Groups
-                </h2>
-                <p className="text-base md:text-base font-medium leading-relaxed mb-2 text-gray-800">
-                  In priority areas such as:
-                </p>
-                <ul className="list-disc list-inside ml-2 flex flex-col gap-1 text-base text-gray-700">
-                  {[
-                    "Data, Telecom and Digital",
-                    "Food and Drink",
-                    "Higher Education",
-                    "Financial Services",
-                    "Legal Professional Services",
-                    "Sports Betting and Online Gaming",
-                    "Aerospace and Defence",
-                    "Energy",
-                    "Space and Satellites",
-                  ].map((item, index) => (
-                    <li key={index} className="font-medium">
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              {/* Card 3 */}
-              <div className="flex flex-col gap-2 bg-mix/10 rounded-2xl shadow-md h-full p-6">
-                <h2 className="text-lg md:text-xl font-bold text-navy">
-                  3. Sustainable Development Alliance (SDA)
-                </h2>
-                <p className="text-base md:text-base font-medium leading-relaxed text-gray-800 mt-1">
-                  An initiative that unites UK enterprises, universities, and
-                  stakeholders in India to advance the UN Sustainable
-                  Development Goals through collaboration and policy dialogue.
-                  It showcases responsible industry action, forges cross-sector
-                  partnerships, and aligns business innovation with India&apos;s
-                  sustainable growth priorities.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <Fullscreen
+        {/* <Fullscreen
           ref={membershipRef as unknown as React.RefObject<HTMLDivElement>}
           title1="Membership"
           title2="The Right Rooms. The Right People."
@@ -348,11 +306,11 @@ export default function Influence() {
               },
             ]}
           />
-        </div>
+        </div> */}
 
         <Connect
-          title="Connect with us:"
-          description="To connect with one of our India Experts simply email us or send us a message via our contact page. We look forward to connecting with you."
+          title="Enquiries"
+          description="To find out more about UKIBC, speak to one of our experts. Gain instant access to a network of businesses and organisations across sectors such as Digital, Food and Drink, Legal and Professional Services, and Higher Education."
           image="/home/eyes/influence-1.png"
         />
       </section>

@@ -15,6 +15,7 @@ import ImageSlider from "@/components/ImageSlider";
 import axios from "axios";
 import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
 import InfoCard from "@/components/InfoCard";
+import Connect from "@/components/Connect";
 
 export default function Intelligence() {
   const setNavbar = useSetNavbar();
@@ -518,7 +519,13 @@ export default function Intelligence() {
           buttonLink="/membership"
         />
 
-        <div className="w-full h-fit flex flex-row justify-center items-center">
+
+        <Connect
+          title="Connect with us:"
+          description="To connect with one of our India Experts simply email us or send us a message via our contact page. We look forward to connecting with you."
+          image="/home-card1.png"
+        />
+        {/* <div className="w-full h-fit flex flex-row justify-center items-center">
           <div className="w-full max-w-6xl mx-auto flex flex-col gap-8 items-center justify-center text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-navy">
               Connect with us:
@@ -532,7 +539,7 @@ export default function Intelligence() {
           </div>
           <div className="w-full h-screen max-w-6xl bg-red-200 mx-auto flex flex-col gap-8 items-center justify-center text-center">
             <Image
-              src="/home/eyes/influence-1.png"
+              src="/home-card1.png"
               alt="influence"
               width={0}
               height={0}
@@ -540,7 +547,7 @@ export default function Intelligence() {
               className="w-full h-full object-cover"
             />
           </div>
-        </div>
+        </div> */}
       </section>
     </>
   );
