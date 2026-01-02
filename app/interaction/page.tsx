@@ -144,10 +144,10 @@ export default function Interaction() {
         flip={true}
         currency={false}
         images={[
-          { image: "/home/lander/4.webp", position: "bottom-right" },
-          { image: "/home/lander/1.webp", position: "50%_100%" },
-          { image: "/home/lander/2.webp", position: "50%_50%" },
-          { image: "/home/lander/3.webp", position: "10%_10%" },
+          { image: "/home/eyes/interact-1.png", position: "50%_100%" },
+          { image: "/home/eyes/interact-2.png", position: "50%_50%" },
+          { image: "/home/eyes/interact-3.png", position: "50%_50%" },
+          { image: "/home/eyes/interact-4.png", position: "50%_50%" },
         ]}
       />
       {/* <SimpleLander
@@ -216,8 +216,9 @@ export default function Interaction() {
           buttonLink="/team"
           className="my-20"
           images={[
-            { image: "/home/who-we-are/3.webp", position: "center" },
-            { image: "/home/eyes/intel-4.png", position: "center" },
+            { image: "/noble.jpg", position: "center" },
+            { image: "/noble2.jpg", position: "center" },
+            { image: "/noble3.jpg", position: "center" },
           ]}
           flip={false}
         />
@@ -483,8 +484,7 @@ export default function Interaction() {
           title="Connect with us:"
           description="To connect with one of our India Experts simply email us or send us a message via our contact page. We look forward to connecting with you."
           image="/home-card1.png"
-        />  
-      
+        />
       </section>
     </>
   );

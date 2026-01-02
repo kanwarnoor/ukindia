@@ -76,6 +76,7 @@ export default function Home() {
             des: "Trusted relationships across all levels of the government, credible advocacy, and practical intelligence that help businesses grow with confidence.",
           },
         ]}
+        currency={true}
         images={[
           { image: "/home/lander/4.webp", position: "bottom-right" },
           { image: "/home/lander/1.webp", position: "50%_100%" },
@@ -202,7 +203,7 @@ export default function Home() {
               transition={{ duration: 0.5 }}
               className="mb-10 md:text-5xl  text-3xl font-bold text-navy text-center"
             >
-              Who we are 
+              Who we are
             </motion.h2>
 
             {/* List */}

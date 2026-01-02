@@ -58,10 +58,9 @@ export default function Influence() {
         flip={true}
         currency={false}
         images={[
-          { image: "/home/lander/4.webp", position: "bottom-right" },
-          { image: "/home/lander/1.webp", position: "50%_100%" },
-          { image: "/home/lander/2.webp", position: "50%_50%" },
-          { image: "/home/lander/3.webp", position: "10%_10%" },
+          { image: "/home/eyes/influence-1.png", position: "50%_50%" },
+          { image: "/home/eyes/influence-2.png", position: "50%_50%" },
+          { image: "/home/eyes/influence-3.png", position: "50%_50%" },
         ]}
       />
       {/* <SimpleLander
@@ -92,9 +91,8 @@ export default function Influence() {
           className="my-20"
           buttonLink="/team"
           images={[
-            { image: "/home/eyes/influence-1.png", position: "center" },
-            { image: "/home/eyes/influence-2.png", position: "center" },
-            { image: "/home/eyes/influence-3.png", position: "center" },
+            { image: "/pressure.jpg", position: "center" },
+            { image: "/home/eyes/intel-2.png", position: "center" },
           ]}
           flip={false}
         />
@@ -230,9 +228,10 @@ export default function Influence() {
                 {/* Replace the div below with an animated image carousel or video as needed */}
                 <ImageSlider
                   images={[
-                    { image: "/home/eyes/influence-1.png", position: "center" },
-                    { image: "/home/eyes/influence-2.png", position: "center" },
-                    { image: "/home/eyes/influence-3.png", position: "center" },
+                    { image: "/banerjee.jpeg", position: "center" },
+                    { image: "/futures.cms", position: "center" },
+                    { image: "/govtmeet.jpg", position: "center" },
+                    { image: "/churchHouse.jpg", position: "center" },
                   ]}
                 />
               </div>
