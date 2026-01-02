@@ -114,112 +114,47 @@ export default function Membership() {
       /> */}
 
       <section id="more">
-        {/* <div className="w-full h-fiy py-20">
-          <p className=" text-xl font-bold w-[60%] m-auto text-justify">
-            We work to create a level playing field where industries can grow
-            with confidence, clarity, and fairness. This is achieved through
-            sustained advocacy with government and regulatory bodies, and by
-            facilitating high-impact engagements including policy dialogues,
-            roundtables, forums, receptions, delegations, and direct
-            industry–government interactions.
-          </p>
-        </div> */}
-        {/* <TeamCard
-          name="Sonal Malviya"
-          role="Chief Executive Officer"
-          location="London, UK"
-          image="/home/eyes/influence-1.png"
-        /> */}
-
-        <div className="w-full h-fit flex flex-col gap-10 items-center justify-center py-20">
-          <p className="text-4xl font-bold text-navy">Our Team Members</p>
-          <div className="w-fit h-fit flex flex-row gap-4 items-center justify-center">
-            {filter.map((item) => (
-              <div
-                key={item.sort}
-                className="w-fit h-full flex flex-row items-center justify-center cursor-pointer"
-                onClick={() =>
-                  setFilter(
-                    filter.map((i) =>
-                      i.sort === item.sort
-                        ? { ...i, active: true }
-                        : { ...i, active: false }
-                    )
-                  )
-                }
-              >
-                <p
-                  className={`text-sm font-bold  px-4 py-2 rounded-full cursor-pointer  duration-300 ${
-                    item.active
-                      ? "bg-navy border-2 border-navy text-white"
-                      : "text-navy bg-white border-2 border-navy"
-                  }`}
-                >
-                  {item.name}
-                </p>
-              </div>
-            ))}
-          </div>
-          <div
-            className="  w-fit grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-20 items-center justify-items-center justify-center
-"
-          >
-            <Person
-              name={"Name"}
-              image={"/person.jpg"}
-              role={"role"}
-              location={"location"}
-              theme="dark"
-              des1={
-                "laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos."
-              }
-            />
-            <Person
-              name={"Name"}
-              image={"/person.jpg"}
-              role={"role"}
-              location={"location"}
-              theme="dark"
-              des1={
-                "laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos."
-              }
-            />
-            <Person
-              name={"Name"}
-              image={"/person.jpg"}
-              role={"role"}
-              location={"location"}
-              theme="dark"
-              des1={
-                "laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos."
-              }
-            />
-            <Person
-              name={"Name"}
-              image={"/person.jpg"}
-              role={"role"}
-              location={"location"}
-              theme="dark"
-              des1={
-                "laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos."
-              }
-            />
-          </div>
-        </div>
-
-        {/* <BoxImageText
-          title="Our Approach"
-          description="Our expert in-house team of account managers, sector specialists, and consultants curate and convene a powerful bilateral network spanning industry, academia, and government, creating platforms where informed dialogue shapes outcomes. <br/><br/>We work in partnership with multiple levels of government: at the National and State levels in India, and the devolved administration, city region, and national levels in the UK."
-          buttonText="Meet the team"
-          className="my-20"
-          buttonLink="/team"
+        <p className="text-4xl text-navy font-bold text-center md:w-[50%] w-[90%] mx-auto mt-20">
+          Choose the membership level that best supports your UK–India goals.
+        </p>
+        <BoxImageText
+          title="Corporate"
+          description="Corporate membership gives you access to our core pillars: Influence, Interact and Intelligence. You join our Ease of Doing Business Working Group, sector groups and key B2G forums, with entry to UKIBC events across the UK and India. This level connects you to our trusted networks across government, industry and academia and keeps you ahead with future-focused insight."
+          buttonText="Enquire"
+          className="mt-20"
+          buttonLink="/contact"
           images={[
-            { image: "/home/eyes/influence-1.png", position: "center" },
-            { image: "/home/eyes/influence-2.png", position: "center" },
-            { image: "/home/eyes/influence-3.png", position: "center" },
+            { image: "/corpo1.jpeg", position: "center" },
+            { image: "/corpo2.jpeg", position: "center" },
+            { image: "/corpo3.jpeg", position: "center" },
           ]}
           flip={false}
-        /> */}
+        />
+        <BoxImageText
+          title="Corporate Plus"
+          description="Corporate Plus offers higher dedicated support and deeper access. You gain entry to exclusive leadership dinners and roundtables in both countries, plus priority visibility at major UKIBC conferences on themes like technology, sustainability and university–industry partnerships. This tier strengthens your profile and expands last-mile connectivity with high-level stakeholders."
+          buttonText="Enquire"
+          className="mt-5"
+          buttonLink="/contact"
+          flip={true}
+          images={[
+            { image: "/home/who-we-are/1.webp", position: "center" },
+            { image: "/home/who-we-are/3.webp", position: "center" },
+          ]}
+        />
+        <BoxImageText
+          title="Strategic Partner"
+          description="Strategic Partners receive a fully tailored partnership built around their individual goals. We work closely with you on bespoke engagement, from targeted B2G connections to one-on-one meetings with senior officials. This tier positions your organisation as a trusted leader in the UK–India corridor and acts as a catalyst for collaboration, trade and long-term impact."
+          buttonText="Enquire"
+          className="mt-5 mb-20"
+          buttonLink="/contact"
+          flip={false}
+          images={[
+            { image: "/govtmeet.jpg", position: "center" },
+            { image: "/home-2.jpeg", position: "center" },
+            // { image: "/home/eyes/influence-3.png", position: "center" },
+          ]}
+        />
 
         {/* <BackgroundGradientAnimation
           gradientBackgroundStart="rgb(251 206 188)"
@@ -342,8 +277,8 @@ export default function Membership() {
             </div>
           </div>
         </BackgroundGradientAnimation> */}
-
-        {/* <Fullscreen
+        {/* 
+        <Fullscreen
           ref={membershipRef as unknown as React.RefObject<HTMLDivElement>}
           title1="Membership"
           title2="The Right Rooms. The Right People."
@@ -351,27 +286,27 @@ export default function Membership() {
           image="/home-membership.jpg"
           buttonText="JOIN THE NETWORK"
           buttonLink="/membership"
-        />
+        /> */}
         <div className="w-full h-fit flex justify-center items-center py-20 bg-black/5">
           <Carousel
             data={[
               {
                 quote:
-                  "UKIBC is now at the forefront of their dialogue for sustainability and how energy transition is advancing and the technology benefits that can happen between the two countries.",
-                name: "Nandita- Sahgal Tully",
-                role: "Group Board Member UKIBC",
-                image: "/home/testimonial/nandita.webp",
+                  "The UKIBC is important as UK relationship with India have to be right at a political level and the economic level. This organisation brings both of these things together. It enables us to have a good dialogue, and much more. The opportunities are enormous in both countries.",
+                name: "Lord Edward Udny Lister",
+                role: "Former HSBC",
+                image: "/home/testimonial/lord.webp",
               },
               {
                 quote:
-                  "Tata is a long-standing UKIBC member as we value the insights their excellent team provide and the interactions they curate with senior figures from business and government.",
-                name: "Tim Jones",
-                role: "Executive Director, Tata",
-                image: "/home/testimonial/tim.webp",
+                  "UKIBC is doing the right thing by trying to understand what it’s members really want so they can fulfil those expectations. So, I think it is a good initiative",
+                name: "Archana Venkat",
+                role: "Trilegal",
+                image: "/home/testimonial/archana.webp",
               },
             ]}
           />
-        </div> */}
+        </div>
 
         <Connect
           title="Enquiries"
