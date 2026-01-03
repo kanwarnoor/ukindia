@@ -17,6 +17,7 @@ interface LanderProps {
   flip?: boolean;
   buttonTxt?: string;
   buttonLink?: string;
+  button?: boolean;
   currency?: boolean;
   images:
     | Array<{
@@ -32,6 +33,7 @@ export default function Lander({
   ref,
   buttonTxt = "Become a member",
   buttonLink = "/membership",
+  button = true,
   flip = false,
 }: LanderProps) {
   const [currentTitle, setCurrentTitle] = useState(0);
@@ -296,32 +298,34 @@ export default function Lander({
                 </div>
               )}
             </AnimatePresence>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-            >
-              <Link
-                href={buttonLink}
-                className="group h-fit bg-tiger font-dmsans font-semibold text-white px-4 py-2 sm:px-5 sm:py-2 rounded-full text-base sm:text-lg md:text-xl hover:bg-navy transition-colors duration-300 tracking-tighter flex flex-row items-center gap-2 w-fit"
+            {button && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
               >
-                {buttonTxt}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="size-4 sm:size-5 font-bold stroke-3 hidden group-hover:flex transition-transform duration-200"
+                <Link
+                  href={buttonLink}
+                  className="group h-fit bg-tiger font-dmsans font-semibold text-white px-4 py-2 sm:px-5 sm:py-2 rounded-full text-base sm:text-lg md:text-xl hover:bg-navy transition-colors duration-300 tracking-tighter flex flex-row items-center gap-2 w-fit"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="m8.25 4.5 7.5 7.5-7.5 7.5"
-                  />
-                </svg>
-              </Link>
-            </motion.div>
+                  {buttonTxt}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="size-4 sm:size-5 font-bold stroke-3 hidden group-hover:flex transition-transform duration-200"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="m8.25 4.5 7.5 7.5-7.5 7.5"
+                    />
+                  </svg>
+                </Link>
+              </motion.div>
+            )}
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
