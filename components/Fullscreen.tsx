@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 
 interface FullscreenProps {
   ref: React.RefObject<HTMLDivElement>;
-  title1: string;
+  title1?: string;
   title2?: string;
   description: string;
   image: string;
@@ -35,7 +35,7 @@ export default function Fullscreen({ ref, title1, title2, description, image, bu
       >
         <div className="w-full md:w-1/2  flex flex-col gap-4 justify-center px-4 md:px-12">
           <p className="text-4xl md:text-5xl font-bold text-white mb-2">
-            {title1.split(" ").map((word, wIdx) => (
+            {title1?.split(" ").map((word, wIdx) => (
               <span key={wIdx} className="inline-block whitespace-nowrap mr-2">
                 {word.split("").map((char, cIdx) => (
                   <motion.span

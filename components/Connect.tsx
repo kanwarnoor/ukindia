@@ -12,17 +12,15 @@ export default function Connect({
   image: string;
 }) {
   return (
-    <div className="w-full h-fit flex flex-row justify-center items-center">
-      <div className="w-full max-w-6xl mx-auto flex flex-col gap-8 items-center justify-center text-center">
-        <h1 className="text-4xl md:text-5xl font-bold text-navy">
-          {title}
-        </h1>
-        <p className="text-lg font-medium leading-relaxed w-[60%] m-auto text-center">
+    <div className="w-full md:h-fit h-screen flex md:flex-row flex-col justify-center items-center">
+      <div className="w-full max-w-6xl mx-auto flex flex-col gap-8 items-center justify-center text-center md:h-fit h-screen md:p-0 p-10">
+        <h1 className="text-4xl md:text-5xl font-bold text-navy">{title}</h1>
+        <p className="md:text-lg text-sm font-medium leading-relaxed w-[60%] m-auto text-center">
           {description}
         </p>
         <LiquidButton text="Contact Us" link="/contact" />
       </div>
-      <div className="w-full h-screen max-w-6xl bg-red-200 mx-auto flex flex-col gap-8 items-center justify-center text-center">
+      <div className="w-full md:h-screen h-1/2 max-w-6xl bg-red-200 mx-auto flex flex-col gap-8 items-center justify-center text-center">
         <Image
           src={image}
           alt="influence"
