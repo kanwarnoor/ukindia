@@ -13,13 +13,13 @@ interface LiquidButtonProps {
 export default function LiquidButton({ text, link }: LiquidButtonProps) {
   return (
     <div className="relative  flex w-fit h-fit justify-center items-center ">
-      <div className=" left-0 right-0 top-0 bottom-0 bg-black w-fit h-full flex justify-center items-center text-white font-bold px-6 py-3 rounded-full ">
+      {/* <div className=" left-0 right-0 top-0 bottom-0 bg-black w-fit h-full flex justify-center items-center text-white font-bold px-6 py-3 rounded-full ">
         {text}
-      </div>
+      </div> */}
       <div>
         <Link
           href={link}
-          className="absolute left-0 right-0 top-0 bottom-0 flex z-10 w-full justify-center items-center rounded-full text-center  bg-tiger/50 backdrop-blur-sm p py-5 text-md font-bold tracking-wide cursor-pointer text-white transition hover:bg-navy/50  duration-200 border-2 border-mix shadow-lg"
+          className=" left-0 right-0 top-0 bottom-0 flex z-10 w-full justify-center items-center rounded-full text-center  bg-tiger backdrop-blur-sm py-3 px-6 text-md font-bold tracking-wide cursor-pointer text-white transition hover:bg-navy  duration-200 border-2 border-mix shadow-lg"
         >
           {text}
         </Link>

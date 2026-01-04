@@ -18,6 +18,7 @@ export default function Carousel({ data }: CarouselProps) {
   const [y, setY] = useState(0);
   const [itemHeight, setItemHeight] = useState(116); // Default mobile height (100px + 16px gap)
   const [isMobile, setIsMobile] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   const [newData] = useState([...data, ...data]);
 
@@ -67,8 +68,23 @@ export default function Carousel({ data }: CarouselProps) {
     }
   };
 
+  // Auto-scroll functionality
+  useEffect(() => {
+    if (isHovered || data.length <= 1) return;
+
+    const interval = setInterval(() => {
+      Next();
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [isHovered, data.length, itemHeight]);
+
   return (
-    <div className="relative w-full max-w-[1000px] min-h-[400px] sm:h-[500px] overflow-hidden mx-auto flex flex-col sm:flex-row gap-3 sm:gap-5 px-5 sm:px-0 ">
+    <div
+      className="relative w-full max-w-[1000px] min-h-[400px] sm:h-[500px] overflow-hidden mx-auto flex flex-col sm:flex-row gap-3 sm:gap-5 px-5 sm:px-0"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       {/* Thumbnail Navigation */}
       <div className="w-full sm:w-fit h-[120px] sm:h-full relative flex flex-row sm:flex-col bg-white rounded-2xl sm:rounded-4xl overflow-hidden ">
         <motion.div
