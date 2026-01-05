@@ -231,7 +231,7 @@ export default function Intelligence() {
             buttonText="Business Launchpad"
             buttonLink="/launchpad"
             images={[
-              { image: "/3-eyes/intel/intel4.jpg", position: "center" },
+              { image: "/comp.webp", position: "center" },
               { image: "/compliance1.jpg", position: "center" },
               { image: "/3-eyes/intel/intel5.jpeg", position: "center" },
             ]}

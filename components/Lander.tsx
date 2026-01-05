@@ -133,7 +133,7 @@ export default function Lander({
                     key={currentTitle}
                     className="absolute inset-0 flex flex-row gap-2 lg:w-full w-[70%]"
                   >
-                    <h1 className="text-navy text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-black leading-tight md:leading-10 xl:leading-12 2xl:leading-16 tracking-tight justify-center items-center flex">
+                    <h1 className="text-navy text-2xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl 2xl:text-6xl font-black leading-tight md:leading-10 xl:leading-12 2xl:leading-16 tracking-tight justify-center items-center flex">
                       <motion.p
                         key={currentTitle}
                         className="flex flex-wrap gap-x-2 md:gap-x-3"
@@ -170,8 +170,8 @@ export default function Lander({
                   className={`${
                     flip
                       ? "relative w-full h-fit"
-                      : "relative w-full min-h-[30px] sm:min-h-[40px] md:min-h-[50px]"
-                  } flex items-start`}
+                      : "relative w-full min-h-[30px] sm:min-h-[40px] md:min-h-[50px] "
+                  } flex items-start `}
                 >
                   {flip ? (
                     <motion.p
@@ -237,7 +237,7 @@ export default function Lander({
                   className={`${
                     flip
                       ? "relative w-full h-fit"
-                      : "relative w-full min-h-[40px] sm:min-h-[50px] md:min-h-[60px] lg:min-h-[70px]"
+                      : "relative w-full min-h-[40px] sm:min-h-[50px] md:min-h-[60px]  lg:min-h-[70px]"
                   } flex items-start`}
                 >
                   {flip ? (

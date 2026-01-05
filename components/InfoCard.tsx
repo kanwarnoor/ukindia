@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 interface InfoCardProps {
   title1: string;
@@ -24,7 +25,7 @@ export default function InfoCard({
   title1,
   textPosition = "center",
   date,
-  image,  
+  image,
   des,
   des2,
   description,
@@ -81,7 +82,9 @@ export default function InfoCard({
           onClick={() =>
             description
               ? setClicked((clicked) => !clicked)
-              : window.open(link, "_ blank")
+              : !idiot
+              ? window.open(link)
+              : null
           }
         >
           <div className={`relative w-full duration-300 rounded-t-2xl h-full`}>
@@ -152,13 +155,12 @@ export default function InfoCard({
             </p>
 
             {idiot && (
-              <a
-                href={link}
-                target="_blank"
+              <Link
+                href={link || ""}
                 className="px-5 m-3 py-1 border-2  bg-white text-black border-white font-bold rounded-full hover:scale-105 duration-200"
               >
                 Read more
-              </a>
+              </Link>
             )}
           </motion.div>
         </div>
@@ -235,13 +237,12 @@ export default function InfoCard({
                 }}
                 className="absolute bottom-0 flex justify-center m-auto left-0 right-0 pb-10 rounded-b-2xl"
               >
-                <a
-                  href={link}
-                  target="_blank"
+                <Link
+                  href={link || ""}
                   className="px-5 py-2 border-2 border-white rounded-full hover:scale-110 duration-200"
                 >
                   {buttonText || "Read more"}
-                </a>
+                </Link>
               </motion.div>
             )}
           </div>

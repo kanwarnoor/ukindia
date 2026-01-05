@@ -144,10 +144,8 @@ export default function Interaction() {
         flip={true}
         currency={false}
         images={[
-          { image: "/home/eyes/interact-1.png", position: "50%_100%" },
-          { image: "/home/eyes/interact-2.png", position: "50%_50%" },
-          { image: "/home/eyes/interact-3.png", position: "50%_50%" },
-          { image: "/home/eyes/interact-4.png", position: "50%_50%" },
+          { image: "/meeting1.webp", position: "50%_100%" },
+        
         ]}
       />
       {/* <SimpleLander
