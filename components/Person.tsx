@@ -32,8 +32,12 @@ export default function Person({
   const [clicked, setClicked] = useState(false);
   return (
     <>
-      <div
-        className={`w-full h-full flex flex-col ${
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: false }}
+        transition={{ duration: 0.5 }}
+        className={`w-full h-full flex flex-col justify-center items-center ${
           theme == "dark" ? "text-black" : "text-white"
         }`}
       >
@@ -53,7 +57,7 @@ export default function Person({
             className="w-full h-full rounded-full object-cover select-none"
           ></Image>
         </div>
-        <p className="md:text-xl md:h-fit min-h-[30px] h-fit text-lg font-black text-center leading-4 mt-2">
+        <p className="md:text-xl md:h-fit min-h-[30px] h-fit text-lg font-bold text-center leading-4 mt-2">
           {name}
         </p>
         <p className="md:text-base text-sm font-bold opacity-80 text-center">
@@ -70,7 +74,7 @@ export default function Person({
             {location}
           </p>
         )}
-      </div>
+      </motion.div>
 
       <AnimatePresence>
         {clicked && (
@@ -138,7 +142,7 @@ export default function Person({
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   fill="white"
-                  className="md:block hidden  size-10  ml-auto cursor-pointer hover:scale-105 duration-100"
+                  className="md:block hidden  size-10 z-10  ml-auto cursor-pointer hover:scale-105 duration-100"
                   onClick={() => setClicked(false)}
                 >
                   <path
@@ -150,9 +154,10 @@ export default function Person({
               </div>
               {des1 && (
                 <div className="flex-1 flex items-center justify-center h-fit absolute top-0 left-0 right-0 bottom-0 m-auto md:p-10 p-5">
-                  <p className="text-center text-base md:text-lg font-medium px-4">
-                    {des1}
-                  </p>
+                  <p
+                    className="text-center text-base md:text-lg font-medium px-4"
+                    dangerouslySetInnerHTML={{ __html: des1 }}
+                  ></p>
                 </div>
               )}
             </motion.div>

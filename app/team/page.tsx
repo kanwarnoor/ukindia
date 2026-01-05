@@ -17,10 +17,25 @@ import { BackgroundGradientAnimation } from "@/components/ui/background-gradient
 import Connect from "@/components/Connect";
 import TeamCard from "@/components/Team";
 import Person from "@/components/Person";
+import axios from "axios";
+
+interface TeamMemberProps {
+  title: { rendered: string };
+  yoast_head_json: {
+    og_image: [
+      {
+        url: string;
+      }
+    ];
+  };
+  class_list: string[];
+  content: { rendered: string };
+}
 
 export default function Team() {
   const setNavbar = useSetNavbar();
-
+  const [team, setTeam] = useState([]);
+  const [loading, setLoading] = useState(true);
   const { ref: intelligenceRef, inView: intelligenceInView } = useInView({
     threshold: [0.05, 0.5],
     rootMargin: "0px 0px -89% 0px",
@@ -35,39 +50,60 @@ export default function Team() {
   });
 
   const [filter, setFilter] = useState<
-    { name: string; active: boolean; sort: number }[]
+    { name: string; team_area: string; active: boolean; sort: number }[]
   >([
     {
-      name: "Executive Leadership Team",
+      name: "All",
+      team_area: "all",
       active: true,
+      sort: 5,
+    },
+    {
+      name: "Executive Leadership Team",
+      active: false,
+      team_area: "executive_leadership_team",
       sort: 0,
     },
     {
       name: "Business Solutions",
+      team_area: "business_solutions",
       active: false,
       sort: 1,
     },
     {
       name: "Membership and Advocacy",
+      team_area: "membership_and_advocacy",
       active: false,
       sort: 2,
     },
     {
       name: "Business Operations",
+      team_area: "business_operations",
       active: false,
       sort: 3,
     },
     {
       name: "Events",
+      team_area: "events",
       active: false,
       sort: 4,
     },
-    {
-      name: "All",
-      active: false,
-      sort: 5,
-    },
   ]);
+
+  useEffect(() => {
+    axios
+      .get(
+        "https://bryanp25.sg-host.com/wp-json/wp/v2/team_member?per_page=100&page=1&order=asc"
+      )
+      .then((res) => {
+        setLoading(false);
+        setTeam(res.data);
+        console.log(res.data[0]);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   useEffect(() => {
     if (intelligenceInView) {
@@ -111,23 +147,6 @@ export default function Team() {
       /> */}
 
       <section id="more">
-        {/* <div className="w-full h-fiy py-20">
-          <p className=" text-xl font-bold w-[60%] m-auto text-justify">
-            We work to create a level playing field where industries can grow
-            with confidence, clarity, and fairness. This is achieved through
-            sustained advocacy with government and regulatory bodies, and by
-            facilitating high-impact engagements including policy dialogues,
-            roundtables, forums, receptions, delegations, and direct
-            industry–government interactions.
-          </p>
-        </div> */}
-        {/* <TeamCard
-          name="Sonal Malviya"
-          role="Chief Executive Officer"
-          location="London, UK"
-          image="/home/eyes/influence-1.png"
-        /> */}
-
         <div className="w-full h-fit flex flex-col gap-10 items-center justify-center py-20">
           <p className="text-4xl font-bold text-navy">Our Team Members</p>
           <div className="w-fit h-fit flex flex-row gap-4 items-center justify-center">
@@ -157,50 +176,47 @@ export default function Team() {
               </div>
             ))}
           </div>
-          <div
-            className="  w-fit grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-20 items-center justify-items-center justify-center
-"
-          >
-            <Person
-              name={"Name"}
-              image={"/person.jpg"}
-              role={"role"}
-              location={"location"}
-              theme="dark"
-              des1={
-                "laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos."
-              }
-            />
-            <Person
-              name={"Name"}
-              image={"/person.jpg"}
-              role={"role"}
-              location={"location"}
-              theme="dark"
-              des1={
-                "laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos."
-              }
-            />
-            <Person
-              name={"Name"}
-              image={"/person.jpg"}
-              role={"role"}
-              location={"location"}
-              theme="dark"
-              des1={
-                "laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos."
-              }
-            />
-            <Person
-              name={"Name"}
-              image={"/person.jpg"}
-              role={"role"}
-              location={"location"}
-              theme="dark"
-              des1={
-                "laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. laurem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos."
-              }
-            />
+          {loading && (
+            <div className="w-full h-full flex items-center justify-center mx-auto mt-10">
+              <div className="w-10 h-10 border-5 border-navy border-t-transparent border-r-transparent border-l-transparent rounded-full animate-spin "></div>
+            </div>
+          )}
+          <div className="w-[80%] mt-10 grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-x-0 gap-y-10  items-center justify-items-center justify-center">
+            {team
+              .filter((item: TeamMemberProps) => {
+                const activeFilter = filter.find((f) => f.active);
+                if (!activeFilter) return true;
+
+                // If filter is "all", show all team members
+                if (activeFilter.team_area === "all") {
+                  return true;
+                }
+
+                // Check if team member's class_list contains a matching team_area class
+                // Convert filter.team_area from "business_solutions" to "business-solutions"
+                const teamAreaClass = `team_area-${activeFilter.team_area.replace(
+                  /_/g,
+                  "-"
+                )}`;
+                return item.class_list?.some(
+                  (className) => className === teamAreaClass
+                );
+              })
+              .map((item: TeamMemberProps, index: number) => {
+                return (
+                  <Person
+                    name={item.title.rendered}
+                    image={
+                      item.yoast_head_json.og_image?.[0]?.url || "/person.jpg"
+                    }
+                    role={""}
+                    des1={item.content.rendered}
+                    location={""}
+                    theme="dark"
+                    key={index}
+                  />
+                );
+              })}
           </div>
         </div>
 
