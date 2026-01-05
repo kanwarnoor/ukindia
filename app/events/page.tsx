@@ -25,9 +25,10 @@ export default function Page() {
   const itemsPerPage = 10;
 
   useEffect(() => {
+    const timestamp = Date.now();
     axios
       .get(
-        "https://bryanp25.sg-host.com/wp-json/wp/v2/event?_embed&per_page=100"
+        `https://bryanp25.sg-host.com/wp-json/wp/v2/event?_embed&per_page=100&_ts=${timestamp}`
       )
       .then((res) => {
         setPosts(res.data);
