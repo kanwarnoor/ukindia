@@ -137,7 +137,7 @@ export default function Page() {
       />{" "}
       <section id="more">
         <div className="w-full h-fit flex flex-col gap-10 items-center justify-center py-20">
-          <p className="text-4xl font-bold text-navy">Our Team Members</p>
+          <p className="text-4xl font-bold text-navy">News And Advice</p>
           <div className="w-fit h-fit flex flex-row gap-4 items-center justify-center">
             {filter.map((item) => (
               <div

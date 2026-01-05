@@ -13,7 +13,9 @@ interface InfoCardProps {
   image: string;
   date?: string;
   link?: string;
+  dark?: boolean | false;
   buttonText?: string;
+  landscape?: boolean | false;
   large?: boolean | false;
   extraLarge?: boolean | false;
   textPosition?: "left" | "center" | "right";
@@ -30,6 +32,7 @@ export default function InfoCard({
   des2,
   description,
   buttonText,
+  landscape,
   animation,
   large,
   extraLarge,
@@ -96,6 +99,7 @@ export default function InfoCard({
               alt="Saturn Roman"
               className={`w-full h-full object-cover object-center duration-300 rounded-2xl `}
             ></Image>
+            
 
             <div
               className={`absolute bottom-0 left-0 w-full ${
