@@ -18,6 +18,7 @@ interface PostProps {
   jetpack_featured_media_url: string;
   excerpt: string | { rendered: string };
   link: string;
+  slug: string;
 }
 
 interface PostsCarouselProps {
@@ -83,7 +84,7 @@ export default function PostsCarousel({ posts }: PostsCarouselProps) {
                   post.jetpack_featured_media_url ||
                   "/home-1.png"
                 }
-                link={post.link}
+                link={"/news/" + post.slug}
                 animation="center"
               />
             </div>
