@@ -23,6 +23,7 @@ export default function Page() {
   const [currentPage, setCurrentPage] = useState(1);
   const [showLoadMore, setShowLoadMore] = useState(false);
   const itemsPerPage = 10;
+
   useEffect(() => {
     axios
       .get(
