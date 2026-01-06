@@ -17,7 +17,7 @@ export default function page() {
         currency={false}
         buttonTxt="Know more"
         buttonLink="#more"
-        images={[{ image: "/contact.jpg", position: "50%_50%" }]}
+        images={[{ image: "/contacthome.png", position: "50%_50%" }]}
       />
 
       <section id="more" className="w-screen h-fit py-20">
