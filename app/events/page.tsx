@@ -16,6 +16,13 @@ interface PostProps {
   content: { rendered: string };
   slug: string;
   class_list: string[];
+  acf: {
+    event_date: string;
+    event_end_date: string;
+    location: string;
+    venue: string;
+    who_can_attend: string;
+  };
 }
 export default function Page() {
   const [posts, setPosts] = useState<PostProps[]>([]);
@@ -33,7 +40,7 @@ export default function Page() {
       .then((res) => {
         setPosts(res.data);
         setLoading(false);
-        console.log(res.data[0]);
+        console.log(res.data[3].acf);
       })
       .catch((err) => {
         console.log(err);
@@ -95,7 +102,7 @@ export default function Page() {
               <div className="w-10 h-10 border-5 border-navy border-t-transparent border-r-transparent border-l-transparent rounded-full animate-spin "></div>
             </div>
           )}
-          <div className="w-fit mx-auto mt-10 flex flex-col  gap-10  items-center justify-items-center justify-center">
+          <div className="w-fit mx-auto mt-10 flex flex-col  gap-10 items-center justify-items-center justify-center">
             {paginatedPosts.map((item: PostProps, index: number) => {
               return (
                 <EventCard
@@ -106,6 +113,11 @@ export default function Page() {
                   }
                   animation="center"
                   key={index}
+                  location={item.acf.location}
+                  venue={item.acf.venue}
+                  who_can_attend={item.acf.who_can_attend}
+                  event_date={item.acf.event_date}
+                  event_end_date={item.acf.event_end_date}
                 />
               );
             })}
