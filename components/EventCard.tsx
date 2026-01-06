@@ -49,11 +49,11 @@ export default function EventCard({
       transition={{
         duration: 0.1,
       }}
-      className="flex flex-row cursor-pointer w-[900px] h-[300px] border-2 border-black/10 bg-white text-black shadow-xl backdrop-blur-xl rounded-2xl"
+      className="flex flex-col md:flex-row cursor-pointer w-full max-w-[800px] min-h-[300px] md:h-[300px] border-2 border-black/10 bg-white text-black  backdrop-blur-xl rounded-2xl"
       onClick={() => link && window.open(link)}
     >
-      <div className="flex flex-col w-full h-full">
-        <div className="w-full p-3 h-[200px]  overflow-hidden">
+      <div className="flex flex-col w-full md:w-1/2 h-full">
+        <div className="w-full p-2 md:p-3 h-[200px] md:h-[200px] overflow-hidden">
           <Image
             src={image}
             alt={title1}
@@ -63,9 +63,9 @@ export default function EventCard({
             className="object-cover object-center duration-300 rounded-2xl w-full h-full"
           />
         </div>
-        <div className="w-full px-3 flex flex-col">
+        <div className="w-full px-2 md:px-3 pb-2 md:pb-3 flex flex-col">
           <h3
-            className="w-full text-xl font-medium line-clamp-3 break-words overflow-hidden"
+            className="w-full text-base md:text-xl font-bold line-clamp-2 md:line-clamp-3 break-words overflow-hidden"
             style={{
               textOverflow: "ellipsis",
               display: "-webkit-box",
@@ -81,14 +81,14 @@ export default function EventCard({
         </div>
       </div>
 
-      <div className="w-full h-full flex flex-col  justify-center gap-5 items-center p-3 border-l-2 border-black/10">
+      <div className="w-full md:w-1/2 h-full flex flex-col justify-center gap-3 md:gap-5 items-start md:items-center p-3 border-t-2 md:border-t-0 md:border-l-2 border-black/10">
         {event_date && (
-          <div className="flex flex-row gap-2">
+          <div className="flex flex-row gap-2 items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="currentColor"
-              className="size-6 text-navy"
+              className="size-5 md:size-6 text-navy shrink-0"
             >
               <path
                 fillRule="evenodd"
@@ -97,7 +97,7 @@ export default function EventCard({
               />
             </svg>
 
-            <p className=" font-medium">
+            <p className="text-sm md:text-base font-medium break-words">
               {event_date && event_date.length === 8
                 ? new Date(
                     `${event_date.substring(0, 4)}-${event_date.substring(
@@ -115,12 +115,12 @@ export default function EventCard({
         )}
 
         {time && (
-          <div className="flex flex-row gap-2 ">
+          <div className="flex flex-row gap-2 items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="currentColor"
-              className="size-6 text-navy"
+              className="size-5 md:size-6 text-navy shrink-0"
             >
               <path
                 fillRule="evenodd"
@@ -129,17 +129,19 @@ export default function EventCard({
               />
             </svg>
 
-            <p className=" font-medium">{time || "-"}</p>
+            <p className="text-sm md:text-base font-medium break-words">
+              {time || "-"}
+            </p>
           </div>
         )}
 
         {location && (
-          <div className="flex flex-row gap-2">
+          <div className="flex flex-row gap-2 items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="currentColor"
-              className="size-6 text-navy"
+              className="size-5 md:size-6 text-navy shrink-0"
             >
               <path
                 fillRule="evenodd"
@@ -148,19 +150,21 @@ export default function EventCard({
               />
             </svg>
 
-            <p className="  font-medium">{location}</p>
+            <p className="text-sm md:text-base font-medium break-words">
+              {location}
+            </p>
           </div>
         )}
 
         {/* <p className=" font-medium">{venue}</p> */}
 
         {who_can_attend && (
-          <div className="flex flex-row gap-2 ">
+          <div className="flex flex-row gap-2 items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="currentColor"
-              className="size-6 text-navy"
+              className="size-5 md:size-6 text-navy shrink-0"
             >
               <path
                 fillRule="evenodd"
@@ -169,7 +173,7 @@ export default function EventCard({
               />
             </svg>
 
-            <p className=" font-medium">
+            <p className="text-sm md:text-base font-medium break-words">
               {who_can_attend.startsWith("Invite")
                 ? "Invite Only"
                 : who_can_attend || "-"}

@@ -97,19 +97,21 @@ export default function Page() {
       />
       <section id="more">
         <div className="w-full h-fit flex flex-col gap-10 items-center justify-center py-20">
-          {loading && (
-            <div className="w-full h-full flex items-center justify-center mx-auto mt-10">
-              <div className="w-10 h-10 border-5 border-navy border-t-transparent border-r-transparent border-l-transparent rounded-full animate-spin "></div>
-            </div>
-          )}
           <div className="w-fit mx-auto mt-10 flex flex-col gap-10 items-center justify-items-center justify-center">
             <p className="md:text-4xl text-2xl font-bold text-navy">
               Upcoming Events
             </p>
+            {loading && (
+              <div className="w-full h-full flex items-center justify-center mx-auto mt-10">
+                <div className="w-10 h-10 border-5 border-navy border-t-transparent border-r-transparent border-l-transparent rounded-full animate-spin "></div>
+              </div>
+            )}
             {paginatedPosts.filter(
               (item: PostProps) => new Date(item.acf.event_date) > new Date()
-            ).length === 0 ? (
-              <p className="text-gray-500 text-lg font-medium">There are no events yet</p>
+            ).length === 0 && !loading ? (
+              <p className="text-gray-500 text-lg font-medium">
+                There are no events yet
+              </p>
             ) : (
               paginatedPosts.map((item: PostProps, index: number) => {
                 if (new Date(item.acf.event_date) > new Date()) {
@@ -135,10 +137,15 @@ export default function Page() {
               })
             )}
           </div>
-          <div className="w-fit mx-auto mt-10 flex flex-col  gap-10 items-center justify-items-center justify-center">
+          <div className="w-fit  mt-10 flex flex-col  gap-10 items-center justify-items-center justify-center mx-10">
             <p className="md:text-4xl text-2xl font-bold text-navy">
               Past Events
             </p>
+            {loading && (
+              <div className="w-full h-full flex items-center justify-center mx-auto mt-10">
+                <div className="w-10 h-10 border-5 border-navy border-t-transparent border-r-transparent border-l-transparent rounded-full animate-spin "></div>
+              </div>
+            )}
             {paginatedPosts.map((item: PostProps, index: number) => {
               return (
                 <EventCard

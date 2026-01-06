@@ -163,7 +163,7 @@ export default function InfoCard({
                 href={link || ""}
                 className="px-5 m-3 py-1 border-2  bg-white text-black border-white font-bold rounded-full hover:scale-105 duration-200"
               >
-                Read more
+                {buttonText || "Read more"}
               </Link>
             )}
           </motion.div>

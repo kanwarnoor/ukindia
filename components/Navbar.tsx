@@ -142,7 +142,7 @@ export default function Navbar() {
   // }, []);
 
   return (
-    <nav className=" flex w-full h-fit md:bg-transparent  bg-white text-black items-center px-6 md:px-10 fixed top-0 z-50">
+    <nav className=" flex w-full h-fit lg:bg-transparent  bg-white text-black items-center px-6 md:px-10 fixed top-0 z-50">
       <Link
         href="/"
         onClick={(e) => {
