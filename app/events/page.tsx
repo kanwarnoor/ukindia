@@ -22,6 +22,7 @@ interface PostProps {
     location: string;
     venue: string;
     who_can_attend: string;
+    time: string;
   };
 }
 export default function Page() {
@@ -40,7 +41,6 @@ export default function Page() {
       .then((res) => {
         setPosts(res.data);
         setLoading(false);
-        console.log(res.data[3].acf);
       })
       .catch((err) => {
         console.log(err);
@@ -102,7 +102,43 @@ export default function Page() {
               <div className="w-10 h-10 border-5 border-navy border-t-transparent border-r-transparent border-l-transparent rounded-full animate-spin "></div>
             </div>
           )}
+          <div className="w-fit mx-auto mt-10 flex flex-col gap-10 items-center justify-items-center justify-center">
+            <p className="md:text-4xl text-2xl font-bold text-navy">
+              Upcoming Events
+            </p>
+            {paginatedPosts.filter(
+              (item: PostProps) => new Date(item.acf.event_date) > new Date()
+            ).length === 0 ? (
+              <p className="text-gray-500 text-lg font-medium">There are no events yet</p>
+            ) : (
+              paginatedPosts.map((item: PostProps, index: number) => {
+                if (new Date(item.acf.event_date) > new Date()) {
+                  return (
+                    <EventCard
+                      title1={item.title.rendered}
+                      date={item.date}
+                      image={
+                        item.yoast_head_json.og_image?.[0]?.url || "/home-1.png"
+                      }
+                      animation="center"
+                      key={index}
+                      location={item.acf.location}
+                      venue={item.acf.venue}
+                      who_can_attend={item.acf.who_can_attend}
+                      event_date={item.acf.event_date}
+                      event_end_date={item.acf.event_end_date}
+                      time={item.acf.time}
+                    />
+                  );
+                }
+                return null;
+              })
+            )}
+          </div>
           <div className="w-fit mx-auto mt-10 flex flex-col  gap-10 items-center justify-items-center justify-center">
+            <p className="md:text-4xl text-2xl font-bold text-navy">
+              Past Events
+            </p>
             {paginatedPosts.map((item: PostProps, index: number) => {
               return (
                 <EventCard
@@ -118,6 +154,7 @@ export default function Page() {
                   who_can_attend={item.acf.who_can_attend}
                   event_date={item.acf.event_date}
                   event_end_date={item.acf.event_end_date}
+                  time={item.acf.time}
                 />
               );
             })}

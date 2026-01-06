@@ -30,6 +30,10 @@ interface TeamMemberProps {
   };
   class_list: string[];
   content: { rendered: string };
+  acf: {
+    team_job_title: string;
+    locatLocationion: string;
+  };
 }
 
 export default function Team() {
@@ -91,14 +95,15 @@ export default function Team() {
   ]);
 
   useEffect(() => {
+    const timestamp = Date.now();
     axios
       .get(
-        "https://bryanp25.sg-host.com/wp-json/wp/v2/team_member?per_page=100&page=1&order=asc"
+        `https://bryanp25.sg-host.com/wp-json/wp/v2/team_member?per_page=100&page=1&order=asc&_ts=${timestamp}`
       )
       .then((res) => {
         setLoading(false);
         setTeam(res.data);
-        console.log(res.data[0]);
+        console.log(res.data[19]);
       })
       .catch((err) => {
         console.log(err);
@@ -148,12 +153,12 @@ export default function Team() {
 
       <section id="more">
         <div className="w-full h-fit flex flex-col gap-10 items-center justify-center py-20">
-          <p className="text-4xl font-bold text-navy">Our Team Members</p>
-          <div className="w-fit h-fit flex flex-row gap-4 items-center justify-center">
+          <p className="md:text-4xl text-2xl font-bold text-navy">Our Team Members</p>
+          <div className="w-full h-fit flex flex-wrap gap-2 md:gap-4 items-center justify-center">
             {filter.map((item) => (
               <div
                 key={item.sort}
-                className="w-fit h-full flex flex-row items-center justify-center cursor-pointer"
+                className="flex flex-row items-center justify-center cursor-pointer w-auto h-full"
                 onClick={() =>
                   setFilter(
                     filter.map((i) =>
@@ -165,7 +170,7 @@ export default function Team() {
                 }
               >
                 <p
-                  className={`text-sm font-bold  px-4 py-2 rounded-full cursor-pointer  duration-300 ${
+                  className={`text-xs md:text-sm font-bold px-3 py-1.5 md:px-4 md:py-2 rounded-full cursor-pointer duration-300 ${
                     item.active
                       ? "bg-navy border-2 border-navy text-white"
                       : "text-navy bg-white border-2 border-navy"
@@ -181,7 +186,7 @@ export default function Team() {
               <div className="w-10 h-10 border-5 border-navy border-t-transparent border-r-transparent border-l-transparent rounded-full animate-spin "></div>
             </div>
           )}
-          <div className="w-[80%] mt-10 grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-x-0 gap-y-10  items-center justify-items-center justify-center">
+          <div className="w-[80%] mt-10 grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-x-0 gap-y-10  items-start justify-items-start justify-center ">
             {team
               .filter((item: TeamMemberProps) => {
                 const activeFilter = filter.find((f) => f.active);
@@ -209,9 +214,9 @@ export default function Team() {
                     image={
                       item.yoast_head_json.og_image?.[0]?.url || "/person.jpg"
                     }
-                    role={""}
+                    role={item.acf.team_job_title || ""}
                     des1={item.content.rendered}
-                    location={""}
+                    location={item.acf.locatLocationion || ""}
                     theme="dark"
                     key={index}
                   />

@@ -37,12 +37,12 @@ export default function Person({
         whileInView={{ opacity: 1 }}
         viewport={{ once: false }}
         transition={{ duration: 0.5 }}
-        className={`w-full h-full flex flex-col justify-center items-center ${
+        className={`w-full h-fit flex flex-col justify-center items-center ${
           theme == "dark" ? "text-black" : "text-white"
         }`}
       >
         <div
-          className="md:w-32 md:h-32 w-28 h-28 rounded-full bg-black flex cursor-pointer hover:opacity-50 duration-300 select-none"
+          className="md:w-32 md:h-32 w-28 h-28 rounded-full bg-black flex cursor-pointer hover:opacity-50 duration-300 select-none "
           onClick={() => setClicked(true)}
         >
           <Image
@@ -60,7 +60,7 @@ export default function Person({
         <p className="md:text-xl md:h-fit min-h-[30px] h-fit text-lg font-bold text-center leading-4 mt-2">
           {name}
         </p>
-        <p className="md:text-base text-sm font-bold opacity-80 text-center">
+        <p className="md:text-base text-sm font-medium opacity-80 text-center">
           {role2 ? (
             <>
               {role} <br /> {role2}
@@ -69,8 +69,8 @@ export default function Person({
             role
           )}
         </p>
-        {location && (
-          <p className="md:text-base text-sm leading-4 h-fit font-bold opacity-80 text-center">
+        {location !== "Location" && (
+          <p className="md:text-base text-sm leading-4 h-fit font-medium opacity-80 text-center">
             {location}
           </p>
         )}

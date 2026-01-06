@@ -14,6 +14,7 @@ interface EventCardProps {
   who_can_attend: string;
   event_date: string;
   event_end_date: string;
+  time: string;
 }
 
 export default function EventCard({
@@ -28,6 +29,7 @@ export default function EventCard({
   who_can_attend,
   event_date,
   event_end_date,
+  time,
 }: EventCardProps) {
   return (
     <motion.div
@@ -79,76 +81,101 @@ export default function EventCard({
         </div>
       </div>
 
-      <div className="w-full h-full flex flex-col  justify-center gap-5 items-center p-3">
-        <div className="flex flex-row gap-2 items-center justify-center">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            className="size-6 text-navy"
-          >
-            <path
-              fillRule="evenodd"
-              d="M6.75 2.25A.75.75 0 0 1 7.5 3v1.5h9V3A.75.75 0 0 1 18 3v1.5h.75a3 3 0 0 1 3 3v11.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V7.5a3 3 0 0 1 3-3H6V3a.75.75 0 0 1 .75-.75Zm13.5 9a1.5 1.5 0 0 0-1.5-1.5H5.25a1.5 1.5 0 0 0-1.5 1.5v7.5a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5v-7.5Z"
-              clipRule="evenodd"
-            />
-          </svg>
+      <div className="w-full h-full flex flex-col  justify-center gap-5 items-center p-3 border-l-2 border-black/10">
+        {event_date && (
+          <div className="flex flex-row gap-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="size-6 text-navy"
+            >
+              <path
+                fillRule="evenodd"
+                d="M6.75 2.25A.75.75 0 0 1 7.5 3v1.5h9V3A.75.75 0 0 1 18 3v1.5h.75a3 3 0 0 1 3 3v11.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V7.5a3 3 0 0 1 3-3H6V3a.75.75 0 0 1 .75-.75Zm13.5 9a1.5 1.5 0 0 0-1.5-1.5H5.25a1.5 1.5 0 0 0-1.5 1.5v7.5a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5v-7.5Z"
+                clipRule="evenodd"
+              />
+            </svg>
 
-          <p className=" font-medium">
-            {event_date && event_date.length === 8
-              ? new Date(
-                  `${event_date.substring(0, 4)}-${event_date.substring(
-                    4,
-                    6
-                  )}-${event_date.substring(6, 8)}`
-                ).toLocaleDateString("en-US", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })
-              : event_date}
-          </p>
-        </div>
+            <p className=" font-medium">
+              {event_date && event_date.length === 8
+                ? new Date(
+                    `${event_date.substring(0, 4)}-${event_date.substring(
+                      4,
+                      6
+                    )}-${event_date.substring(6, 8)}`
+                  ).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })
+                : event_date}
+            </p>
+          </div>
+        )}
 
-        <div className="flex flex-row gap-2 items-center justify-center">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            className="size-6 text-navy"
-          >
-            <path
-              fillRule="evenodd"
-              d="m11.54 22.351.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975 16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 0 0-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 0 0 2.682 2.282 16.975 16.975 0 0 0 1.145.742ZM12 13.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
-              clipRule="evenodd"
-            />
-          </svg>
+        {time && (
+          <div className="flex flex-row gap-2 ">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="size-6 text-navy"
+            >
+              <path
+                fillRule="evenodd"
+                d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 6a.75.75 0 0 0-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 0 0 0-1.5h-3.75V6Z"
+                clipRule="evenodd"
+              />
+            </svg>
 
-          <p className="  font-medium">{location}</p>
-        </div>
+            <p className=" font-medium">{time || "-"}</p>
+          </div>
+        )}
+
+        {location && (
+          <div className="flex flex-row gap-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="size-6 text-navy"
+            >
+              <path
+                fillRule="evenodd"
+                d="m11.54 22.351.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975 16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 0 0-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 0 0 2.682 2.282 16.975 16.975 0 0 0 1.145.742ZM12 13.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
+                clipRule="evenodd"
+              />
+            </svg>
+
+            <p className="  font-medium">{location}</p>
+          </div>
+        )}
 
         {/* <p className=" font-medium">{venue}</p> */}
 
-        <div className="flex flex-row gap-2 items-center justify-center">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            className="size-6 text-navy"
-          >
-            <path
-              fillRule="evenodd"
-              d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z"
-              clipRule="evenodd"
-            />
-          </svg>
+        {who_can_attend && (
+          <div className="flex flex-row gap-2 ">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="size-6 text-navy"
+            >
+              <path
+                fillRule="evenodd"
+                d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z"
+                clipRule="evenodd"
+              />
+            </svg>
 
-          <p className=" font-medium">
-            {who_can_attend.startsWith("Invite")
-              ? "Invite Only"
-              : who_can_attend || "-"}
-          </p>
-        </div>
+            <p className=" font-medium">
+              {who_can_attend.startsWith("Invite")
+                ? "Invite Only"
+                : who_can_attend || "-"}
+            </p>
+          </div>
+        )}
       </div>
     </motion.div>
   );
