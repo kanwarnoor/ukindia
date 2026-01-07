@@ -132,7 +132,7 @@ export default function Page() {
           },
         ]}
         button={false}
-        images={[{ image: "/event.jpg", position: "50%_50%" }]}
+        images={[{ image: "/news.webp", position: "50%_50%" }]}
         flip={true}
       />{" "}
       <section id="more">

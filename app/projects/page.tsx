@@ -39,7 +39,7 @@ export default function page() {
           />
           <InfoCard
             title1="Business Solutions"
-            image="/annual.jpg"
+            image="/case.webp"
             animation="center"
             buttonText="View Projects"
             large={true}
