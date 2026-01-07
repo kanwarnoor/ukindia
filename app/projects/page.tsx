@@ -35,7 +35,7 @@ export default function page() {
             buttonText="View Projects"
             large={true}
             idiot={true}
-            link="/business-solution-projects"
+            link="/membership-projects"
           />
           <InfoCard
             title1="Business Solutions"

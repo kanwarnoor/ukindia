@@ -40,10 +40,10 @@ export default function LandscapeCard({
       transition={{
         duration: 0.1,
       }}
-      className="flex flex-col cursor-pointer md:w-[350px] md:h-[400px] w-[300px] h-[340px] bg-black/90  rounded-2xl"
+      className="flex flex-col text-black cursor-pointer md:w-[350px] md:h-[400px] w-[300px] h-[340px] bg-white border-2 border-black/10  rounded-2xl"
       onClick={() => window.open(link)}
     >
-      <div className="w-full aspect-video  overflow-hidden">
+      <div className="w-full aspect-video  overflow-hidden border-b-2 border-black/10">
         <Image
           src={image}
           alt={title1}
@@ -54,8 +54,8 @@ export default function LandscapeCard({
         />
       </div>
       <div className="w-full h-1/3  rounded-b-2xl p-5">
-        <h3 className="text-white text-xl font-bold line-clamp-4">{title1}</h3>
-        <p className="text-white text-sm font-medium">
+        <h3 className=" text-xl font-bold line-clamp-4">{title1}</h3>
+        <p className="text-sm font-medium">
           {date
             ? (() => {
                 const d = new Date(date);

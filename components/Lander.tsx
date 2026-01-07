@@ -91,18 +91,18 @@ export default function Lander({
                 className={`${
                   flip
                     ? "relative h-fit"
-                    : "relative  min-h-[60px] sm:min-h-[80px] md:min-h-[100px] lg:min-h-[120px] xl:min-h-[150px] 2xl:min-h-[190px]"
-                } flex items-center`}
+                    : "relative  min-h-[60px] sm:min-h-[80px] md:min-h-[100px] lg:min-h-[120px] xl:min-h-[140px] 2xl:min-h-[190px] "
+                } flex justify-center items-center`}
               >
                 {flip ? (
                   <motion.div
                     key={currentTitle}
                     className="flex flex-row gap-2 lg:w-full w-[70%]"
                   >
-                    <h1 className="text-navy text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-black leading-tight md:leading-10 xl:leading-12 2xl:leading-16 tracking-tight justify-center items-center flex">
+                    <h1 className="text-navy text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-black leading-tight md:leading-10 xl:leading-12 2xl:leading-16 tracking-tight justify-center items-center flex ">
                       <motion.p
                         key={currentTitle}
-                        className="flex flex-wrap gap-x-2 md:gap-x-3"
+                        className="flex flex-wrap gap-x-2 md:gap-x-3 "
                       >
                         {title_data[currentTitle].title
                           .split(" ")
@@ -133,7 +133,7 @@ export default function Lander({
                     key={currentTitle}
                     className="absolute inset-0 flex flex-row gap-2 lg:w-full w-full "
                   >
-                    <h1 className="text-navy text-2xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl 2xl:text-6xl font-black leading-tight md:leading-10 xl:leading-14 2xl:leading-14 tracking-tight justify-center items-center flex ">
+                    <h1 className="text-navy text-2xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl 2xl:text-6xl font-black leading-tight md:leading-10 xl:leading-10 2xl:leading-14 tracking-tight justify-center items-center flex ">
                       <motion.p
                         key={currentTitle}
                         className="flex flex-wrap gap-x-2 md:gap-x-3"
