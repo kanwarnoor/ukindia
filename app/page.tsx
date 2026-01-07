@@ -77,6 +77,8 @@ export default function Home() {
             des: "Trusted relationships across all levels of the government, credible advocacy, and practical intelligence that help businesses grow with confidence.",
           },
         ]}
+        
+        button={false}
         currency={true}
         images={[
           { image: "/home/lander/4.webp", position: "bottom-right" },
