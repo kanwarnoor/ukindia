@@ -117,7 +117,7 @@ export default function Home() {
             des="We help you influence your audience through our strategic insights and expert advice."
             animation="left"
             large={true}
-            idiot={true}
+            idiot={false}
             link="/influence"
             time={5000}
             images={[
@@ -140,7 +140,7 @@ export default function Home() {
               { image: "/home/eyes/interact-3.png", position: "50%_50%" },
               { image: "/home/eyes/interact-4.png", position: "50%_50%" },
             ]}
-            idiot={true}
+            idiot={false}
             link="/interaction"
           />
           <div className="col-span-2 md:col-span-1">
@@ -150,7 +150,7 @@ export default function Home() {
               des="We offer a range of solutions helping you enter, expand and grow in the Indian market"
               animation="right"
               large={true}
-              idiot={true}
+              idiot={false}
               link="/intelligence"
               time={5000}
               images={[

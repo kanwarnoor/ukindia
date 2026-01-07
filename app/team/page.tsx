@@ -209,6 +209,49 @@ export default function Team() {
                   (className) => className === teamAreaClass
                 );
               })
+              .sort((a: TeamMemberProps, b: TeamMemberProps) => {
+                const activeFilter = filter.find((f) => f.active);
+
+                // Only sort when "all" is selected
+                if (activeFilter?.team_area !== "all") {
+                  return 0;
+                }
+
+                // Define the order of team areas
+                const teamAreaOrder = [
+                  "executive_leadership_team",
+                  "business_solutions",
+                  "membership_and_advocacy",
+                  "business_operations",
+                  "events",
+                ];
+
+                // Helper function to get the sort order of a team member
+                const getTeamMemberSortOrder = (
+                  member: TeamMemberProps
+                ): number => {
+                  for (let i = 0; i < teamAreaOrder.length; i++) {
+                    const teamArea = teamAreaOrder[i];
+                    const teamAreaClass = `team_area-${teamArea.replace(
+                      /_/g,
+                      "-"
+                    )}`;
+                    if (
+                      member.class_list?.some(
+                        (className) => className === teamAreaClass
+                      )
+                    ) {
+                      return i;
+                    }
+                  }
+                  // If no matching team area found, put at the end
+                  return teamAreaOrder.length;
+                };
+
+                const orderA = getTeamMemberSortOrder(a);
+                const orderB = getTeamMemberSortOrder(b);
+                return orderA - orderB;
+              })
               .map((item: TeamMemberProps, index: number) => {
                 return (
                   <Person
