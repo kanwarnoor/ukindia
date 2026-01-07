@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 interface InfoCardProps {
   title1: string;
@@ -40,7 +41,7 @@ export default function InfoCard({
   link,
 }: InfoCardProps) {
   const [clicked, setClicked] = useState(false);
-
+  const router = useRouter();
   const betterDate = date
     ? new Date(date)
         .toLocaleDateString("en-US", {
@@ -86,7 +87,7 @@ export default function InfoCard({
             description
               ? setClicked((clicked) => !clicked)
               : !idiot
-              ? window.open(link)
+              ? router.push(link || "")
               : null
           }
         >

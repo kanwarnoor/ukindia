@@ -136,10 +136,10 @@ export default function Team() {
         flip={true}
         currency={false}
         images={[
-          { image: "/home/lander/4.webp", position: "bottom-right" },
-          { image: "/home/lander/1.webp", position: "50%_100%" },
-          { image: "/home/lander/2.webp", position: "50%_50%" },
-          { image: "/home/lander/3.webp", position: "10%_10%" },
+          { image: "/contactHome.png", position: "bottom-right" },
+          // { image: "/home/lander/1.webp", position: "50%_100%" },
+          // { image: "/home/lander/2.webp", position: "50%_50%" },
+          // { image: "/home/lander/3.webp", position: "10%_10%" },
         ]}
       />
       {/* <SimpleLander
@@ -153,7 +153,9 @@ export default function Team() {
 
       <section id="more">
         <div className="w-full h-fit flex flex-col gap-10 items-center justify-center py-20">
-          <p className="md:text-4xl text-2xl font-bold text-navy">Our Team Members</p>
+          <p className="md:text-4xl text-2xl font-bold text-navy">
+            Our Team Members
+          </p>
           <div className="w-full h-fit flex flex-wrap gap-2 md:gap-4 items-center justify-center">
             {filter.map((item) => (
               <div

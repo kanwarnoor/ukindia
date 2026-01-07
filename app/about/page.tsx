@@ -182,6 +182,7 @@ export default function About() {
             extraLarge={true}
             image={"/home/eyes/interact-4.png"}
             animation={"left"}
+            link={"/interaction"}
           />
           <InfoCard
             title1={"Intelligence"}
@@ -193,6 +194,7 @@ export default function About() {
             textPosition={"left"}
             image={"/home/eyes/intel-1.png"}
             animation={"center"}
+            link={"/intelligence"}
           />
           <InfoCard
             title1={"Intelligence"}
@@ -204,6 +206,7 @@ export default function About() {
             image={"/home/eyes/influence-2.png"}
             textPosition={"left"}
             animation={"right"}
+            link={"/influence"}
           />
         </div>
 
@@ -214,7 +217,11 @@ export default function About() {
           </h1>
           <BoxImageText
             description="Our first-hand experience of entering and growing businesses make us uniquely qualified. We want to share our experiences to help others achieve success whether they are well-established in India or in the early stages of their engagement. <br/><br/> Working with the both Governments and other influential and connected partners, we ensure business interests are conveyed. The UK India Business Council seek to influence decisions that will make it easier for UK businesses to operate in India and vice versa."
-            images={[{ image: "/home-card1.png", position: "center" }]}
+            images={[
+              { image: "/corpo1.webp", position: "center" },
+              { image: "/comp.webp", position: "center" },
+              { image: "/meet.webp", position: "center" },
+            ]}
             flip={false}
           />
 
@@ -223,7 +230,11 @@ export default function About() {
             description="The UK India Business Council (UKIBC) team is committed to enhancing the trade and investment relationship between the UK and India, fostering a level-playing field that creates jobs and prosperity in both nations while serving as a force for global good."
             buttonText="Meet the team"
             buttonLink="/team"
-            images={[{ image: "/home/who-we-are/3.webp", position: "center" }]}
+            images={[
+              { image: "/home/who-we-are/3.webp", position: "center" },
+              { image: "/meet2.webp", position: "center" },
+              { image: "/emptymeet.webp", position: "center" },
+            ]}
             flip={true}
           />
         </div>
@@ -584,7 +595,7 @@ export default function About() {
         <Connect
           title="Connect with us:"
           description="To connect with one of our India Experts simply email us or send us a message via our contact page. We look forward to connecting with you."
-          image="/home-card1.png"
+          image="/contactHome.png"
         />
       </section>
     </>
