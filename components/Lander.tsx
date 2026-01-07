@@ -78,11 +78,11 @@ export default function Lander({
           colors={["#f15c23", "#012d6b", "#d8c4b5"]}
           className={`absolute h-full w-full flex flex-col ${
             flip ? "items-center" : "items-start"
-          } justify-center z-10 `}
+          } justify-center  z-10 `}
         >
           <div
             className={`w-full mt-10 md:mt-20 xl:mt-0 h-1/2 xl:h-fit flex flex-col justify-center px-6 md:px-10 lg:ml-5 gap-4 md:gap-5 lg:gap-6 lg:py-0 ${
-              flip ? "lg:w-[80%]" : "lg:w-[80%]"
+              flip ? "lg:w-[80%]" : "lg:w-[90%]"
             }`}
           >
             <AnimatePresence mode="wait">
@@ -91,7 +91,7 @@ export default function Lander({
                 className={`${
                   flip
                     ? "relative h-fit"
-                    : "relative min-h-[60px] sm:min-h-[80px] md:min-h-[100px] lg:min-h-[120px] xl:min-h-[140px] 2xl:min-h-[180px]"
+                    : "relative  min-h-[60px] sm:min-h-[80px] md:min-h-[100px] lg:min-h-[120px] xl:min-h-[150px] 2xl:min-h-[190px]"
                 } flex items-center`}
               >
                 {flip ? (
@@ -131,7 +131,7 @@ export default function Lander({
                 ) : (
                   <motion.div
                     key={currentTitle}
-                    className="absolute inset-0 flex flex-row gap-2 lg:w-full w-[70%]"
+                    className="absolute inset-0 flex flex-row gap-2 lg:w-full w-full "
                   >
                     <h1 className="text-navy text-2xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl 2xl:text-6xl font-black leading-tight md:leading-10 xl:leading-14 2xl:leading-14 tracking-tight justify-center items-center flex ">
                       <motion.p
