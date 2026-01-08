@@ -77,7 +77,7 @@ export default function Lander({
           backgroundFill="white"
           colors={["#f15c23", "#012d6b", "#d8c4b5"]}
           className={`absolute h-full w-full flex flex-col ${
-            flip ? "items-center" : "items-start"
+            flip ? "items-center " : "items-start"
           } justify-center  z-10 `}
         >
           <div
@@ -92,7 +92,7 @@ export default function Lander({
                   flip
                     ? "relative h-fit"
                     : "relative  min-h-[60px] sm:min-h-[80px] md:min-h-[100px] lg:min-h-[120px] xl:min-h-[140px] 2xl:min-h-[190px] "
-                } flex justify-center items-center`}
+                } flex justify-left items-center `}
               >
                 {flip ? (
                   <motion.div
