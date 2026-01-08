@@ -77,10 +77,10 @@ export default function Interaction() {
       name: "Life Sciences",
       image: "/3-eyes/interaction/life-science.svg",
     },
-    {
-      name: "Music",
-      image: "/3-eyes/interaction/music.svg",
-    },
+    // {
+    //   name: "Music",
+    //   image: "/3-eyes/interaction/music.svg",
+    // },
     {
       name: "Oil & Gas",
       image: "/3-eyes/interaction/oil-gass.svg",
@@ -89,10 +89,10 @@ export default function Interaction() {
       name: "Renewable Energy",
       image: "/3-eyes/interaction/renewable-energy.svg",
     },
-    {
-      name: "Leisure & Tourism",
-      image: "/3-eyes/interaction/tourism.svg",
-    },
+    // {
+    //   name: "Leisure & Tourism",
+    //   image: "/3-eyes/interaction/tourism.svg",
+    // },
     {
       name: "Smart Cities",
       image: "/3-eyes/interaction/smart-cities.svg",
@@ -143,10 +143,7 @@ export default function Interaction() {
         ]}
         flip={true}
         currency={false}
-        images={[
-          { image: "/meeting1.webp", position: "50%_100%" },
-        
-        ]}
+        images={[{ image: "/meeting1.webp", position: "50%_100%" }]}
       />
       {/* <SimpleLander
         ref={landerRef as unknown as React.RefObject<HTMLDivElement>}
