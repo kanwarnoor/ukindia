@@ -52,7 +52,7 @@ export default function page() {
       <Connect
         title="Connect with Us"
         description="We're here to help you with your projects. Get in touch with us today."
-        image="/home-1.png"
+        image="/connect.webp"
       />
     </>
   );

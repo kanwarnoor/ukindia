@@ -136,7 +136,7 @@ export default function Team() {
         flip={true}
         currency={false}
         images={[
-          { image: "/contacthome.png", position: "bottom-right" },
+          { image: "/about.webp", position: "bottom-right" },
           // { image: "/home/lander/1.webp", position: "50%_100%" },
           // { image: "/home/lander/2.webp", position: "50%_50%" },
           // { image: "/home/lander/3.webp", position: "10%_10%" },
@@ -439,7 +439,7 @@ export default function Team() {
         <Connect
           title="Enquiries"
           description="To find out more about UKIBC, speak to one of our experts. Gain instant access to a network of businesses and organisations across sectors such as Digital, Food and Drink, Legal and Professional Services, and Higher Education."
-          image="/home-1.png"
+          image="/connect.webp"
         />
       </section>
     </>

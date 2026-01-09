@@ -529,7 +529,7 @@ export default function Intelligence() {
         <Connect
           title="Connect with us:"
           description="To connect with one of our India Experts simply email us or send us a message via our contact page. We look forward to connecting with you."
-          image="/home-card1.png"
+          image="/connect.webp"
         />
         {/* <div className="w-full h-fit flex flex-row justify-center items-center">
           <div className="w-full max-w-6xl mx-auto flex flex-col gap-8 items-center justify-center text-center">
