@@ -27,7 +27,7 @@ export default function page() {
         className="w-full h-fit flex flex-col gap-10 items-center justify-center py-20"
       >
         <p className="text-4xl font-bold text-navy text-center">Projects</p>
-        <div className="w-full h-fit flex flex-row gap-10 items-center justify-center">
+        <div className="w-full h-fit flex md:flex-row flex-col gap-10 items-center justify-center">
           <InfoCard
             title1="Membership"
             image="/annual.jpg"

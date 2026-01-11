@@ -138,7 +138,7 @@ export default function Page() {
       <section id="more">
         <div className="w-full h-fit flex flex-col gap-10 items-center justify-center py-20">
           <p className="text-4xl font-bold text-navy">News And Advice</p>
-          <div className="w-fit h-fit flex flex-row gap-4 items-center justify-center">
+          <div className="w-fit h-fit flex flex-row md:gap-4 gap-2 items-center justify-center">
             {filter.map((item) => (
               <div
                 key={item.sort}
@@ -157,7 +157,7 @@ export default function Page() {
                 }}
               >
                 <p
-                  className={`text-sm font-bold  px-4 py-2 rounded-full cursor-pointer  duration-300 ${
+                  className={`text-sm font-bold  md:px-4 px-2 md:py-2 py-1 rounded-full cursor-pointer  duration-300 ${
                     item.active
                       ? "bg-navy border-2 border-navy text-white"
                       : "text-navy bg-white border-2 border-navy"

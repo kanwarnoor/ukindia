@@ -185,10 +185,10 @@ export default function Interaction() {
             <h2 className="text-4xl md:text-5xl font-bold text-navy text-center mb-2">
               Key Sectors
             </h2>
-            <p className="text-lg text-gray-700 text-center mb-10 max-w-2xl">
+            <p className="md:text-lg text-base text-gray-700 mx-10 md:mx-0 text-center mb-10 max-w-2xl">
               UKIBC supports companies across a wide range of sectors
             </p>
-            <div className="mx-auto grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-y-5 justify-items-center w-[90%] max-w-7xl">
+            <div className="mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-y-3 gap-x-2 md:gap-y-5 md:gap-x-4 justify-items-center w-[96%] sm:w-[90%] max-w-7xl">
               {sectors.map((sector, index) => (
                 <motion.div
                   initial={{
@@ -201,16 +201,16 @@ export default function Interaction() {
                   }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   key={index}
-                  className="flex flex-col hover:scale-105  cursor-pointer text-center bg-navy/5 w-[180px] rounded-4xl h-[180px] justify-center items-center"
+                  className="flex flex-col hover:scale-105 cursor-pointer text-center bg-navy/5 w-[110px] h-[110px] sm:w-[140px] sm:h-[140px] md:w-[180px] md:h-[180px] rounded-3xl md:rounded-4xl justify-center items-center"
                 >
                   <Image
                     src={sector.image as string}
                     alt={sector.name}
-                    width={80}
-                    height={80}
-                    className="w-16 h-16 mb-1 p-3"
+                    width={56}
+                    height={56}
+                    className="w-11 h-11 sm:w-14 sm:h-14 md:w-16 md:h-16 mb-1 p-2 md:p-3"
                   />
-                  <span className="text-base font-bold leading-tight ">
+                  <span className="text-xs sm:text-sm md:text-base font-bold leading-tight ">
                     {sector.name}
                   </span>
                 </motion.div>

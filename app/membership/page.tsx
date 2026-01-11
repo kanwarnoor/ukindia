@@ -114,7 +114,7 @@ export default function Membership() {
       /> */}
 
       <section id="more">
-        <p className="text-4xl text-navy font-bold text-center md:w-[50%] w-[90%] mx-auto mt-20">
+        <p className="xl:text-4xl md:text-3xl text-2xl text-navy font-bold text-center md:w-[50%] w-[90%] mx-auto mt-20">
           Choose the membership level that best supports your UK–India goals.
         </p>
         <BoxImageText

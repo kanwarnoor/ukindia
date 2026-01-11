@@ -296,17 +296,15 @@ export default function Navbar() {
               const expanded = openDropdown === link.label;
               return (
                 <li key={link.label} className="w-full cursor-pointer">
-                  <button
-                    className="w-full text-left px-4 py-2 hover:bg-gray-50 transition-colors duration-200 text-md flex flex-row justify-between items-center gap-2 font-medium cursor-pointer"
-                    onClick={() =>
-                      link.sublinks
-                        ? setOpenDropdown(expanded ? null : link.label)
-                        : setMobileMenu(false)
-                    }
-                    aria-expanded={!!link.sublinks && expanded}
-                  >
-                    <span>{link.label}</span>
-                    {link.sublinks && (
+                  {link.sublinks ? (
+                    <button
+                      className="w-full text-left px-4 py-2 hover:bg-gray-50 transition-colors duration-200 text-md flex flex-row justify-between items-center gap-2 font-medium cursor-pointer"
+                      onClick={() =>
+                        setOpenDropdown(expanded ? null : link.label)
+                      }
+                      aria-expanded={expanded}
+                    >
+                      <span>{link.label}</span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -323,8 +321,16 @@ export default function Navbar() {
                           d="m19.5 8.25-7.5 7.5-7.5-7.5"
                         />
                       </svg>
-                    )}
-                  </button>
+                    </button>
+                  ) : (
+                    <Link
+                      href={link.href || "#"}
+                      className="w-full text-left px-4 py-2 hover:bg-gray-50 transition-colors duration-200 text-md flex flex-row justify-between items-center gap-2 font-medium cursor-pointer"
+                      onClick={() => setMobileMenu(false)}
+                    >
+                      <span>{link.label}</span>
+                    </Link>
+                  )}
                   {link.sublinks && expanded && (
                     <ul className="w-full bg-gray-50 border-t border-gray-100">
                       {link.sublinks.map((sublink) => (

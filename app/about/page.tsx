@@ -171,7 +171,7 @@ export default function About() {
           </p>
         </div> */}
 
-        <div className="flex gap-5 flex-row my-20 items-center justify-center">
+        <div className="flex gap-5 md:flex-row flex-col my-20 items-center justify-center">
           <InfoCard
             title1={"Interaction"}
             des={"Why: Putting you in the room with decision-makers. "}
@@ -211,7 +211,7 @@ export default function About() {
         </div>
 
         <div className="flex gap-5 flex-col my-20 text-navy ">
-          <h1 className="text-3xl font-bold text-center w-[70%] mx-auto mb-5">
+          <h1 className="md:text-3xl text-xl font-bold text-center md:w-[70%] w-[90%] mx-auto mb-5">
             We provide insight to help businesses influence policy, interact
             with the right stakeholders and turn intelligence into growth.
           </h1>
@@ -251,108 +251,25 @@ export default function About() {
           containerClassName="w-full min-h-screen md:h-screen h-[150vh]  flex  justify-center items-center bg-navy relative"
         >
           <div
-            className=" z-10 absolute top-0 left-0 mx-auto w-full h-screen flex flex-col justify-center items-center text-center gap-20 py-30 "
+            className="z-10 absolute top-0 left-0 bottom-0 right-0 mx-auto w-full min-h-screen h-auto flex flex-col justify-center items-center text-center gap-10 sm:gap-16 md:gap-20 py-10 sm:py-20"
             ref={intelligenceRef as unknown as React.RefObject<HTMLDivElement>}
           >
-            <div className="flex flex-col gap-5 items-center justify-center">
-              <h1 className="text-5xl font-bold text-white flex ">
+            <div className="flex flex-col gap-3 sm:gap-5 items-center justify-center w-full px-4">
+              <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white flex leading-tight max-w-2xl mx-auto">
                 For those seeking practical advice,
               </h1>
-              <p className="text-white text-base w-[70%] mx-auto">
+              <p className="text-white text-base sm:text-lg md:text-xl w-full sm:w-[85%] md:w-[70%] mx-auto">
                 We provide insight to help businesses influence policy, interact
                 with the right stakeholders and turn intelligence into growth.
               </p>
             </div>
-
-            {/* <LiquidButton text="Learn more" link="/about" /> */}
-            {/* <ul className="flex gap-10">
-              {[
-                "Business Operations",
-                "Government Relations",
-                "Advocacy Support",
-              ].map((item, index) => {
-                return (
-                  <motion.div
-                    initial={{
-                      y: 10,
-                      opacity: 0,
-                      scale: 1,
-                    }}
-                    whileInView={{
-                      y: 0,
-                      opacity: 1,
-                      transition: { duration: 0.5 },
-                    }}
-                    whileTap={{
-                      scale: 1.1,
-                      transition: { duration: 0.1 },
-                    }}
-                    transition={{ duration: 0.1 }}
-                    key={index}
-                    className="flex flex-col gap-2 items-center justify-center"
-                  >
-                    {index === 0 ? (
-                      <div className="px-7 py-7 bg-tiger rounded-full flex items-center justify-center">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                          className="size-10 text-white "
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M7.5 5.25a3 3 0 0 1 3-3h3a3 3 0 0 1 3 3v.205c.933.085 1.857.197 2.774.334 1.454.218 2.476 1.483 2.476 2.917v3.033c0 1.211-.734 2.352-1.936 2.752A24.726 24.726 0 0 1 12 15.75c-2.73 0-5.357-.442-7.814-1.259-1.202-.4-1.936-1.541-1.936-2.752V8.706c0-1.434 1.022-2.7 2.476-2.917A48.814 48.814 0 0 1 7.5 5.455V5.25Zm7.5 0v.09a49.488 49.488 0 0 0-6 0v-.09a1.5 1.5 0 0 1 1.5-1.5h3a1.5 1.5 0 0 1 1.5 1.5Zm-3 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"
-                            clipRule="evenodd"
-                          />
-                          <path d="M3 18.4v-2.796a4.3 4.3 0 0 0 .713.31A26.226 26.226 0 0 0 12 17.25c2.892 0 5.68-.468 8.287-1.335.252-.084.49-.189.713-.311V18.4c0 1.452-1.047 2.728-2.523 2.923-2.12.282-4.282.427-6.477.427a49.19 49.19 0 0 1-6.477-.427C4.047 21.128 3 19.852 3 18.4Z" />
-                        </svg>
-                      </div>
-                    ) : index === 1 ? (
-                      <div className="px-7 py-7 bg-tiger rounded-full flex items-center justify-center">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                          className="size-10 text-white "
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M12 2.25a.75.75 0 0 1 .75.75v.756a49.106 49.106 0 0 1 9.152 1 .75.75 0 0 1-.152 1.485h-1.918l2.474 10.124a.75.75 0 0 1-.375.84A6.723 6.723 0 0 1 18.75 18a6.723 6.723 0 0 1-3.181-.795.75.75 0 0 1-.375-.84l2.474-10.124H12.75v13.28c1.293.076 2.534.343 3.697.776a.75.75 0 0 1-.262 1.453h-8.37a.75.75 0 0 1-.262-1.453c1.162-.433 2.404-.7 3.697-.775V6.24H6.332l2.474 10.124a.75.75 0 0 1-.375.84A6.723 6.723 0 0 1 5.25 18a6.723 6.723 0 0 1-3.181-.795.75.75 0 0 1-.375-.84L4.168 6.241H2.25a.75.75 0 0 1-.152-1.485 49.105 49.105 0 0 1 9.152-1V3a.75.75 0 0 1 .75-.75Zm4.878 13.543 1.872-7.662 1.872 7.662h-3.744Zm-9.756 0L5.25 8.131l-1.872 7.662h3.744Z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                      </div>
-                    ) : (
-                      <div className="px-7 py-7 bg-tiger rounded-full flex items-center justify-center">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                          className="size-10 text-white "
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M8.25 6.75a3.75 3.75 0 1 1 7.5 0 3.75 3.75 0 0 1-7.5 0ZM15.75 9.75a3 3 0 1 1 6 0 3 3 0 0 1-6 0ZM2.25 9.75a3 3 0 1 1 6 0 3 3 0 0 1-6 0ZM6.31 15.117A6.745 6.745 0 0 1 12 12a6.745 6.745 0 0 1 6.709 7.498.75.75 0 0 1-.372.568A12.696 12.696 0 0 1 12 21.75c-2.305 0-4.47-.612-6.337-1.684a.75.75 0 0 1-.372-.568 6.787 6.787 0 0 1 1.019-4.38Z"
-                            clipRule="evenodd"
-                          />
-                          <path d="M5.082 14.254a8.287 8.287 0 0 0-1.308 5.135 9.687 9.687 0 0 1-1.764-.44l-.115-.04a.563.563 0 0 1-.373-.487l-.01-.121a3.75 3.75 0 0 1 3.57-4.047ZM20.226 19.389a8.287 8.287 0 0 0-1.308-5.135 3.75 3.75 0 0 1 3.57 4.047l-.01.121a.563.563 0 0 1-.373.486l-.115.04c-.567.2-1.156.349-1.764.441Z" />
-                        </svg>
-                      </div>
-                    )}
-                    <li key={index} className="text-xl font-bold text-white">
-                      {item}
-                    </li>
-                  </motion.div>
-                );
-              })}
-            </ul> */}
-            <div className="w-full  h-fit flex flex-row sm:flex-row gap-6 sm:gap-10 md:gap-15 justify-center text-center ">
-              <div className="flex flex-col gap-2 items-center justify-center">
+            <div className="w-full h-fit flex flex-col sm:flex-row gap-7 sm:gap-6 md:gap-10 lg:gap-15 justify-center text-center px-4">
+              <div className="flex flex-col gap-2 items-center justify-center w-full sm:w-auto">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   fill="currentColor"
-                  className="size-10 text-white"
+                  className="w-10 h-10 text-white"
                 >
                   <path
                     fillRule="evenodd"
@@ -360,17 +277,20 @@ export default function About() {
                     clipRule="evenodd"
                   />
                 </svg>
-                <p className="text-white text-xl font-bold">Market Advisory</p>
-                <LiquidButton text="Learn more" link="/intelligence" />
+                <p className="text-white text-base sm:text-lg md:text-xl font-bold">Market Advisory</p>
+                <div className="w-full flex justify-center">
+                  <LiquidButton text="Learn more" link="/intelligence" />
+                </div>
               </div>
-              <div className="flex flex-col gap-2 items-center justify-center">
+
+              <div className="flex flex-col gap-2 items-center justify-center w-full sm:w-auto">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="size-10 text-white"
+                  className="w-10 h-10 text-white"
                 >
                   <path
                     strokeLinecap="round"
@@ -378,20 +298,22 @@ export default function About() {
                     d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0 0 12 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75Z"
                   />
                 </svg>
-
-                <p className="text-white text-xl font-bold">
+                <p className="text-white text-base sm:text-lg md:text-xl font-bold">
                   Higher Education Advisory
                 </p>
-                <LiquidButton text="Learn more" link="/interaction" />
+                <div className="w-full flex justify-center">
+                  <LiquidButton text="Learn more" link="/interaction" />
+                </div>
               </div>
-              <div className="flex flex-col gap-2 items-center justify-center">
+
+              <div className="flex flex-col gap-2 items-center justify-center w-full sm:w-auto">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="size-10 text-white"
+                  className="w-10 h-10 text-white"
                 >
                   <path
                     strokeLinecap="round"
@@ -399,36 +321,13 @@ export default function About() {
                     d="M7.5 14.25v2.25m3-4.5v4.5m3-6.75v6.75m3-9v9M6 20.25h12A2.25 2.25 0 0 0 20.25 18V6A2.25 2.25 0 0 0 18 3.75H6A2.25 2.25 0 0 0 3.75 6v12A2.25 2.25 0 0 0 6 20.25Z"
                   />
                 </svg>
-
-                <p className="text-white text-xl font-bold">
+                <p className="text-white text-base sm:text-lg md:text-xl font-bold">
                   Government Advisory
                 </p>
-                <LiquidButton text="Learn more" link="/influence" />
+                <div className="w-full flex justify-center">
+                  <LiquidButton text="Learn more" link="/influence" />
+                </div>
               </div>
-              {/* <StatCard
-                animation="left"
-                number={825}
-                valueAfter="+"
-                title="Over"
-                description="Businesses and universities have used our services"
-                color="white"
-              />
-              <StatCard
-                animation="center"
-                number={40000}
-                title="UKIBC recruited"
-                description="students from UKIBC Consortium Universities"
-                color="white"
-              />
-              <StatCard
-                animation="right"
-                title="Our Members Contribute"
-                valueBefore="£"
-                number={600}
-                valueAfter=" Billion"
-                description="of revenue to the worlds economy"
-                color="white"
-              /> */}
             </div>
           </div>
         </BackgroundGradientAnimation>
