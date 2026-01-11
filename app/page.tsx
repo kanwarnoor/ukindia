@@ -25,6 +25,21 @@ export default function Home() {
   const [posts, setPosts] = useState([]);
 
   const setNavbar = useSetNavbar();
+  const [mobile, setMobile] = useState<boolean>(() => {
+    if (typeof window !== "undefined") {
+      return window.innerWidth < 768;
+    }
+    return false;
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const { ref: membershipRef, inView: membershipInView } = useInView({
     threshold: [0.05, 0.5],
@@ -49,11 +64,11 @@ export default function Home() {
 
   useEffect(() => {
     if (aboutInView || membershipInView) {
-      setNavbar(true);
+      setNavbar(mobile ? false : true);
     } else {
-      setNavbar(false);
+      setNavbar(mobile ? false : false);
     }
-  }, [membershipInView, aboutInView, setNavbar]);
+  }, [membershipInView, aboutInView, setNavbar, mobile]);
 
   return (
     <>
@@ -77,7 +92,6 @@ export default function Home() {
             des: "Trusted relationships across all levels of the government, credible advocacy, and practical intelligence that help businesses grow with confidence.",
           },
         ]}
-        
         button={false}
         currency={true}
         images={[

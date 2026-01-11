@@ -19,7 +19,7 @@ export default function LiquidButton({ text, link }: LiquidButtonProps) {
       <div>
         <Link
           href={link}
-          className=" left-0 right-0 top-0 bottom-0 flex z-10 w-full justify-center items-center rounded-full text-center  bg-tiger backdrop-blur-sm py-3 px-6 text-md font-bold tracking-wide cursor-pointer text-white transition hover:bg-navy  duration-200 border-2 border-mix shadow-lg"
+          className=" left-0 right-0 top-0 bottom-0 flex z-10 w-full justify-center items-center rounded-full text-center  bg-tiger backdrop-blur-sm md:py-3 py-2 md:px-6 px-4 text-sm md:text-md font-bold tracking-wide cursor-pointer text-white transition hover:bg-navy  duration-200 border-2 border-mix shadow-lg"
         >
           {text}
         </Link>
