@@ -143,33 +143,43 @@ export default function Navbar() {
 
   return (
     <nav className=" flex w-full h-fit lg:bg-transparent  bg-white text-black items-center px-6 md:px-10 fixed top-0 z-50">
-      <Link
-        href="/"
-        onClick={(e) => {
-          if (window.location.pathname === "/") {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: "smooth" });
-          } else {
-            // Navigation will reset scroll position, but ensure it scrolls to top
-            setTimeout(() => {
+      <div className="relative mr-auto w-[120px] md:w-[190px] h-auto">
+        {/* White shadow background */}
+        {/* <div
+          className="absolute inset-2 rounded-full bg-white/90 shadow-lg z-0 "
+          style={{
+            filter:
+              "drop-shadow(0 4px 18px rgba(0,0,0,0.11)) drop-shadow(0 1.5px 12px rgba(0,0,0,0.07))",
+          }}
+        ></div> */}
+        <Link
+          href="/"
+          onClick={(e) => {
+            if (window.location.pathname === "/") {
+              e.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
-            }, 100);
-          }
-        }}
-        className="w-[120px] md:w-[190px] h-auto relative mr-auto"
-      >
-        <Image
-          src="/logo.png"
-          alt="logo"
-          width={0}
-          sizes="100vw"
-          height={0}
-          className={`w-full  h-full object-contain cursor-pointer transition-all duration-300 ease-in-out ${
-            change ? "invert brightness-0" : "invert-0 brightness-100"
-          }`}
-          priority
-        />
-      </Link>
+            } else {
+              // Navigation will reset scroll position, but ensure it scrolls to top
+              setTimeout(() => {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }, 100);
+            }
+          }}
+          className="w-full h-full relative z-10 flex items-center "
+        >
+          <Image
+            src="/logo.png"
+            alt="logo"
+            width={0}
+            sizes="100vw"
+            height={0}
+            className={`w-full h-full object-contain cursor-pointer transition-all duration-300 ease-in-out ${
+              change ? "invert brightness-0" : "invert-0 brightness-100"
+            }`}
+            priority
+          />
+        </Link>
+      </div>
 
       <motion.ul
         initial={{ opacity: 0, x: 20 }}

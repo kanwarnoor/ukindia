@@ -79,87 +79,84 @@ export default function Person({
       <AnimatePresence>
         {clicked && (
           <>
-            <motion.div
-              initial={{
-                opacity: 1,
-              }}
-              animate={{
-                opacity: 1,
-              }}
-              exit={{
-                opacity: 0,
-              }}
-              className="w-screen h-screen fixed  inset-0 bg-white/20 z-20 backdrop-blur-sm"
-              onClick={() => setClicked(false)}
-            ></motion.div>
-
+            {/* Modal Overlay */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className={`fixed  md:w-[1000px] w-[80%] max-h-[70vh] sm:max-h-[80vh] h-fit bottom-0 top-1/2 -translate-y-1/2 left-1/2 transform -translate-x-1/2 z-30 p-5 rounded-4xl bg-black/90 backdrop-blur-sm text-white flex flex-col shadow-2xl overflow-y-auto`}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="white"
-                className="md:hidden absolute right-0 size-10 mr-6 mt-1 cursor-pointer hover:scale-105 duration-100 z-20"
-                onClick={() => setClicked(false)}
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
-                  clipRule="evenodd"
-                />
-              </svg>
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 w-screen h-screen bg-black/50 z-20 backdrop-blur-sm"
+              aria-label="Close person modal"
+              onClick={() => setClicked(false)}
+            />
 
-              {/* <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.5 }}
-                  className="w-full md:h-[300px] h-[150px] bg-black rounded-lg"
-                >
-                  <Image
-                    src={image}
-                    width={0}
-                    height={0}
-                    {...(blurdata
-                      ? { blurDataURL: blurdata, placeholder: "blur" }
-                      : {})}
-                    alt={""}
-                    sizes="100% 100%"
-                    className={`w-full rounded-lg h-full object-cover grayscale`}
-                    style={{ objectPosition: position }}
-                  />
-                  <p className="text-xl font-bold mt-2 md:leading-none leading-4">
-                    {name}
-                  </p>
-                  <p className="md:text-sm text-xs font-bold mt-1">{role}</p>
-                </motion.div> */}
-              <div className="w-full h-[300px] md:h-[400px] md:mt-0 mt-10 bg-opacity-20 flex ">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="white"
-                  className="md:block hidden  size-10 z-10  ml-auto cursor-pointer hover:scale-105 duration-100"
+            {/* Modal Content */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.98 }}
+              transition={{ duration: 0.3 }}
+              className={`fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-30 p-5 rounded-4xl bg-black/90 backdrop-blur-sm text-white flex flex-col shadow-2xl overflow-y-auto w-[80%] md:w-[700px] max-h-[80vh] h-fit`}
+              role="dialog"
+              aria-modal="true"
+            >
+              {/* Sticky Close Button Wrapper */}
+              <div className="sticky top-0 left-0 right-0 flex justify-end pointer-events-none z-30">
+                {/* Close Button - Top Right for MD+ screens */}
+                <button
+                  title="Close"
+                  type="button"
+                  aria-label="Close Person Modal"
+                  className="hidden md:block absolute md:static right-5 top-5 md:right-0 md:top-0 size-10 z-30 cursor-pointer hover:scale-105 duration-100 bg-transparent pointer-events-auto"
                   onClick={() => setClicked(false)}
+                  style={{ pointerEvents: "auto" }}
                 >
-                  <path
-                    fillRule="evenodd"
-                    d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
-                    clipRule="evenodd"
-                  />
-                </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="white"
+                    className="size-10"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </button>
+
+                {/* Close Button - Small screens */}
+                <button
+                  title="Close"
+                  type="button"
+                  aria-label="Close Person Modal"
+                  className="md:hidden absolute md:static right-0 mr-4 mt-1 md:mr-0 md:mt-0 size-10 cursor-pointer hover:scale-105 duration-100 z-30 bg-transparent pointer-events-auto"
+                  onClick={() => setClicked(false)}
+                  style={{ pointerEvents: "auto" }}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="white"
+                    className="size-10"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </button>
               </div>
-              {des1 && (
-                <div className="flex-1 flex items-center justify-center h-fit absolute top-0 left-0 right-0 bottom-0 m-auto md:p-10 p-5">
+              {/* Modal Description */}
+              <div className="relative w-full flex flex-col items-center justify-center md:py-12 py-6">
+                {des1 && (
                   <p
                     className="text-center text-base md:text-lg font-medium px-4"
                     dangerouslySetInnerHTML={{ __html: des1 }}
-                  ></p>
-                </div>
-              )}
+                  />
+                )}
+              </div>
             </motion.div>
           </>
         )}
