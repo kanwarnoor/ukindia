@@ -5,7 +5,7 @@ import StatCard from "@/components/StatCard";
 import Carousel from "@/components/Carousel";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { WistiaPlayer } from "@wistia/wistia-player-react";
+// import { WistiaPlayer } from "@wistia/wistia-player-react";
 import Companies from "@/components/Companies";
 import PostsCarousel from "@/components/PostsCarousel";
 import Link from "next/link";
@@ -17,6 +17,8 @@ import FullCard from "@/components/FullCard";
 import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
 import LiquidButton from "@/components/LiquidButton";
 import ZoomCard from "@/components/ZoomCard";
+import Video from "next-video";
+import map from "@/videos/map.mp4";
 import Fullscreen from "@/components/Fullscreen";
 
 export default function Home() {
@@ -94,6 +96,7 @@ export default function Home() {
         ]}
         button={false}
         currency={true}
+        video={true}
         images={[
           { image: "/home/lander/4.webp", position: "bottom-right" },
           { image: "/home/lander/1.webp", position: "50%_100%" },
@@ -416,11 +419,19 @@ export default function Home() {
           </div>
 
           <div className="w-full md:w-1/2">
-            <WistiaPlayer
-              mediaId="ouhxny6plv"
-              className="w-full h-full rounded-xl"
-            />
+            <div className="rounded-xl overflow-hidden w-full h-full">
+              <Video
+                src={map}
+                className="w-full h-full object-cover"
+                autoPlay
+                muted
+                loop
+                playsInline
+                controls={false}
+              />
+            </div>
           </div>
+
         </div>
 
         {/* </AuroraBackground> */}

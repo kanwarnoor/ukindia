@@ -6,6 +6,8 @@ import axios from "axios";
 import { WavyBackground } from "@/components/ui/wavy-background";
 import Link from "next/link";
 import ImageSlider from "@/components/ImageSlider";
+import Video from "next-video";
+import homepage from "@/videos/homepage.mp4";
 
 interface LanderProps {
   ref?: React.RefObject<HTMLDivElement>;
@@ -15,6 +17,7 @@ interface LanderProps {
     des?: string;
   }[];
   flip?: boolean;
+  video?: boolean;
   buttonTxt?: string;
   buttonLink?: string;
   button?: boolean;
@@ -34,6 +37,7 @@ export default function Lander({
   buttonTxt = "Become a member",
   buttonLink = "/membership",
   button = true,
+  video = false,
   flip = false,
 }: LanderProps) {
   const [currentTitle, setCurrentTitle] = useState(0);
@@ -407,9 +411,21 @@ export default function Lander({
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="w-full hidden lg:flex lg:w-1/2 h-1/2 sm:h-[60vh] lg:h-screen flex-col items-center justify-center relative"
+        className="hidden lg:flex relative w-full lg:w-1/2 h-1/2 sm:h-[60vh] lg:h-screen flex-col items-center justify-center overflow-hidden"
       >
-        <ImageSlider images={images} />
+        {video ? (
+          <Video
+            src={homepage}
+            className="w-full h-full absolute top-0 left-0 scale-200"
+            autoPlay
+            muted
+            loop
+            playsInline
+            controls={true}
+          />
+        ) : (
+          <ImageSlider images={images} />
+        )}
       </motion.div>
     </div>
   );
