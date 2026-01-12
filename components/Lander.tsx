@@ -76,7 +76,7 @@ export default function Lander({
       ref={ref as unknown as React.RefObject<HTMLDivElement>}
     >
       {/* Text and Wavy Background Section */}
-      <div className="w-full  lg:w-1/2 relative h-full lg:min-h-screen  ">
+      <div className="w-full lg:w-1/2 relative h-full md:min-h-screen ">
         <WavyBackground
           backgroundFill="white"
           colors={["#f15c23", "#012d6b", "#d8c4b5"]}
@@ -85,7 +85,7 @@ export default function Lander({
           } justify-center  z-10 `}
         >
           <div
-            className={`w-full mt-10 md:mt-20 xl:mt-0 h-1/2 xl:h-fit flex flex-col justify-center px-6 md:px-10 lg:ml-5 gap-4 md:gap-5 lg:gap-6 lg:py-0 ${
+            className={`w-full mt-10 md:mt-20 xl:mt-0 h-full xl:h-fit flex flex-col justify-center px-6 md:px-10 lg:ml-5 gap-4 md:gap-5 lg:gap-6 lg:py-0  ${
               flip ? "lg:w-[80%]" : "lg:w-[90%]"
             }`}
           >
@@ -330,22 +330,24 @@ export default function Lander({
                 </Link>
               </motion.div>
             )}
-            <div className="w-3/4 h-full aspect-video flex items-center justify-center overflow-hidden rounded-xl shadow-xl mt-20">
-              <Video
-                src={homepage}
-                className="w-full h-full shadow-lg object-cover"
-                autoPlay
-                muted
-                loop
-                playsInline
-                controls={true}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  background: "#000",
-                }}
-              />
-            </div>
+            {video && (
+              <div className="lg:w-full md:w-[400px] w-[300px] max-w-[500px]  aspect-video flex items-center justify-center overflow-hidden rounded-xl shadow-xl mt-10">
+                <Video
+                  src={homepage}
+                  className="w-full h-full shadow-lg object-cover"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  controls={true}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    background: "#000",
+                  }}
+                />
+              </div>
+            )}
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -416,7 +418,7 @@ export default function Lander({
             </motion.div>
           </div>
 
-          <div className="w-full md:w-[70%] h-1/2 mt-auto p-10 rounded-xl lg:hidden md:flex hidden">
+          <div className="w-full md:w-[70%] h-1/2 mt-auto p-10 rounded-xl lg:hidden lg:flex hidden">
             <ImageSlider images={images} />
           </div>
         </WavyBackground>
