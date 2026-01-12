@@ -66,7 +66,7 @@ export default function Lander({
 
   return (
     <div
-      className={`max-w-screen overflow-hidden h-screen flex flex-col lg:flex-row ${
+      className={`max-w-screen overflow-hidden md:h-screen h-[50vh] flex flex-col lg:flex-row ${
         flip ? "lg:flex-row-reverse" : "lg:flex-row"
       } justify-center bg-white`}
       ref={ref as unknown as React.RefObject<HTMLDivElement>}
@@ -396,7 +396,7 @@ export default function Lander({
             </motion.div>
           </div>
 
-          <div className="w-full md:w-[70%] h-1/2 mt-auto p-10 rounded-xl lg:hidden flex">
+          <div className="w-full md:w-[70%] h-1/2 mt-auto p-10 rounded-xl lg:hidden md:flex hidden">
             <ImageSlider images={images} />
           </div>
         </WavyBackground>
