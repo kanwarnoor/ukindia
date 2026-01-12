@@ -70,7 +70,7 @@ export default function Lander({
 
   return (
     <div
-      className={`max-w-screen overflow-hidden md:h-screen h-[50vh] flex flex-col lg:flex-row ${
+      className={`max-w-screen overflow-hidden md:h-screen h-screen flex flex-col lg:flex-row ${
         flip ? "lg:flex-row-reverse" : "lg:flex-row"
       } justify-center bg-white`}
       ref={ref as unknown as React.RefObject<HTMLDivElement>}
@@ -330,6 +330,22 @@ export default function Lander({
                 </Link>
               </motion.div>
             )}
+            <div className="w-3/4 h-full aspect-video flex items-center justify-center overflow-hidden rounded-xl shadow-xl mt-20">
+              <Video
+                src={homepage}
+                className="w-full h-full shadow-lg object-cover"
+                autoPlay
+                muted
+                loop
+                playsInline
+                controls={true}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  background: "#000",
+                }}
+              />
+            </div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -413,19 +429,7 @@ export default function Lander({
         transition={{ duration: 0.5, delay: 0.2 }}
         className="hidden lg:flex relative w-full lg:w-1/2 h-1/2 sm:h-[60vh] lg:h-screen flex-col items-center justify-center overflow-hidden"
       >
-        {video ? (
-          <Video
-            src={homepage}
-            className="w-full h-full absolute top-0 left-0 scale-200"
-            autoPlay
-            muted
-            loop
-            playsInline
-            controls={true}
-          />
-        ) : (
-          <ImageSlider images={images} />
-        )}
+        <ImageSlider images={images} />
       </motion.div>
     </div>
   );
