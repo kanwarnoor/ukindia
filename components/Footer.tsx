@@ -95,7 +95,7 @@ export default function Footer() {
             </div>
             <div className="flex gap-3">
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/company/uk-india-business-council/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-navy/80 hover:bg-navy/60 border border-white/20 rounded flex items-center justify-center transition-colors"
@@ -111,7 +111,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://twitter.com"
+                href="https://x.com/UKIBC"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-navy/80 hover:bg-navy/60 border border-white/20 rounded flex items-center justify-center transition-colors"
@@ -127,7 +127,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://youtube.com"
+                href="https://www.youtube.com/@ukindiabusinesscouncil8888"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-navy/80 hover:bg-navy/60 border border-white/20 rounded flex items-center justify-center transition-colors"
@@ -143,7 +143,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/ukindia_bc/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-navy/80 hover:bg-navy/60 border border-white/20 rounded flex items-center justify-center transition-colors"

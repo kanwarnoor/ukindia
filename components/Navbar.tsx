@@ -4,8 +4,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { useNavbar } from "@/lib/navbar-context";
-import { useRouter } from "next/navigation";
+// import { useNavbar } from "@/lib/navbar-context";
 
 interface Sublink {
   label: string;
@@ -21,8 +20,7 @@ interface NavLink {
 export default function Navbar() {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [mobileMenu, setMobileMenu] = useState<boolean>(false);
-  const change = useNavbar();
-  const router = useRouter();
+  const change = false;
 
   const links: NavLink[] = [
     {
@@ -126,23 +124,27 @@ export default function Navbar() {
     setOpenDropdown(null);
   };
 
-  const [scroll, setScroll] = useState(true);
+  const [scroll, setScroll] = useState(false);
 
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     const scrollY = window.scrollY;
-  //     if (scrollY > 100) {
-  //       setScroll(true);
-  //     } else {
-  //       setScroll(false);
-  //     }
-  //   };
-  //   window.addEventListener("scroll", handleScroll);
-  //   return () => window.removeEventListener("scroll", handleScroll);
-  // }, []);
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      if (scrollY > 100) {
+        setScroll(true);
+      } else {
+        setScroll(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <nav className=" flex w-full h-fit lg:bg-transparent  bg-white text-black items-center px-6 md:px-10 fixed top-0 z-50">
+    <nav
+      className={` flex w-full h-fit transition-all duration-300 ease-in-out text-black items-center px-6 md:px-10 fixed top-0 z-50 ${
+        scroll ? "bg-white shadow-lg" : "bg-transparent"
+      }`}
+    >
       <div className="relative mr-auto w-[120px] md:w-[190px] h-auto">
         {/* White shadow background */}
         {/* <div
@@ -185,11 +187,13 @@ export default function Navbar() {
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5 }}
-        className={`hidden lg:flex items-center justify-center transistion-all duration-200 gap-1 md:gap-6 text-xs md:text-sm  xl:text-base font-medium h-12 px-10 bg-black/50 backdrop-blur-sm rounded-full border border-mix ${
-          scroll
-            ? "2xl:absolute 2xl:left-1/2 2xl:-translate-x-1/2  2xl:w-fit"
-            : ""
-        }`}
+        className={`hidden lg:flex items-center justify-center transition-all duration-300 ease-in-out gap-1 md:gap-6 text-xs md:text-sm  xl:text-base font-medium h-12 px-10  rounded-full   2xl:absolute 2xl:left-1/2 2xl:-translate-x-1/2  2xl:w-fit
+          ${
+            scroll
+              ? "bg-transparent border-none text-black"
+              : " border-mix border bg-black/50 backdrop-blur-sm text-white"
+          }
+          `}
       >
         {links.map((link) => (
           <li
@@ -200,7 +204,7 @@ export default function Navbar() {
           >
             <Link
               href={link.href || "#"}
-              className="text-white transition-colors duration-200 flex flex-row justify-center items-center gap-2"
+              className=" transition-colors duration-300 ease-in-out flex flex-row justify-center items-center gap-2"
             >
               {link.label}
               {link.sublinks && (
@@ -231,7 +235,7 @@ export default function Navbar() {
                   <li key={sublink.label}>
                     <Link
                       href={sublink.href || "#"}
-                      className="block px-4 py-2 first:border-none border-t-2 transition-colors duration-200 text-sm"
+                      className="block px-4 py-2 first:border-none border-t-2 transition-colors duration-300 ease-in-out text-sm"
                     >
                       {sublink.label}
                     </Link>
@@ -244,13 +248,17 @@ export default function Navbar() {
       </motion.ul>
 
       <ul
-        className={`hidden 2xl:flex items-center justify-center transition-all duration-200 gap-6 md:gap-5 text-sm md:text-  xl:text-base font-medium h-12 px-5 bg-black/50 backdrop-blur-sm rounded-full border border-mix ml-3`}
+        className={`hidden 2xl:flex items-center justify-center transition-all duration-300 ease-in-out gap-6 md:gap-5 text-sm md:text-  xl:text-base font-medium h-12 px-5  rounded-full border border-mix ml-3  ${
+          scroll
+            ? "bg-transparent border-none text-black"
+            : " border-mix border bg-black/50 backdrop-blur-sm text-white"
+        }`}
       >
-        <li className="ml-auto flex items-center gap-2 text-white">
+        <li className="ml-auto flex items-center gap-2 ">
           <span>GMT:</span>
           <span>{time.gmt}</span>
         </li>
-        <li className="flex items-center gap-2 text-white">
+        <li className="flex items-center gap-2 ">
           <span>IST:</span>
           <span>{time.ist}</span>
         </li>

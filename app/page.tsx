@@ -252,7 +252,7 @@ export default function Home() {
               />
             </div>
           </div>
-          <div className="flex flex-col md:flex-row h-full justify-center items-center mt-10 space-y-8 md:space-y-0 md:space-x-10 ">
+          {/* <div className="flex flex-col md:flex-row h-full justify-center items-center mt-10 space-y-8 md:space-y-0 md:space-x-10 ">
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -317,7 +317,7 @@ export default function Home() {
                 className="hidden md:block w-[600px] h-[337.5px] bg-tiger rounded-xl absolute md:translate-x-5 translate-y-5 -z-10 right-0 md:right-auto"
               />
             </div>
-          </div>
+          </div> */}
         </section>
       </div>
 
