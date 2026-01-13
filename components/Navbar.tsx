@@ -145,7 +145,7 @@ export default function Navbar() {
         scroll ? "bg-white shadow-lg" : "bg-transparent"
       }`}
     >
-      <div className="relative mr-auto w-[120px] md:w-[190px] h-auto">
+      <div className={`relative mr-auto duration-300 ease-in-out h-auto ${!scroll ? "w-[120px] md:w-[200px]" : "w-[100px] md:w-[180px]"}`}>
         {/* White shadow background */}
         {/* <div
           className="absolute inset-2 rounded-full bg-white/90 shadow-lg z-0 "
