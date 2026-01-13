@@ -187,7 +187,7 @@ export default function Navbar() {
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5 }}
-        className={`hidden lg:flex items-center justify-center transition-all duration-300 ease-in-out gap-1 md:gap-6 text-xs md:text-sm  xl:text-base font-medium h-12 px-10  rounded-full   2xl:absolute 2xl:left-1/2 2xl:-translate-x-1/2  2xl:w-fit
+        className={`hidden lg:flex items-center justify-center transition-all duration-300 ease-in-out gap-1 md:gap-6 text-xs md:text-sm  xl:text-base font-medium h-12 px-10  rounded-full 2xl:absolute 2xl:left-1/2 2xl:-translate-x-1/2  2xl:w-fit
           ${
             scroll
               ? "bg-transparent border-none text-black"
@@ -198,13 +198,13 @@ export default function Navbar() {
         {links.map((link) => (
           <li
             key={link.label}
-            className="relative group flex flex-row  h-full "
+            className="relative group flex flex-row  h-full  "
             onMouseEnter={() => link.sublinks && handleMouseEnter(link.label)}
             onMouseLeave={handleMouseLeave}
           >
             <Link
               href={link.href || "#"}
-              className=" transition-colors duration-300 ease-in-out flex flex-row justify-center items-center gap-2"
+              className=" flex flex-row justify-center items-center gap-2"
             >
               {link.label}
               {link.sublinks && (
@@ -235,7 +235,7 @@ export default function Navbar() {
                   <li key={sublink.label}>
                     <Link
                       href={sublink.href || "#"}
-                      className="block px-4 py-2 first:border-none border-t-2 transition-colors duration-300 ease-in-out text-sm"
+                      className="block px-4 py-2 first:border-none border-t-2 transition-colors duration-200 ease-in-out text-sm"
                     >
                       {sublink.label}
                     </Link>
