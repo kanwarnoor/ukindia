@@ -494,7 +494,7 @@ export default function About() {
         <Connect
           title="Connect with us:"
           description="To connect with one of our India Experts simply email us or send us a message via our contact page. We look forward to connecting with you."
-          image="/contactHome.png"
+          image="/connect.webp"
         />
       </section>
     </>

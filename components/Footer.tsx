@@ -41,6 +41,10 @@ export default function Footer() {
     "Events",
     "Projects",
     "Vacancies",
+    "Group Board",
+    "TNE",
+    "Government Relations",
+    "Higher Education Advisory",
   ];
 
   return (
