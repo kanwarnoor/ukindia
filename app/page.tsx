@@ -20,6 +20,7 @@ import ZoomCard from "@/components/ZoomCard";
 import Video from "next-video";
 import map from "@/videos/map.mp4";
 import Fullscreen from "@/components/Fullscreen";
+import Ticker from "@/components/Ticker";
 
 export default function Home() {
   const [video, setVideo] = useState(false);
@@ -88,7 +89,6 @@ export default function Home() {
             title: "Interactions that Drive Growth and Credibility",
             des: "We provide interactive opportunities to forge relationships across all levels of the government, credible advocacy, and practical intelligence that help businesses grow with confidence.",
           },
-
         ]}
         button={false}
         currency={true}
@@ -102,12 +102,19 @@ export default function Home() {
       />
 
       <div className="w-full h-fit flex flex-col gap-2 justify-center items-center py-20 overflow-x-hidden max-w-full">
+        <Ticker
+          title={posts
+            .slice(0, 5)
+            .map(
+              (post: { title: { rendered: string } }) => post.title.rendered
+            )}
+        />
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-navy md:text-5xl text-3xl font-bold text-center flex"
+          className="text-navy md:text-5xl text-3xl font-bold text-center flex mt-20"
         >
           What we do
         </motion.h1>
