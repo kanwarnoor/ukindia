@@ -18,7 +18,10 @@ export default function page() {
         ]}
         flip={true}
         button={false}
-        images={[{ image: "/edu.jpg", position: "50%_50%" }]}
+        images={[
+          { image: "/hea.webp", position: "50%_50%" },
+          { image: "/hea2.webp", position: "50%_50%" },
+        ]}
       />
       <BoxImageText
         title="Result-Driven Recruitment"
@@ -29,7 +32,10 @@ export default function page() {
         buttonText="Meet our student recruitment experts"
         buttonLink="/team?filter=business_solutions"
         className="mt-20"
-        images={[{ image: "/student.jpg", position: "50%_50%" }]}
+        images={[
+          { image: "/hea-result.webp", position: "50%_50%" },
+          { image: "/hea-result2.webp", position: "50%_50%" },
+        ]}
       />
       <BoxImageText
         title="Partnership Pathways"
@@ -44,7 +50,10 @@ export default function page() {
         buttonText="Transnational Education (TNE)"
         buttonLink="/tne"
         className="mb-10 mt-10"
-        images={[{ image: "/windows.jpg", position: "50%_50%" }]}
+        images={[
+          { image: "/hea-partner.webp", position: "50%_50%" },
+          { image: "/hea-partner2.webp", position: "50%_50%" },
+        ]}
       />
       <BoxImageText
         title="Agile Admissions"
@@ -56,7 +65,10 @@ export default function page() {
         buttonText="Meet our admission support experts"
         buttonLink="/team?filter=business_solutions"
         className="mb-20"
-        images={[{ image: "/windows.jpg", position: "50%_50%" }]}
+        images={[
+          { image: "/hea-agile.webp", position: "50%_50%" },
+          { image: "/hea-agile2.webp", position: "50%_50%" },
+        ]}
       />
 
       <Connect

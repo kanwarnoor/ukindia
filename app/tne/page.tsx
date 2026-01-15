@@ -18,14 +18,20 @@ export default function page() {
           },
         ]}
         button={false}
-        images={[{ image: "/tne.jpg", position: "50%_50%" }]}
+        images={[
+          { image: "/tne.webp", position: "50%_50%" },
+          { image: "/tne2.webp", position: "50%_50%" },
+        ]}
         flip={true}
       />
       <BoxImageText
         title="Flagship TNE Report: Pathway to Success"
         description={`A practical 10 step guide to build your tailored, sustainable TNE action plan. Reach out to our expert team to help you create it. <a href="/contact" style="color: #012d6b; text-decoration: underline;"> Click here </a>`}
         className="my-20"
-        images={[{ image: "/flagship.png", position: "50%_50%" }]}
+        images={[
+          { image: "/flagship-tne.webp", position: "50%_50%" },
+          { image: "/flagship-tne2.webp", position: "50%_50%" },
+        ]}
       />
 
       <div className="w-full h-fit flex flex-col gap-10 items-center justify-center pb-20">
