@@ -17,7 +17,7 @@ export default function page() {
         button={true}
         buttonLink="#more"
         buttonTxt="Apply Now"
-        images={[{ image: "/vacancies.webp", position: "50%_50%" }]}
+        images={[{ image: "/vacancies.jpg", position: "50%_50%" }]}
       />
 
       <section id="more" className="w-screen h-fit py-20">
