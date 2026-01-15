@@ -70,7 +70,7 @@ export default function Lander({
 
   return (
     <div
-      className={`max-w-screen overflow-hidden md:h-screen h-[70vh] flex flex-col lg:flex-row ${
+      className={`mt-15 max-w-screen overflow-hidden md:h-screen h-[70vh] flex flex-col lg:flex-row ${
         flip ? "lg:flex-row-reverse" : "lg:flex-row"
       } justify-center bg-white`}
       ref={ref as unknown as React.RefObject<HTMLDivElement>}
@@ -158,7 +158,7 @@ export default function Lander({
                                 y: 0,
                               }}
                               transition={{ duration: 0.5, delay: 0.2 * index }}
-                              className="inline-block"
+                              className={`inline-block ${index === 0 ? "text-tiger" : ""}`}
                             >
                               {word}{" "}
                             </motion.span>

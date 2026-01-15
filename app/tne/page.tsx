@@ -29,7 +29,7 @@ export default function page() {
         description={`A practical 10 step guide to build your tailored, sustainable TNE action plan. Reach out to our expert team to help you create it. <a href="/contact" style="color: #012d6b; text-decoration: underline;"> Click here </a>`}
         className="my-20"
         images={[
-          { image: "/flagship-tne.webp", position: "50%_50%" },
+          { image: "/home/eyes/influence-3.png", position: "50%_50%" },
           { image: "/flagship-tne2.webp", position: "50%_50%" },
         ]}
       />

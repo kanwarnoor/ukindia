@@ -124,7 +124,7 @@ export default function Navbar() {
     setOpenDropdown(null);
   };
 
-  const [scroll, setScroll] = useState(false);
+  const [scroll, setScroll] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -132,7 +132,7 @@ export default function Navbar() {
       if (scrollY > 100) {
         setScroll(true);
       } else {
-        setScroll(false);
+        setScroll(true);
       }
     };
     window.addEventListener("scroll", handleScroll);
@@ -141,7 +141,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={` flex w-full h-fit transition-all duration-300 ease-in-out text-black items-center px-6 md:px-10 fixed top-0 z-50 ${
+      className={`flex w-full h-fit transition-all duration-300 ease-in-out text-black items-center px-6 md:px-10 fixed top-0 z-50 ${
         scroll ? "bg-white shadow-lg" : "bg-transparent"
       }`}
     >

@@ -20,7 +20,7 @@ export default function page() {
         button={false}
         images={[
           { image: "/hea.webp", position: "50%_50%" },
-          { image: "/hea2.webp", position: "50%_50%" },
+          { image: "/heaa2.webp", position: "50%_50%" },
         ]}
       />
       <BoxImageText

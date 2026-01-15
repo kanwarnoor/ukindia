@@ -77,22 +77,18 @@ export default function Home() {
       <Lander
         title_data={[
           {
-            title: "Intelligence that Builds Trust, Impact that Lasts",
+            title: "Influence that Builds Trust, Impact that Lasts",
             des: "Policy-aware intelligence that reduces risk, builds trust, and helps organisations succeed across the UK–India corridor.",
           },
           {
-            title: "The Catalyst for Insight, Trust and Impact",
-            des: "We turn insight and access into influence, connecting businesses with government to deliver real outcomes.",
+            title: "Intelligence that Catalyses Insight and Impact",
+            des: "We provide equanimous influence, connecting businesses with government to deliver real outcomes.",
           },
           {
-            title: "Insight that Connects, Impact that Counts",
-            des: "Insight that links decision-makers, partners, and markets together, transforming conversations into measurable growth.",
+            title: "Interactions that Drive Growth and Credibility",
+            des: "We provide interactive opportunities to forge relationships across all levels of the government, credible advocacy, and practical intelligence that help businesses grow with confidence.",
           },
 
-          {
-            title: "Building Trust Driving Growth",
-            des: "Trusted relationships across all levels of the government, credible advocacy, and practical intelligence that help businesses grow with confidence.",
-          },
         ]}
         button={false}
         currency={true}
@@ -431,7 +427,6 @@ export default function Home() {
               />
             </div>
           </div>
-
         </div>
 
         {/* </AuroraBackground> */}
